@@ -1,24 +1,20 @@
 [gd_scene load_steps=5 format=3 uid="uid://ct0upn61sqrxa"]
 
 [ext_resource type="Script" path="res://Scripts/HitscanBuilding.gd" id="1_esum0"]
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_i0mpj"]
+[ext_resource type="PackedScene" uid="uid://b2msorr0hevwp" path="res://Art/Meshes/Tiles/weapon-turret.glb" id="2_1wc8h"]
+[ext_resource type="AudioStream" uid="uid://35k0m4kfygap" path="res://Art/SFX/HitscanShoot.mp3" id="3_fo5pd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4vw6k"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_0xe63"]
-
-[node name="HitscanBuilding" type="Node3D" node_paths=PackedStringArray("rot_target", "area_3d", "collision_shape", "projectile_tran", "raycast")]
+[node name="HitscanBuilding" type="Node3D" node_paths=PackedStringArray("rot_target", "area_3d", "collision_shape", "projectile_tran", "raycast", "audio_player")]
 script = ExtResource("1_esum0")
 rot_target = NodePath("ProjectileSpawnRotation")
 area_3d = NodePath("Area3D")
 collision_shape = NodePath("Area3D/CollisionShape3D")
 projectile_tran = NodePath("ProjectileSpawnRotation/ProjectileSpawnTran")
 raycast = NodePath("ProjectileSpawnRotation/ProjectileSpawnTran/RayCast3D")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
-mesh = SubResource("CylinderMesh_i0mpj")
+audio_player = NodePath("AudioStreamPlayer")
+attack_cooldown = 2.5
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -27,16 +23,18 @@ shape = SubResource("SphereShape3D_4vw6k")
 
 [node name="ProjectileSpawnRotation" type="Node3D" parent="."]
 
+[node name="TurretModel" parent="ProjectileSpawnRotation" instance=ExtResource("2_1wc8h")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.53, 0)
+
 [node name="ProjectileSpawnTran" type="Node3D" parent="ProjectileSpawnRotation"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ProjectileSpawnRotation/ProjectileSpawnTran"]
-transform = Transform3D(0.4, 0, 0, 0, -1.74846e-08, -0.4, 0, 0.4, -1.74846e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_0xe63")
-skeleton = NodePath("../..")
-
 [node name="RayCast3D" type="RayCast3D" parent="ProjectileSpawnRotation/ProjectileSpawnTran"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, -0.4)
 enabled = false
 target_position = Vector3(0, 0, 5)
 debug_shape_custom_color = Color(1, 0, 0, 1)
-debug_shape_thickness = 5
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_fo5pd")
+volume_db = -20.0

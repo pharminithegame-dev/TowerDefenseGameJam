@@ -6,6 +6,7 @@ extends Node3D
 @export var collision_shape: CollisionShape3D
 @export var projectile_tran: Node3D
 @export var raycast: RayCast3D
+@export var audio_player: AudioStreamPlayer
 
 ### Stats
 @export var projectile_damage := 20.0
@@ -78,9 +79,10 @@ func shoot_raycast() -> void:
 	
 	# TODO - apply damage
 	print("Applying hitscan damage to enemy")
+	audio_player
 	raycast.enabled = false
 	
-	# TODO - play sound?
+	audio_player.play()   # Play hitscan shoot sfx
 
 
 ### Returns the enemy who is furthest along in enemy path.

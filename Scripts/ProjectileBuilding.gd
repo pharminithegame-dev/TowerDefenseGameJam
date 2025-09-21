@@ -6,6 +6,7 @@ extends Node3D
 @export var collision_shape: CollisionShape3D
 @export var projectile_tran: Node3D
 @export var projectile: PackedScene
+@export var audio_player: AudioStreamPlayer
 
 ### Stats
 @export var projectile_damage := 5.0
@@ -63,7 +64,8 @@ func shoot_projectile() -> void:
 	projectile_instance.global_position = projectile_tran.global_position
 	projectile_instance.global_rotation = projectile_tran.global_rotation
 	projectile_instance.setup_and_move(projectile_damage, projectile_speed)
-	# TODO - play sound?
+	
+	audio_player.play()   # Play projectile shoot sfx
 
 
 ### Returns the closest enemy in attack range.

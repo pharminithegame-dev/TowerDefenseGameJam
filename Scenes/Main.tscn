@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://ko6h5f7gm3gw"]
+[gd_scene load_steps=5 format=3 uid="uid://bck6gktbl24l2"]
 
-[ext_resource type="MeshLibrary" uid="uid://ympke52h2kvt" path="res://Art/Meshes/Tiles2.tres" id="1_tnfu6"]
+[ext_resource type="MeshLibrary" uid="uid://dtdo55xeoadov" path="res://Art/Meshes/Tiles2.tres" id="1_tnfu6"]
 [ext_resource type="Texture2D" uid="uid://ck7j7ja0kykng" path="res://icon.svg" id="2_1qhbn"]
 [ext_resource type="Script" path="res://Scenes/place_tower.gd" id="3_lvvd4"]
-[ext_resource type="PackedScene" uid="uid://cn1qem2o7o30i" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
+[ext_resource type="PackedScene" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
 
 [node name="Main" type="Node3D"]
 

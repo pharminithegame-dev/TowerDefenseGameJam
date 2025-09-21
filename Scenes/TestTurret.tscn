@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://cn1qem2o7o30i"]
+[gd_scene load_steps=4 format=3 uid="uid://c8q2j8jq76fci"]
 
 [ext_resource type="PackedScene" uid="uid://bo07a1luxdco0" path="res://Art/Meshes/Tiles/tower-round-bottom-a.glb" id="1_lps3s"]
 [ext_resource type="PackedScene" uid="uid://oln68c2bt4bs" path="res://Art/Meshes/Tiles/tower-round-base.glb" id="2_edy4e"]
