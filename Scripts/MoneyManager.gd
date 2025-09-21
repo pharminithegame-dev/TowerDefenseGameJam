@@ -26,9 +26,11 @@ func get_money() -> int:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	# P event
 	if Input.is_action_just_pressed("money_plus"):
 		add_money(10)
 		print("Added 10 money. Total:", money)
+	# O event
 	if Input.is_action_just_pressed("money_minus"):
 		subtract_money(10)
 		print("Subtracted 10 money. Total:", money)
