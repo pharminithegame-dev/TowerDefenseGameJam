@@ -1,0 +1,694 @@
+[gd_scene load_steps=165 format=4 uid="uid://brspgf08d5sxi"]
+
+[ext_resource type="PackedScene" uid="uid://bc5qxme0lxwof" path="res://Art/Meshes/Tiles/detail-crystal-large.glb" id="1_71dxs"]
+[ext_resource type="PackedScene" uid="uid://cvlcd6fge4wxx" path="res://Art/Meshes/Tiles/detail-crystal.glb" id="2_jvnxf"]
+[ext_resource type="PackedScene" uid="uid://be0lf7b402mqg" path="res://Art/Meshes/Tiles/detail-dirt-large.glb" id="3_fbqt5"]
+[ext_resource type="PackedScene" uid="uid://bemp3l13a7pme" path="res://Art/Meshes/Tiles/detail-dirt.glb" id="4_a63nd"]
+[ext_resource type="PackedScene" uid="uid://bma1ojiya6cw0" path="res://Art/Meshes/Tiles/detail-rocks-large.glb" id="5_wqm83"]
+[ext_resource type="PackedScene" uid="uid://rdvu5cw26m7k" path="res://Art/Meshes/Tiles/detail-rocks.glb" id="6_7vt63"]
+[ext_resource type="PackedScene" uid="uid://cnmfotlt8gxt8" path="res://Art/Meshes/Tiles/detail-tree-large.glb" id="7_4dsnd"]
+[ext_resource type="PackedScene" uid="uid://cghx5jeeg4hi7" path="res://Art/Meshes/Tiles/detail-tree.glb" id="8_7ord2"]
+[ext_resource type="PackedScene" uid="uid://cjg8wlxpc2rh8" path="res://Art/Meshes/Tiles/enemy-ufo-a-weapon.glb" id="9_rau8b"]
+[ext_resource type="PackedScene" uid="uid://58jcr6d2e3e1" path="res://Art/Meshes/Tiles/enemy-ufo-a.glb" id="10_8khlc"]
+[ext_resource type="PackedScene" uid="uid://cbcmcldn5xgxr" path="res://Art/Meshes/Tiles/enemy-ufo-b-weapon.glb" id="11_y8y2y"]
+[ext_resource type="PackedScene" uid="uid://5gbmw7syldbm" path="res://Art/Meshes/Tiles/enemy-ufo-b.glb" id="12_oyg65"]
+[ext_resource type="PackedScene" uid="uid://fxj5vxfsfsn4" path="res://Art/Meshes/Tiles/enemy-ufo-beam-burst.glb" id="13_qqgyk"]
+[ext_resource type="PackedScene" uid="uid://bjdrplc5pkh0k" path="res://Art/Meshes/Tiles/enemy-ufo-beam.glb" id="14_ewx54"]
+[ext_resource type="PackedScene" uid="uid://bad41qm1jk88h" path="res://Art/Meshes/Tiles/enemy-ufo-c-weapon.glb" id="15_k0q8q"]
+[ext_resource type="PackedScene" uid="uid://bbrwyh0wwbtlj" path="res://Art/Meshes/Tiles/enemy-ufo-c.glb" id="16_3otld"]
+[ext_resource type="PackedScene" uid="uid://d2psthqayapko" path="res://Art/Meshes/Tiles/enemy-ufo-d-weapon.glb" id="17_8yfid"]
+[ext_resource type="PackedScene" uid="uid://cjvx344trulb6" path="res://Art/Meshes/Tiles/enemy-ufo-d.glb" id="18_js746"]
+[ext_resource type="PackedScene" uid="uid://c0u5sfe575kfv" path="res://Art/Meshes/Tiles/selection-a.glb" id="19_k6cbe"]
+[ext_resource type="PackedScene" uid="uid://btmkj70sgoolo" path="res://Art/Meshes/Tiles/selection-b.glb" id="20_5mndn"]
+[ext_resource type="PackedScene" uid="uid://crtnm0ap386iv" path="res://Art/Meshes/Tiles/snow-detail-crystal-large.glb" id="21_v8kgt"]
+[ext_resource type="PackedScene" uid="uid://ch0gf21svut2r" path="res://Art/Meshes/Tiles/snow-detail-crystal.glb" id="22_wwol4"]
+[ext_resource type="PackedScene" uid="uid://df050vxqtvp7f" path="res://Art/Meshes/Tiles/snow-detail-dirt-large.glb" id="23_8rnlu"]
+[ext_resource type="PackedScene" uid="uid://jtirad7kq8cy" path="res://Art/Meshes/Tiles/snow-detail-dirt.glb" id="24_3211d"]
+[ext_resource type="PackedScene" uid="uid://nugygu2bla8t" path="res://Art/Meshes/Tiles/snow-detail-rocks-large.glb" id="25_8orrh"]
+[ext_resource type="PackedScene" uid="uid://2ly45wlllgw" path="res://Art/Meshes/Tiles/snow-detail-rocks.glb" id="26_sc1mc"]
+[ext_resource type="PackedScene" uid="uid://dykd0odhip832" path="res://Art/Meshes/Tiles/snow-detail-tree-large.glb" id="27_m6nuc"]
+[ext_resource type="PackedScene" uid="uid://lyhcj3x4mvlf" path="res://Art/Meshes/Tiles/snow-detail-tree.glb" id="28_fjloc"]
+[ext_resource type="PackedScene" uid="uid://deyboik8ygsyr" path="res://Art/Meshes/Tiles/snow-tile-bump.glb" id="29_c3t5l"]
+[ext_resource type="PackedScene" uid="uid://csjhgo40rv72t" path="res://Art/Meshes/Tiles/snow-tile-corner-inner.glb" id="30_vv12q"]
+[ext_resource type="PackedScene" uid="uid://hr3db7hn03qc" path="res://Art/Meshes/Tiles/snow-tile-corner-large.glb" id="31_pjxbr"]
+[ext_resource type="PackedScene" uid="uid://cqmyul8us73sq" path="res://Art/Meshes/Tiles/snow-tile-corner-outer.glb" id="32_tcrnu"]
+[ext_resource type="PackedScene" uid="uid://dvcjg4flbi70" path="res://Art/Meshes/Tiles/snow-tile-corner-round.glb" id="33_v83oj"]
+[ext_resource type="PackedScene" uid="uid://rxsrus481gfk" path="res://Art/Meshes/Tiles/snow-tile-corner-square.glb" id="34_3v6fk"]
+[ext_resource type="PackedScene" uid="uid://bji35cuctlipl" path="res://Art/Meshes/Tiles/snow-tile-crossing.glb" id="35_pdeda"]
+[ext_resource type="PackedScene" uid="uid://dx7eaqtyrut6d" path="res://Art/Meshes/Tiles/snow-tile-crystal.glb" id="36_2miuj"]
+[ext_resource type="PackedScene" uid="uid://rqkdtppvt01d" path="res://Art/Meshes/Tiles/snow-tile-dirt.glb" id="37_yg3gd"]
+[ext_resource type="PackedScene" uid="uid://lkhsnt70teph" path="res://Art/Meshes/Tiles/snow-tile-end-round.glb" id="38_id2pq"]
+[ext_resource type="PackedScene" uid="uid://dllumces7yih0" path="res://Art/Meshes/Tiles/snow-tile-end.glb" id="39_gqycj"]
+[ext_resource type="PackedScene" uid="uid://djcm21o1sarbf" path="res://Art/Meshes/Tiles/snow-tile-hill.glb" id="40_0byqu"]
+[ext_resource type="PackedScene" uid="uid://dcint0havylbk" path="res://Art/Meshes/Tiles/snow-tile-river-bridge.glb" id="41_tdbca"]
+[ext_resource type="PackedScene" uid="uid://dlpesa86q2btb" path="res://Art/Meshes/Tiles/snow-tile-river-corner.glb" id="42_vg33x"]
+[ext_resource type="PackedScene" uid="uid://ckj4f067thtbq" path="res://Art/Meshes/Tiles/snow-tile-river-slope-large.glb" id="43_a41wf"]
+[ext_resource type="PackedScene" uid="uid://cl5wcf8llydmy" path="res://Art/Meshes/Tiles/snow-tile-river-slope.glb" id="44_kbm6r"]
+[ext_resource type="PackedScene" uid="uid://bwu8wcsxrcfpo" path="res://Art/Meshes/Tiles/snow-tile-river-straight.glb" id="45_w01lp"]
+[ext_resource type="PackedScene" uid="uid://cowj1bs2glens" path="res://Art/Meshes/Tiles/snow-tile-river-transition.glb" id="46_6omnf"]
+[ext_resource type="PackedScene" uid="uid://ji5u8xqacqfw" path="res://Art/Meshes/Tiles/snow-tile-river-waterfall.glb" id="47_nsjbx"]
+[ext_resource type="PackedScene" uid="uid://bnpyatnaa3mmk" path="res://Art/Meshes/Tiles/snow-tile-rock.glb" id="48_xo3th"]
+[ext_resource type="PackedScene" uid="uid://8rs54n3lvti2" path="res://Art/Meshes/Tiles/snow-tile-slope.glb" id="49_bxmme"]
+[ext_resource type="PackedScene" uid="uid://bfl35oc4dr7n2" path="res://Art/Meshes/Tiles/snow-tile-spawn-end-round.glb" id="50_4ku2s"]
+[ext_resource type="PackedScene" uid="uid://dcgsjfbelokex" path="res://Art/Meshes/Tiles/snow-tile-spawn-end.glb" id="51_qw7qw"]
+[ext_resource type="PackedScene" uid="uid://bs1nje6m15k2x" path="res://Art/Meshes/Tiles/snow-tile-spawn-round.glb" id="52_vbrej"]
+[ext_resource type="PackedScene" uid="uid://blyhdqmikkptk" path="res://Art/Meshes/Tiles/snow-tile-spawn.glb" id="53_lg24f"]
+[ext_resource type="PackedScene" uid="uid://bru4683ngb45a" path="res://Art/Meshes/Tiles/snow-tile-split.glb" id="54_m35jh"]
+[ext_resource type="PackedScene" uid="uid://b047wsx32u1ea" path="res://Art/Meshes/Tiles/snow-tile-straight-slope-large.glb" id="55_5rfj5"]
+[ext_resource type="PackedScene" uid="uid://c1k6ns0wlj63l" path="res://Art/Meshes/Tiles/snow-tile-straight-slope.glb" id="56_0gjt5"]
+[ext_resource type="PackedScene" uid="uid://b2bou0cy1wy6i" path="res://Art/Meshes/Tiles/snow-tile-straight.glb" id="57_5m7se"]
+[ext_resource type="PackedScene" uid="uid://dmnd06mrrr4u8" path="res://Art/Meshes/Tiles/snow-tile-transition.glb" id="58_ht646"]
+[ext_resource type="PackedScene" uid="uid://dv82wa8ogch1u" path="res://Art/Meshes/Tiles/snow-tile-tree-double.glb" id="59_yb53m"]
+[ext_resource type="PackedScene" uid="uid://dp35lc47q5d67" path="res://Art/Meshes/Tiles/snow-tile-tree-quad.glb" id="60_km3gp"]
+[ext_resource type="PackedScene" uid="uid://jxh0rw7g60un" path="res://Art/Meshes/Tiles/snow-tile-tree.glb" id="61_nbh4k"]
+[ext_resource type="PackedScene" uid="uid://d32h7sgdbrc7g" path="res://Art/Meshes/Tiles/snow-tile-wide-corner.glb" id="62_ynvw0"]
+[ext_resource type="PackedScene" uid="uid://egvpklnbkrrj" path="res://Art/Meshes/Tiles/snow-tile-wide-split.glb" id="63_qtsdi"]
+[ext_resource type="PackedScene" uid="uid://cm57aesegtmmh" path="res://Art/Meshes/Tiles/snow-tile-wide-straight.glb" id="64_s50ao"]
+[ext_resource type="PackedScene" uid="uid://cmaxbmwkt88gk" path="res://Art/Meshes/Tiles/snow-tile-wide-transition.glb" id="65_rwkcy"]
+[ext_resource type="PackedScene" uid="uid://buw10x1n0fsge" path="res://Art/Meshes/Tiles/snow-tile.glb" id="66_voh1u"]
+[ext_resource type="PackedScene" uid="uid://bwi2ca2eu1ucu" path="res://Art/Meshes/Tiles/snow-wood-structure-high-part.glb" id="67_eyy85"]
+[ext_resource type="PackedScene" uid="uid://v8s8xe5nrul8" path="res://Art/Meshes/Tiles/snow-wood-structure-high.glb" id="68_fk6es"]
+[ext_resource type="PackedScene" uid="uid://dkc1b2bb4qq0q" path="res://Art/Meshes/Tiles/snow-wood-structure-part.glb" id="69_neg7b"]
+[ext_resource type="PackedScene" uid="uid://xq3208fwe1k" path="res://Art/Meshes/Tiles/snow-wood-structure.glb" id="70_qlc3f"]
+[ext_resource type="PackedScene" uid="uid://gjjhkyjkqjbe" path="res://Art/Meshes/Tiles/spawn-round.glb" id="71_1b0oa"]
+[ext_resource type="PackedScene" uid="uid://j845ujhmdhw0" path="res://Art/Meshes/Tiles/spawn-square.glb" id="72_0mbi0"]
+[ext_resource type="PackedScene" uid="uid://d2ucmrwhgjp38" path="res://Art/Meshes/Tiles/tile-bump.glb" id="73_poidw"]
+[ext_resource type="PackedScene" uid="uid://cu6k24egodqlk" path="res://Art/Meshes/Tiles/tile-corner-inner.glb" id="74_f2biq"]
+[ext_resource type="PackedScene" uid="uid://6n50wqil3p46" path="res://Art/Meshes/Tiles/tile-corner-large.glb" id="75_tlvp4"]
+[ext_resource type="PackedScene" uid="uid://da61jepa4l0td" path="res://Art/Meshes/Tiles/tile-corner-outer.glb" id="76_d8ly8"]
+[ext_resource type="PackedScene" uid="uid://cx42awrengj8o" path="res://Art/Meshes/Tiles/tile-corner-round.glb" id="77_8ml6u"]
+[ext_resource type="PackedScene" uid="uid://dp5hvog8xfp15" path="res://Art/Meshes/Tiles/tile-corner-square.glb" id="78_h2hrl"]
+[ext_resource type="PackedScene" uid="uid://dsni0emhic5g3" path="res://Art/Meshes/Tiles/tile-crossing.glb" id="79_t43ku"]
+[ext_resource type="PackedScene" uid="uid://cxhnhkq3w6w20" path="res://Art/Meshes/Tiles/tile-crystal.glb" id="80_wxul4"]
+[ext_resource type="PackedScene" uid="uid://bdt8vq2feq6c7" path="res://Art/Meshes/Tiles/tile-dirt.glb" id="81_vtlox"]
+[ext_resource type="PackedScene" uid="uid://c85r0o0aj15lj" path="res://Art/Meshes/Tiles/tile-end-round.glb" id="82_odbul"]
+[ext_resource type="PackedScene" uid="uid://dck4cmuim6nnv" path="res://Art/Meshes/Tiles/tile-end.glb" id="83_t867o"]
+[ext_resource type="PackedScene" uid="uid://dk4wbg1uw0hc4" path="res://Art/Meshes/Tiles/tile-hill.glb" id="84_f8lb8"]
+[ext_resource type="PackedScene" uid="uid://sxy8j6tr3xqt" path="res://Art/Meshes/Tiles/tile-river-bridge.glb" id="85_w6n5s"]
+[ext_resource type="PackedScene" uid="uid://bnlktdrrp4vvf" path="res://Art/Meshes/Tiles/tile-river-corner.glb" id="86_t10a2"]
+[ext_resource type="PackedScene" uid="uid://b3g5m22t8ldx1" path="res://Art/Meshes/Tiles/tile-river-slope-large.glb" id="87_i7asj"]
+[ext_resource type="PackedScene" uid="uid://clyoagovshb2b" path="res://Art/Meshes/Tiles/tile-river-slope.glb" id="88_u11v5"]
+[ext_resource type="PackedScene" uid="uid://bxcp0h8kekr32" path="res://Art/Meshes/Tiles/tile-river-straight.glb" id="89_t5jpi"]
+[ext_resource type="PackedScene" uid="uid://b5qohfmia8npn" path="res://Art/Meshes/Tiles/tile-river-transition.glb" id="90_qlvtd"]
+[ext_resource type="PackedScene" uid="uid://cq5bfxcuavlqs" path="res://Art/Meshes/Tiles/tile-river-waterfall.glb" id="91_441wi"]
+[ext_resource type="PackedScene" uid="uid://b71jcu0o22y04" path="res://Art/Meshes/Tiles/tile-rock.glb" id="92_rieqi"]
+[ext_resource type="PackedScene" uid="uid://dxs46ecwihlis" path="res://Art/Meshes/Tiles/tile-slope.glb" id="93_mnmb7"]
+[ext_resource type="PackedScene" uid="uid://ha3upk328r7x" path="res://Art/Meshes/Tiles/tile-spawn-end-round.glb" id="94_nmp6x"]
+[ext_resource type="PackedScene" uid="uid://c5ailq1im5crb" path="res://Art/Meshes/Tiles/tile-spawn-end.glb" id="95_x47ml"]
+[ext_resource type="PackedScene" uid="uid://dvb1gnqednfyp" path="res://Art/Meshes/Tiles/tile-spawn-round.glb" id="96_6u6rw"]
+[ext_resource type="PackedScene" uid="uid://d4fcy06fx226a" path="res://Art/Meshes/Tiles/tile-spawn.glb" id="97_wiqca"]
+[ext_resource type="PackedScene" uid="uid://0r4cm0lbeos6" path="res://Art/Meshes/Tiles/tile-split.glb" id="98_12lwg"]
+[ext_resource type="PackedScene" uid="uid://c8ap5dcts4gkd" path="res://Art/Meshes/Tiles/tile-straight-slope-large.glb" id="99_w71sl"]
+[ext_resource type="PackedScene" uid="uid://kql2ygcms46y" path="res://Art/Meshes/Tiles/tile-straight-slope.glb" id="100_175sv"]
+[ext_resource type="PackedScene" uid="uid://brk2ho5ljbg01" path="res://Art/Meshes/Tiles/tile-straight.glb" id="101_kxgre"]
+[ext_resource type="PackedScene" uid="uid://cp808otigrxnj" path="res://Art/Meshes/Tiles/tile-transition.glb" id="102_c5o3p"]
+[ext_resource type="PackedScene" uid="uid://b38hqpuefmwol" path="res://Art/Meshes/Tiles/tile-tree-double.glb" id="103_uaigw"]
+[ext_resource type="PackedScene" uid="uid://cr1jobis6x3v4" path="res://Art/Meshes/Tiles/tile-tree-quad.glb" id="104_013ff"]
+[ext_resource type="PackedScene" uid="uid://ncqudu80nxil" path="res://Art/Meshes/Tiles/tile-tree.glb" id="105_vtu2o"]
+[ext_resource type="PackedScene" uid="uid://d1wgro3jt8hij" path="res://Art/Meshes/Tiles/tile-wide-corner.glb" id="106_i2sr2"]
+[ext_resource type="PackedScene" uid="uid://bipxdu2qnxm8u" path="res://Art/Meshes/Tiles/tile-wide-split.glb" id="107_f6o1v"]
+[ext_resource type="PackedScene" uid="uid://c2tmaw88gitur" path="res://Art/Meshes/Tiles/tile-wide-straight.glb" id="108_niccc"]
+[ext_resource type="PackedScene" uid="uid://psohnr3uw30p" path="res://Art/Meshes/Tiles/tile-wide-transition.glb" id="109_eumuu"]
+[ext_resource type="Texture2D" uid="uid://c608rb0hqe8aj" path="res://Art/Meshes/Tiles/Textures/colormap.png" id="110_cnaaf"]
+[ext_resource type="PackedScene" uid="uid://oln68c2bt4bs" path="res://Art/Meshes/Tiles/tower-round-base.glb" id="111_uy21w"]
+[ext_resource type="PackedScene" uid="uid://bo07a1luxdco0" path="res://Art/Meshes/Tiles/tower-round-bottom-a.glb" id="112_x5p2b"]
+[ext_resource type="PackedScene" uid="uid://xevci2jjh8gx" path="res://Art/Meshes/Tiles/tower-round-bottom-b.glb" id="113_cm4o0"]
+[ext_resource type="PackedScene" uid="uid://b1xrvko81jfua" path="res://Art/Meshes/Tiles/tower-round-bottom-c.glb" id="114_j0kvk"]
+[ext_resource type="PackedScene" uid="uid://ikkr7vcs26r2" path="res://Art/Meshes/Tiles/tower-round-build-a.glb" id="115_8coup"]
+[ext_resource type="PackedScene" uid="uid://clo1k5tldccp3" path="res://Art/Meshes/Tiles/tower-round-build-b.glb" id="116_pmwqd"]
+[ext_resource type="PackedScene" uid="uid://dkudjcfbiog30" path="res://Art/Meshes/Tiles/tower-round-build-c.glb" id="117_npa8m"]
+[ext_resource type="PackedScene" uid="uid://dwl0nmsa36edx" path="res://Art/Meshes/Tiles/tower-round-build-d.glb" id="118_on5xc"]
+[ext_resource type="PackedScene" uid="uid://dt7m58exrblid" path="res://Art/Meshes/Tiles/tower-round-build-e.glb" id="119_jimbw"]
+[ext_resource type="PackedScene" uid="uid://c35kbeargfvhx" path="res://Art/Meshes/Tiles/tower-round-build-f.glb" id="120_xoqo4"]
+[ext_resource type="PackedScene" uid="uid://c3ts5owtgw5aw" path="res://Art/Meshes/Tiles/tower-round-crystals.glb" id="121_fscse"]
+[ext_resource type="PackedScene" uid="uid://bstrrw6favbwg" path="res://Art/Meshes/Tiles/tower-round-middle-a.glb" id="122_slnrf"]
+[ext_resource type="PackedScene" uid="uid://c12l0xs224c5l" path="res://Art/Meshes/Tiles/tower-round-middle-b.glb" id="123_bhsjp"]
+[ext_resource type="PackedScene" uid="uid://bc6ubrgkcyyj7" path="res://Art/Meshes/Tiles/tower-round-middle-c.glb" id="124_6cai8"]
+[ext_resource type="PackedScene" uid="uid://6vsy1g7u8mtq" path="res://Art/Meshes/Tiles/tower-round-roof-a.glb" id="125_jsxtv"]
+[ext_resource type="PackedScene" uid="uid://8dd5w2qjxos2" path="res://Art/Meshes/Tiles/tower-round-roof-b.glb" id="126_2sloi"]
+[ext_resource type="PackedScene" uid="uid://dmli1yueang2j" path="res://Art/Meshes/Tiles/tower-round-roof-c.glb" id="127_66lsl"]
+[ext_resource type="PackedScene" uid="uid://jpmqjdcqa5yx" path="res://Art/Meshes/Tiles/tower-round-top-a.glb" id="128_misqt"]
+[ext_resource type="PackedScene" uid="uid://nojgd0h5emrk" path="res://Art/Meshes/Tiles/tower-round-top-b.glb" id="129_ontlh"]
+[ext_resource type="PackedScene" uid="uid://dtk3uxab2qiuk" path="res://Art/Meshes/Tiles/tower-round-top-c.glb" id="130_0ke3b"]
+[ext_resource type="PackedScene" uid="uid://bwuk5j255pn37" path="res://Art/Meshes/Tiles/tower-square-bottom-a.glb" id="131_0j6vy"]
+[ext_resource type="PackedScene" uid="uid://bdcv6no1ybj1p" path="res://Art/Meshes/Tiles/tower-square-bottom-b.glb" id="132_2nkiu"]
+[ext_resource type="PackedScene" uid="uid://cpnptjjxwtokx" path="res://Art/Meshes/Tiles/tower-square-bottom-c.glb" id="133_emww2"]
+[ext_resource type="PackedScene" uid="uid://khj161tam2df" path="res://Art/Meshes/Tiles/tower-square-build-a.glb" id="134_1sfo7"]
+[ext_resource type="PackedScene" uid="uid://c4678rro7h5k" path="res://Art/Meshes/Tiles/tower-square-build-b.glb" id="135_mfybb"]
+[ext_resource type="PackedScene" uid="uid://bar28oc78ishn" path="res://Art/Meshes/Tiles/tower-square-build-c.glb" id="136_ymg40"]
+[ext_resource type="PackedScene" uid="uid://beup7vd46abn6" path="res://Art/Meshes/Tiles/tower-square-build-d.glb" id="137_l2w3u"]
+[ext_resource type="PackedScene" uid="uid://dthjceo0ybimt" path="res://Art/Meshes/Tiles/tower-square-build-e.glb" id="138_6e2np"]
+[ext_resource type="PackedScene" uid="uid://bphbjcfhdnnn3" path="res://Art/Meshes/Tiles/tower-square-build-f.glb" id="139_klbev"]
+[ext_resource type="PackedScene" uid="uid://36eepqoo71aa" path="res://Art/Meshes/Tiles/tower-square-middle-a.glb" id="140_tfo3o"]
+[ext_resource type="PackedScene" uid="uid://byxgua34wb1e8" path="res://Art/Meshes/Tiles/tower-square-middle-b.glb" id="141_ehps3"]
+[ext_resource type="PackedScene" uid="uid://c006npfj237pa" path="res://Art/Meshes/Tiles/tower-square-middle-c.glb" id="142_uicu6"]
+[ext_resource type="PackedScene" uid="uid://ccgb1tgin4ijo" path="res://Art/Meshes/Tiles/tower-square-roof-a.glb" id="143_rimok"]
+[ext_resource type="PackedScene" uid="uid://ci25wp1t0bwp" path="res://Art/Meshes/Tiles/tower-square-roof-b.glb" id="144_nxhw0"]
+[ext_resource type="PackedScene" uid="uid://cb38qp4pbqxa8" path="res://Art/Meshes/Tiles/tower-square-roof-c.glb" id="145_kgdtw"]
+[ext_resource type="PackedScene" uid="uid://cubu842wrpqk" path="res://Art/Meshes/Tiles/tower-square-top-a.glb" id="146_cmcyc"]
+[ext_resource type="PackedScene" uid="uid://buv6qonw7nyxm" path="res://Art/Meshes/Tiles/tower-square-top-b.glb" id="147_sr5ev"]
+[ext_resource type="PackedScene" uid="uid://dnl4oosgrm3lp" path="res://Art/Meshes/Tiles/tower-square-top-c.glb" id="148_pfwb4"]
+[ext_resource type="PackedScene" uid="uid://ca5fkh6wq3b8i" path="res://Art/Meshes/Tiles/weapon-ammo-arrow.glb" id="149_d2pxq"]
+[ext_resource type="PackedScene" uid="uid://b38eliaqdkvx6" path="res://Art/Meshes/Tiles/weapon-ammo-boulder.glb" id="150_8e1j7"]
+[ext_resource type="PackedScene" uid="uid://dq7bdfnnc8pro" path="res://Art/Meshes/Tiles/weapon-ammo-bullet.glb" id="151_rk80e"]
+[ext_resource type="PackedScene" uid="uid://ddor43yvhfj3h" path="res://Art/Meshes/Tiles/weapon-ammo-cannonball.glb" id="152_kxwg2"]
+[ext_resource type="PackedScene" uid="uid://b7slfk34q4ld0" path="res://Art/Meshes/Tiles/weapon-ballista.glb" id="153_i040r"]
+[ext_resource type="PackedScene" uid="uid://cimnsj1tefe6p" path="res://Art/Meshes/Tiles/weapon-cannon.glb" id="154_2ih18"]
+[ext_resource type="PackedScene" uid="uid://b8261ylwkm8vf" path="res://Art/Meshes/Tiles/weapon-catapult.glb" id="155_3ygfc"]
+[ext_resource type="PackedScene" uid="uid://b2msorr0hevwp" path="res://Art/Meshes/Tiles/weapon-turret.glb" id="156_3fnqc"]
+[ext_resource type="PackedScene" uid="uid://dwlul3njc2xj8" path="res://Art/Meshes/Tiles/wood-structure-high-part.glb" id="157_bxwj2"]
+[ext_resource type="PackedScene" uid="uid://cw5346lfahxdn" path="res://Art/Meshes/Tiles/wood-structure-high.glb" id="158_xdmwu"]
+[ext_resource type="PackedScene" uid="uid://byqljvx0sefwc" path="res://Art/Meshes/Tiles/wood-structure-part.glb" id="159_6diem"]
+[ext_resource type="PackedScene" uid="uid://c7aqo1m1o7uae" path="res://Art/Meshes/Tiles/wood-structure.glb" id="160_37h6x"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utaos"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("110_cnaaf")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_d2esv"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 0.2, 1),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIAAAACAAEAAwABAAIABQAEAAEAAQAAAAUABAAFAAEAAAABAAUABQAAAAIAAgAGAAUAAAAFAAIABgACAAUAAgADAAcABwAGAAIAAwACAAcABgAHAAIABwADAAEAAQAEAAcAAwAHAAEABAABAAcABwAEAAUABQAGAAcABAAHAAUABgAFAAcA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAD//wAAAAAAAAAAAAD//wAAAAAAAAAAAAD/////AAAAAP///////wAAAAD/////AAAAAP//AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sdcqb"]
+resource_name = "tile_tile"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 0.2, 1),
+"attribute_data": PackedByteArray("/5eYuf+XmLn/l5i5/5eYuf+XmLn/l5i5/5eYuf+XmLn/l2WG/5eYuf+XZYb/l5i5/5dlhv+XmLn/l2WG/5eYuf+XmLn/l5i5/5dlhv+XZYb/l2WG/5eYuf+XmLn/l2WG/5eYuf+XZYb/l5i5/5dlhv+XmLn/l2WG/5eYuf+XZYb/l5i5/5eYuf+XZYb/l2WG/5dlhv+XmLn/l5i5/5dlhv+XZYb/l2WG/5dlhv+XZYb/l2WG/5dlhv+XZYb/l2WG"),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIABgAEAAUABwAFAAQACgAIAAkACQALAAoADgAMAA0ADwANAAwAEgAQABEAEQATABIAFgAUABUAFwAVABQAGgAYABkAGQAbABoAHgAcAB0AHwAdABwAIgAgACEAIQAjACIAJgAkACUAJwAlACQAKgAoACkAKQArACoALgAsAC0ALwAtACwA"),
+"material": SubResource("StandardMaterial3D_utaos"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("//8AAP///7///wAAAAD/vwAAAAD///+/AAAAAAAA/78AAAAA////P///AAAAAP8///8AAP///z8AAAAAAAD/P/////8AAP+///8AAAAA/7//////////v///AAD///+/////////AAD//wAAAAAAAP////8AAAAA//8AAP//AAD//wAA//8AgAAAAAD//wCA////////AIAAAP////8AgP///////wAAAAAAAP//AAD//wAA//8AAAAA/////wAAAAAAAAAA/78AAP//AAD/vwAAAAD///+/AAD//////78AAAAA//8AAAAA//8AAAAAAAAAAAAAAAAAAP////8AAAAAAAAAAP////8AAAAA//8AAP//AAD///////8AAP//AAD//wAAAAD//wAAAAAAAAAAAAAAAAAA/////wAAAAD/////AAD/////////////AAD//wAA//8AAP///////wAA//8AAAAA////////AAD/////AAAAAAAA/////wAAAAD/fwAA/38AAP9/AAD/f////3////9/////f////3//fwAA/38AAP9/AAD/fwAA/z//f/8//3//P/9//z//f/9/////f////3////9///////9/////f////3////9//3////9/////f////3////+//3//v/9//7//f/+//3//f////3////9/////f////3//f/9//3//f/9//3//f/9//7//f/+//3//v/9//7//f/8//3//P/9//z//f/8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_d2esv")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sdkqm"]
+size = Vector3(1, 0.202911, 1)
+
+[node name="Tiles" type="Node3D"]
+
+[node name="detail-crystal-large2" parent="." instance=ExtResource("1_71dxs")]
+visible = false
+
+[node name="detail-crystal2" parent="." instance=ExtResource("2_jvnxf")]
+visible = false
+
+[node name="detail-dirt-large2" parent="." instance=ExtResource("3_fbqt5")]
+visible = false
+
+[node name="detail-dirt2" parent="." instance=ExtResource("4_a63nd")]
+visible = false
+
+[node name="detail-rocks-large2" parent="." instance=ExtResource("5_wqm83")]
+visible = false
+
+[node name="detail-rocks2" parent="." instance=ExtResource("6_7vt63")]
+visible = false
+
+[node name="detail-tree-large2" parent="." instance=ExtResource("7_4dsnd")]
+visible = false
+
+[node name="detail-tree2" parent="." instance=ExtResource("8_7ord2")]
+visible = false
+
+[node name="enemy-ufo-a-weapon2" parent="." instance=ExtResource("9_rau8b")]
+visible = false
+
+[node name="enemy-ufo-a2" parent="." instance=ExtResource("10_8khlc")]
+visible = false
+
+[node name="enemy-ufo-b-weapon2" parent="." instance=ExtResource("11_y8y2y")]
+visible = false
+
+[node name="enemy-ufo-b2" parent="." instance=ExtResource("12_oyg65")]
+visible = false
+
+[node name="enemy-ufo-beam-burst2" parent="." instance=ExtResource("13_qqgyk")]
+visible = false
+
+[node name="enemy-ufo-beam2" parent="." instance=ExtResource("14_ewx54")]
+visible = false
+
+[node name="enemy-ufo-c-weapon2" parent="." instance=ExtResource("15_k0q8q")]
+visible = false
+
+[node name="enemy-ufo-c2" parent="." instance=ExtResource("16_3otld")]
+visible = false
+
+[node name="enemy-ufo-d-weapon2" parent="." instance=ExtResource("17_8yfid")]
+visible = false
+
+[node name="enemy-ufo-d2" parent="." instance=ExtResource("18_js746")]
+visible = false
+
+[node name="selection-a2" parent="." instance=ExtResource("19_k6cbe")]
+visible = false
+
+[node name="selection-b2" parent="." instance=ExtResource("20_5mndn")]
+visible = false
+
+[node name="snow-detail-crystal-large2" parent="." instance=ExtResource("21_v8kgt")]
+visible = false
+
+[node name="snow-detail-crystal2" parent="." instance=ExtResource("22_wwol4")]
+visible = false
+
+[node name="snow-detail-dirt-large2" parent="." instance=ExtResource("23_8rnlu")]
+visible = false
+
+[node name="snow-detail-dirt2" parent="." instance=ExtResource("24_3211d")]
+visible = false
+
+[node name="snow-detail-rocks-large2" parent="." instance=ExtResource("25_8orrh")]
+visible = false
+
+[node name="snow-detail-rocks2" parent="." instance=ExtResource("26_sc1mc")]
+visible = false
+
+[node name="snow-detail-tree-large2" parent="." instance=ExtResource("27_m6nuc")]
+visible = false
+
+[node name="snow-detail-tree2" parent="." instance=ExtResource("28_fjloc")]
+visible = false
+
+[node name="snow-tile-bump2" parent="." instance=ExtResource("29_c3t5l")]
+visible = false
+
+[node name="snow-tile-corner-inner2" parent="." instance=ExtResource("30_vv12q")]
+visible = false
+
+[node name="snow-tile-corner-large2" parent="." instance=ExtResource("31_pjxbr")]
+visible = false
+
+[node name="snow-tile-corner-outer2" parent="." instance=ExtResource("32_tcrnu")]
+visible = false
+
+[node name="snow-tile-corner-round2" parent="." instance=ExtResource("33_v83oj")]
+visible = false
+
+[node name="snow-tile-corner-square2" parent="." instance=ExtResource("34_3v6fk")]
+visible = false
+
+[node name="snow-tile-crossing2" parent="." instance=ExtResource("35_pdeda")]
+visible = false
+
+[node name="snow-tile-crystal2" parent="." instance=ExtResource("36_2miuj")]
+visible = false
+
+[node name="snow-tile-dirt2" parent="." instance=ExtResource("37_yg3gd")]
+visible = false
+
+[node name="snow-tile-end-round2" parent="." instance=ExtResource("38_id2pq")]
+visible = false
+
+[node name="snow-tile-end2" parent="." instance=ExtResource("39_gqycj")]
+visible = false
+
+[node name="snow-tile-hill2" parent="." instance=ExtResource("40_0byqu")]
+visible = false
+
+[node name="snow-tile-river-bridge2" parent="." instance=ExtResource("41_tdbca")]
+visible = false
+
+[node name="snow-tile-river-corner2" parent="." instance=ExtResource("42_vg33x")]
+visible = false
+
+[node name="snow-tile-river-slope-large2" parent="." instance=ExtResource("43_a41wf")]
+visible = false
+
+[node name="snow-tile-river-slope2" parent="." instance=ExtResource("44_kbm6r")]
+visible = false
+
+[node name="snow-tile-river-straight2" parent="." instance=ExtResource("45_w01lp")]
+visible = false
+
+[node name="snow-tile-river-transition2" parent="." instance=ExtResource("46_6omnf")]
+visible = false
+
+[node name="snow-tile-river-waterfall2" parent="." instance=ExtResource("47_nsjbx")]
+visible = false
+
+[node name="snow-tile-rock2" parent="." instance=ExtResource("48_xo3th")]
+visible = false
+
+[node name="snow-tile-slope2" parent="." instance=ExtResource("49_bxmme")]
+visible = false
+
+[node name="snow-tile-spawn-end-round2" parent="." instance=ExtResource("50_4ku2s")]
+visible = false
+
+[node name="snow-tile-spawn-end2" parent="." instance=ExtResource("51_qw7qw")]
+visible = false
+
+[node name="snow-tile-spawn-round2" parent="." instance=ExtResource("52_vbrej")]
+visible = false
+
+[node name="snow-tile-spawn2" parent="." instance=ExtResource("53_lg24f")]
+visible = false
+
+[node name="snow-tile-split2" parent="." instance=ExtResource("54_m35jh")]
+visible = false
+
+[node name="snow-tile-straight-slope-large2" parent="." instance=ExtResource("55_5rfj5")]
+visible = false
+
+[node name="snow-tile-straight-slope2" parent="." instance=ExtResource("56_0gjt5")]
+visible = false
+
+[node name="snow-tile-straight2" parent="." instance=ExtResource("57_5m7se")]
+visible = false
+
+[node name="snow-tile-transition2" parent="." instance=ExtResource("58_ht646")]
+visible = false
+
+[node name="snow-tile-tree-double2" parent="." instance=ExtResource("59_yb53m")]
+visible = false
+
+[node name="snow-tile-tree-quad2" parent="." instance=ExtResource("60_km3gp")]
+visible = false
+
+[node name="snow-tile-tree2" parent="." instance=ExtResource("61_nbh4k")]
+visible = false
+
+[node name="snow-tile-wide-corner2" parent="." instance=ExtResource("62_ynvw0")]
+visible = false
+
+[node name="snow-tile-wide-split2" parent="." instance=ExtResource("63_qtsdi")]
+visible = false
+
+[node name="snow-tile-wide-straight2" parent="." instance=ExtResource("64_s50ao")]
+visible = false
+
+[node name="snow-tile-wide-transition2" parent="." instance=ExtResource("65_rwkcy")]
+visible = false
+
+[node name="snow-tile2" parent="." instance=ExtResource("66_voh1u")]
+visible = false
+
+[node name="snow-wood-structure-high-part2" parent="." instance=ExtResource("67_eyy85")]
+visible = false
+
+[node name="snow-wood-structure-high2" parent="." instance=ExtResource("68_fk6es")]
+visible = false
+
+[node name="snow-wood-structure-part2" parent="." instance=ExtResource("69_neg7b")]
+visible = false
+
+[node name="snow-wood-structure2" parent="." instance=ExtResource("70_qlc3f")]
+visible = false
+
+[node name="spawn-round2" parent="." instance=ExtResource("71_1b0oa")]
+visible = false
+
+[node name="spawn-square2" parent="." instance=ExtResource("72_0mbi0")]
+visible = false
+
+[node name="tile-bump2" parent="." instance=ExtResource("73_poidw")]
+visible = false
+
+[node name="tile-corner-inner2" parent="." instance=ExtResource("74_f2biq")]
+visible = false
+
+[node name="tile-corner-large2" parent="." instance=ExtResource("75_tlvp4")]
+visible = false
+
+[node name="tile-corner-outer2" parent="." instance=ExtResource("76_d8ly8")]
+visible = false
+
+[node name="tile-corner-round2" parent="." instance=ExtResource("77_8ml6u")]
+visible = false
+
+[node name="tile-corner-square2" parent="." instance=ExtResource("78_h2hrl")]
+visible = false
+
+[node name="tile-crossing2" parent="." instance=ExtResource("79_t43ku")]
+visible = false
+
+[node name="tile-crystal2" parent="." instance=ExtResource("80_wxul4")]
+visible = false
+
+[node name="tile-dirt2" parent="." instance=ExtResource("81_vtlox")]
+visible = false
+
+[node name="tile-end-round2" parent="." instance=ExtResource("82_odbul")]
+visible = false
+
+[node name="tile-end2" parent="." instance=ExtResource("83_t867o")]
+visible = false
+
+[node name="tile-hill2" parent="." instance=ExtResource("84_f8lb8")]
+visible = false
+
+[node name="tile-river-bridge2" parent="." instance=ExtResource("85_w6n5s")]
+visible = false
+
+[node name="tile-river-corner2" parent="." instance=ExtResource("86_t10a2")]
+visible = false
+
+[node name="tile-river-slope-large2" parent="." instance=ExtResource("87_i7asj")]
+visible = false
+
+[node name="tile-river-slope2" parent="." instance=ExtResource("88_u11v5")]
+visible = false
+
+[node name="tile-river-straight2" parent="." instance=ExtResource("89_t5jpi")]
+visible = false
+
+[node name="tile-river-transition2" parent="." instance=ExtResource("90_qlvtd")]
+visible = false
+
+[node name="tile-river-waterfall2" parent="." instance=ExtResource("91_441wi")]
+visible = false
+
+[node name="tile-rock2" parent="." instance=ExtResource("92_rieqi")]
+visible = false
+
+[node name="tile-slope2" parent="." instance=ExtResource("93_mnmb7")]
+visible = false
+
+[node name="tile-spawn-end-round2" parent="." instance=ExtResource("94_nmp6x")]
+visible = false
+
+[node name="tile-spawn-end2" parent="." instance=ExtResource("95_x47ml")]
+visible = false
+
+[node name="tile-spawn-round2" parent="." instance=ExtResource("96_6u6rw")]
+visible = false
+
+[node name="tile-spawn2" parent="." instance=ExtResource("97_wiqca")]
+visible = false
+
+[node name="tile-split2" parent="." instance=ExtResource("98_12lwg")]
+visible = false
+
+[node name="tile-straight-slope-large2" parent="." instance=ExtResource("99_w71sl")]
+visible = false
+
+[node name="tile-straight-slope2" parent="." instance=ExtResource("100_175sv")]
+visible = false
+
+[node name="tile-straight2" parent="." instance=ExtResource("101_kxgre")]
+visible = false
+
+[node name="tile-transition2" parent="." instance=ExtResource("102_c5o3p")]
+visible = false
+
+[node name="tile-tree-double2" parent="." instance=ExtResource("103_uaigw")]
+visible = false
+
+[node name="tile-tree-quad2" parent="." instance=ExtResource("104_013ff")]
+visible = false
+
+[node name="tile-tree2" parent="." instance=ExtResource("105_vtu2o")]
+visible = false
+
+[node name="tile-wide-corner2" parent="." instance=ExtResource("106_i2sr2")]
+visible = false
+
+[node name="tile-wide-split2" parent="." instance=ExtResource("107_f6o1v")]
+visible = false
+
+[node name="tile-wide-straight2" parent="." instance=ExtResource("108_niccc")]
+visible = false
+
+[node name="tile-wide-transition2" parent="." instance=ExtResource("109_eumuu")]
+visible = false
+
+[node name="tile2" type="Node3D" parent="."]
+
+[node name="tile" type="MeshInstance3D" parent="tile2"]
+mesh = SubResource("ArrayMesh_sdcqb")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="tile2/tile"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="tile2/tile/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101059, 0)
+shape = SubResource("BoxShape3D_sdkqm")
+
+[node name="tower-round-base2" parent="." instance=ExtResource("111_uy21w")]
+visible = false
+
+[node name="tower-round-bottom-a2" parent="." instance=ExtResource("112_x5p2b")]
+visible = false
+
+[node name="tower-round-bottom-b2" parent="." instance=ExtResource("113_cm4o0")]
+visible = false
+
+[node name="tower-round-bottom-c2" parent="." instance=ExtResource("114_j0kvk")]
+visible = false
+
+[node name="tower-round-build-a2" parent="." instance=ExtResource("115_8coup")]
+visible = false
+
+[node name="tower-round-build-b2" parent="." instance=ExtResource("116_pmwqd")]
+visible = false
+
+[node name="tower-round-build-c2" parent="." instance=ExtResource("117_npa8m")]
+visible = false
+
+[node name="tower-round-build-d2" parent="." instance=ExtResource("118_on5xc")]
+visible = false
+
+[node name="tower-round-build-e2" parent="." instance=ExtResource("119_jimbw")]
+visible = false
+
+[node name="tower-round-build-f2" parent="." instance=ExtResource("120_xoqo4")]
+visible = false
+
+[node name="tower-round-crystals2" parent="." instance=ExtResource("121_fscse")]
+visible = false
+
+[node name="tower-round-middle-a2" parent="." instance=ExtResource("122_slnrf")]
+visible = false
+
+[node name="tower-round-middle-b2" parent="." instance=ExtResource("123_bhsjp")]
+visible = false
+
+[node name="tower-round-middle-c2" parent="." instance=ExtResource("124_6cai8")]
+visible = false
+
+[node name="tower-round-roof-a2" parent="." instance=ExtResource("125_jsxtv")]
+visible = false
+
+[node name="tower-round-roof-b2" parent="." instance=ExtResource("126_2sloi")]
+visible = false
+
+[node name="tower-round-roof-c2" parent="." instance=ExtResource("127_66lsl")]
+visible = false
+
+[node name="tower-round-top-a2" parent="." instance=ExtResource("128_misqt")]
+visible = false
+
+[node name="tower-round-top-b2" parent="." instance=ExtResource("129_ontlh")]
+visible = false
+
+[node name="tower-round-top-c2" parent="." instance=ExtResource("130_0ke3b")]
+visible = false
+
+[node name="tower-square-bottom-a2" parent="." instance=ExtResource("131_0j6vy")]
+visible = false
+
+[node name="tower-square-bottom-b2" parent="." instance=ExtResource("132_2nkiu")]
+visible = false
+
+[node name="tower-square-bottom-c2" parent="." instance=ExtResource("133_emww2")]
+visible = false
+
+[node name="tower-square-build-a2" parent="." instance=ExtResource("134_1sfo7")]
+visible = false
+
+[node name="tower-square-build-b2" parent="." instance=ExtResource("135_mfybb")]
+visible = false
+
+[node name="tower-square-build-c2" parent="." instance=ExtResource("136_ymg40")]
+visible = false
+
+[node name="tower-square-build-d2" parent="." instance=ExtResource("137_l2w3u")]
+visible = false
+
+[node name="tower-square-build-e2" parent="." instance=ExtResource("138_6e2np")]
+visible = false
+
+[node name="tower-square-build-f2" parent="." instance=ExtResource("139_klbev")]
+visible = false
+
+[node name="tower-square-middle-a2" parent="." instance=ExtResource("140_tfo3o")]
+visible = false
+
+[node name="tower-square-middle-b2" parent="." instance=ExtResource("141_ehps3")]
+visible = false
+
+[node name="tower-square-middle-c2" parent="." instance=ExtResource("142_uicu6")]
+visible = false
+
+[node name="tower-square-roof-a2" parent="." instance=ExtResource("143_rimok")]
+visible = false
+
+[node name="tower-square-roof-b2" parent="." instance=ExtResource("144_nxhw0")]
+visible = false
+
+[node name="tower-square-roof-c2" parent="." instance=ExtResource("145_kgdtw")]
+visible = false
+
+[node name="tower-square-top-a2" parent="." instance=ExtResource("146_cmcyc")]
+visible = false
+
+[node name="tower-square-top-b2" parent="." instance=ExtResource("147_sr5ev")]
+visible = false
+
+[node name="tower-square-top-c2" parent="." instance=ExtResource("148_pfwb4")]
+visible = false
+
+[node name="weapon-ammo-arrow2" parent="." instance=ExtResource("149_d2pxq")]
+visible = false
+
+[node name="weapon-ammo-boulder2" parent="." instance=ExtResource("150_8e1j7")]
+visible = false
+
+[node name="weapon-ammo-bullet2" parent="." instance=ExtResource("151_rk80e")]
+visible = false
+
+[node name="weapon-ammo-cannonball2" parent="." instance=ExtResource("152_kxwg2")]
+visible = false
+
+[node name="weapon-ballista2" parent="." instance=ExtResource("153_i040r")]
+visible = false
+
+[node name="weapon-cannon2" parent="." instance=ExtResource("154_2ih18")]
+visible = false
+
+[node name="weapon-catapult2" parent="." instance=ExtResource("155_3ygfc")]
+visible = false
+
+[node name="weapon-turret2" parent="." instance=ExtResource("156_3fnqc")]
+visible = false
+
+[node name="wood-structure-high-part2" parent="." instance=ExtResource("157_bxwj2")]
+visible = false
+
+[node name="wood-structure-high2" parent="." instance=ExtResource("158_xdmwu")]
+visible = false
+
+[node name="wood-structure-part2" parent="." instance=ExtResource("159_6diem")]
+visible = false
+
+[node name="wood-structure2" parent="." instance=ExtResource("160_37h6x")]
+visible = false
