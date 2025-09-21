@@ -5,14 +5,13 @@ extends Node3D
 @export var area_3d: Area3D
 @export var collision_shape: CollisionShape3D
 @export var projectile_tran: Node3D
-@export var projectile: PackedScene
+@export var raycast: RayCast3D
 
 ### Stats
-@export var projectile_damage := 5.0
-@export var projectile_speed := 20.0
-@export var attack_range := 30.0
-@export var attack_cooldown := 1.0
-@export var sell_value := 100.0
+@export var projectile_damage := 20.0
+@export var attack_range := 80.0
+@export var attack_cooldown := 2.0
+@export var sell_value := 150.0
 
 ### Private Variables
 var attack_timer := 0.0
@@ -26,9 +25,11 @@ func _ready() -> void:
 	# Initialize collision radius
 	if collision_shape.shape != null:
 		collision_shape.shape.radius = attack_range
-		print("New radius for collision shape: ", collision_shape.shape.radius)
 	else:
-		push_warning("ProjectileBuilding.Area3D.CollisionShape3D.Shape is null!")
+		push_warning("HitscanBuilding.Area3D.CollisionShape3D.Shape is null!")
+
+	# Initialize raycast range
+	raycast.target_position = Vector3(0, 0, attack_range)
 
 	# Initialize Variables
 	attack_timer = attack_cooldown
@@ -42,14 +43,15 @@ func _process(delta: float) -> void:
 	if attack_timer <= 0:
 		# Start attack
 		attack_timer = attack_cooldown
-		shoot_projectile()
+		shoot_raycast()
 
 
-### Spawns a projectile in the direction of the closest enemy
-func shoot_projectile() -> void:
+### Enables the raycast in the direction of the leading enemy 
+### 	and applies damage to enemy if hit
+func shoot_raycast() -> void:
 	
 	# Get nearest enemy in range
-	var target: Node3D = get_nearest_enemy()
+	var target: Node3D = get_leading_enemy()
 	if target == null:
 		print("No Targets in Range For Building: ", name)
 		return
@@ -57,19 +59,36 @@ func shoot_projectile() -> void:
 	# Rotate ProjectileSpawnRotation towards target
 	rotate_to_target(target.global_position)
 	
-	# Spawn projetile and setup transform and stats
-	var projectile_instance = projectile.instantiate()
-	get_tree().root.add_child(projectile_instance)
-	projectile_instance.global_position = projectile_tran.global_position
-	projectile_instance.global_rotation = projectile_tran.global_rotation
-	projectile_instance.setup_and_move(projectile_damage, projectile_speed)
+	
+	### Raycast Towards Target
+	raycast.enabled = true
+	raycast.force_raycast_update()
+	
+	# Make sure raycast collides with an enemy
+	if !raycast.is_colliding():
+		print("Got a target in range, but raycast is not colliding with anything")
+		raycast.enabled = false
+		return
+	
+	# Make sure colliding object is an enemy
+	var collider = raycast.get_collider()
+	if !collider.is_in_group("enemies"):
+		print("Got a raycast target, but target's collider is not in 'enemies' group")
+		return
+	
+	# TODO - apply damage
+	print("Applying hitscan damage to enemy")
+	raycast.enabled = false
+	
 	# TODO - play sound?
 
 
-### Returns the closest enemy in attack range.
-func get_nearest_enemy() -> Node3D:
+### Returns the enemy who is furthest along in enemy path.
+func get_leading_enemy() -> Node3D:
 	
-	# Get all enemies in range TODO: Grab from enemy manager instead
+	# TODO - need enemies to be implemented so I can determine which one is furthest in path
+	# NOTE - for now I am just using closest enemy to building
+	
 	var all_enemies: Array[Node3D] = area_3d.get_overlapping_bodies()
 	
 	# Return null if no enemies in range
