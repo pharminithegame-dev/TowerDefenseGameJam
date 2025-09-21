@@ -3,6 +3,7 @@ extends Node3D
 ### References
 @export var rot_target: Node3D
 @export var area_3d: Area3D
+@export var collision_shape: CollisionShape3D
 
 ### Stats
 @export var projectile_speed := 5.0
@@ -21,6 +22,12 @@ var attack_range_sqr : float
 func _ready() -> void:
 	# Initialize attack range
 	area_3d.scale = Vector3(attack_range, attack_range, attack_range)
+	
+	if collision_shape.shape != null:
+		collision_shape.shape.radius = attack_range
+		print("New radius for collision shape: ", collision_shape.shape.radius)
+	else:
+		push_warning("ProjectileBuilding.Area3D.CollisionShape3D.Shape is null!")
 
 	# Initialize Variables
 	attack_timer = attack_cooldown
@@ -38,7 +45,7 @@ func _process(delta: float) -> void:
 
 
 # Spawns a projectile in the direction of the closest enemy
-func shoot_projectile():
+func shoot_projectile() -> void:
 	
 	# Get nearest enemy in range
 	var target: Node3D = get_nearest_enemy()
@@ -53,7 +60,7 @@ func shoot_projectile():
 
 
 # Returns the closest enemy in attack range.
-func get_nearest_enemy():
+func get_nearest_enemy() -> Node3D:
 	
 	# Get all enemies in range TODO: Grab from enemy manager instead
 	var all_enemies: Array[Node3D] = area_3d.get_overlapping_bodies()
@@ -75,7 +82,7 @@ func get_nearest_enemy():
 	return closest_enemy # Return closest enemy
 
 
-func rotate_to_target(target_pos: Vector3):
+func rotate_to_target(target_pos: Vector3) -> void:
 	
 	# Get 2D direction from building to target
 	var building_pos_2d := Vector2(global_position.x, global_position.z)

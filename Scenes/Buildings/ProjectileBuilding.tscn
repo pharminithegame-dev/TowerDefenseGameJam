@@ -8,10 +8,11 @@
 
 [sub_resource type="PrismMesh" id="PrismMesh_sh8mp"]
 
-[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_target", "area_3d")]
+[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_target", "area_3d", "collision_shape")]
 script = ExtResource("1_vsosm")
 rot_target = NodePath("ProjectileSpawnRotation")
 area_3d = NodePath("Area3D")
+collision_shape = NodePath("Area3D/CollisionShape3D")
 attack_range = 100.0
 attack_cooldown = 1.0
 
