@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://8gp71ntyt4f3"]
+
+[ext_resource type="Material" uid="uid://xqcd7fmpuxua" path="res://Art/Materials/money.tres" id="1_r8swn"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_rngxq"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vamrx"]
+
+[node name="Money" type="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.88909, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.781, 0, 0, 0, 0.287, 0, 0, 0, 0.884, 0, 0, 0)
+material_override = ExtResource("1_r8swn")
+mesh = SubResource("CapsuleMesh_rngxq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.781, 0, 0, 0, 0.287, 0, 0, 0, 0.884, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_vamrx")
