@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dxyq2g7cbh0hw"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0urm"]
+
+[sub_resource type="Sky" id="Sky_shnb0"]
+sky_material = SubResource("ProceduralSkyMaterial_j0urm")
+
+[sub_resource type="Environment" id="Environment_gst2l"]
+background_mode = 2
+sky = SubResource("Sky_shnb0")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xd26h"]
+albedo_color = Color(0, 0.333333, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_nqawe"]
+material = SubResource("StandardMaterial3D_xd26h")
+
+[node name="AlexDemoScene" type="Node3D"]
+
+[node name="EnvironmentNodes" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="EnvironmentNodes"]
+environment = SubResource("Environment_gst2l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="EnvironmentNodes"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 20, 0)
+
+[node name="Camera3D" type="Camera3D" parent="EnvironmentNodes"]
+transform = Transform3D(-4.37114e-08, 0.866025, -0.5, 0, 0.5, 0.866025, 1, 3.78552e-08, -2.18557e-08, -5, 12, 0)
+
+[node name="FloorMesh" type="MeshInstance3D" parent="EnvironmentNodes"]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+mesh = SubResource("PlaneMesh_nqawe")
+skeleton = NodePath("../Camera3D")

@@ -4,18 +4,18 @@
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_uli27"]
 
-[sub_resource type="Sky" id="Sky_shnb0"]
+[sub_resource type="Sky" id="Sky_x6fvy"]
 sky_material = SubResource("ProceduralSkyMaterial_uli27")
 
 [sub_resource type="Environment" id="Environment_ihbx3"]
 background_mode = 2
-sky = SubResource("Sky_shnb0")
+sky = SubResource("Sky_x6fvy")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xd26h"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2o3ql"]
 albedo_color = Color(0, 0.333333, 0, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_qm6dq"]
-material = SubResource("StandardMaterial3D_xd26h")
+material = SubResource("StandardMaterial3D_2o3ql")
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_evmbc"]
 

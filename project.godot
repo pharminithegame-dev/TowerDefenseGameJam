@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="TowerDefenseGameJam"
+run/main_scene="res://Scenes/Testing/AlexDemoScene.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+MoneyManager="*res://Scripts/MoneyManager.gd"
 
 [dotnet]
 
