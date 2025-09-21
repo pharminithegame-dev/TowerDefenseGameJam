@@ -6,6 +6,7 @@ signal money_altered(new_money: int)
 var money: int = 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	#used to check money value
 	money_altered.emit(money)
 
 func add_money(num: int) -> void:

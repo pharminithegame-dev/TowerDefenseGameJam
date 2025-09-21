@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://dxyq2g7cbh0hw"]
+[gd_scene load_steps=9 format=3 uid="uid://dxyq2g7cbh0hw"]
 
 [ext_resource type="PackedScene" uid="uid://8gp71ntyt4f3" path="res://Scenes/Money/money.tscn" id="1_7t8vs"]
+[ext_resource type="Script" path="res://Scripts/money_layer.gd" id="2_i4aox"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j0urm"]
 
@@ -55,5 +56,24 @@ mesh = SubResource("PlaneMesh_nqawe")
 skeleton = NodePath("../Camera3D")
 
 [node name="Money" parent="." instance=ExtResource("1_7t8vs")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("2_i4aox")
+
+[node name="MoneyLabel" type="Label" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[node name="MoneyPickup" parent="." instance=ExtResource("1_7t8vs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.06246, 0.88909, 0.704121)
+
+[node name="MoneyPickup2" parent="." instance=ExtResource("1_7t8vs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.95533, 0.88909, 2.37363)
+
+[node name="MoneyPickup3" parent="." instance=ExtResource("1_7t8vs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.67313, 0.88909, -3.51205)
+
+[node name="MoneyPickup4" parent="." instance=ExtResource("1_7t8vs")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18048, 0.88909, 3.71906)
 
 [connection signal="input_event" from="Money" to="EnvironmentNodes/Camera3D" method="_on_money_input_event"]

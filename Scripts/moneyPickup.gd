@@ -12,7 +12,9 @@ func _process(delta: float) -> void:
 	pass
 
 func pick_up() -> void:
+	print("Total money:", MoneyManager.get_money())
 	MoneyManager.add_money(value)
+	queue_free()
 
 func _on_input_event(camera: Camera3D, event: InputEvent, pos: Vector3, normal: Vector3, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
