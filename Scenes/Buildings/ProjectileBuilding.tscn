@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b20lo5g1ygq0a"]
+[gd_scene load_steps=6 format=3 uid="uid://b20lo5g1ygq0a"]
 
 [ext_resource type="Script" path="res://Scripts/ProjectileBuilding.gd" id="1_vsosm"]
+[ext_resource type="PackedScene" uid="uid://cgnw1f6o2ucq" path="res://Scenes/Projectiles/Projectile.tscn" id="2_ichgm"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_ketq4"]
 
@@ -8,19 +9,18 @@
 
 [sub_resource type="PrismMesh" id="PrismMesh_sh8mp"]
 
-[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_target", "area_3d", "collision_shape")]
+[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_target", "area_3d", "collision_shape", "projectile_tran")]
 script = ExtResource("1_vsosm")
 rot_target = NodePath("ProjectileSpawnRotation")
 area_3d = NodePath("Area3D")
 collision_shape = NodePath("Area3D/CollisionShape3D")
-attack_range = 100.0
-attack_cooldown = 1.0
+projectile_tran = NodePath("ProjectileSpawnRotation/ProjectileSpawnTran")
+projectile = ExtResource("2_ichgm")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 mesh = SubResource("BoxMesh_ketq4")
 
 [node name="Area3D" type="Area3D" parent="."]
-monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("SphereShape3D_drxj4")

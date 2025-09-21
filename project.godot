@@ -18,6 +18,10 @@ config/icon="res://icon.svg"
 
 project/assembly_name="TowerDefenseGameJam"
 
+[global_group]
+
+enemies="For any enemy that can be damaged by projectiles"
+
 [layer_names]
 
 3d_physics/layer_2="Layer 2"

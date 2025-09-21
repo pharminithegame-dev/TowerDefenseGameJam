@@ -4,12 +4,14 @@ extends Node3D
 @export var rot_target: Node3D
 @export var area_3d: Area3D
 @export var collision_shape: CollisionShape3D
+@export var projectile_tran: Node3D
+@export var projectile: PackedScene
 
 ### Stats
-@export var projectile_speed := 5.0
 @export var projectile_damage := 5.0
-@export var attack_range := 20.0
-@export var attack_cooldown := 0.5
+@export var projectile_speed := 20.0
+@export var attack_range := 30.0
+@export var attack_cooldown := 1.0
 @export var sell_cost := 100.0
 
 ### Private Variables
@@ -18,11 +20,10 @@ var attack_range_sqr : float
 
 
 
-# Called when the node enters the scene tree for the first time.
+### Initialize Node
 func _ready() -> void:
-	# Initialize attack range
-	area_3d.scale = Vector3(attack_range, attack_range, attack_range)
 	
+	# Initialize collision radius
 	if collision_shape.shape != null:
 		collision_shape.shape.radius = attack_range
 		print("New radius for collision shape: ", collision_shape.shape.radius)
@@ -34,32 +35,38 @@ func _ready() -> void:
 	attack_range_sqr = pow(attack_range, 2)
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
+### Starts attack on interval
 func _process(delta: float) -> void:
 	
-	### Attack Check
 	attack_timer -= delta
 	if attack_timer <= 0:
+		# Start attack
 		attack_timer = attack_cooldown
 		shoot_projectile()
 
 
-# Spawns a projectile in the direction of the closest enemy
+### Spawns a projectile in the direction of the closest enemy
 func shoot_projectile() -> void:
 	
 	# Get nearest enemy in range
 	var target: Node3D = get_nearest_enemy()
 	if target == null:
-		print("No Targets in Range!")
+		print("No Targets in Range For Building: ", name)
 		return
-	print("Closest Enemy Position", target.global_position)
 	
+	# Rotate ProjectileSpawnRotation towards target
 	rotate_to_target(target.global_position)
-	print("Shooting!")
-	# TODO - Spawn projetile with same transform as ProjectileSpawnTran
+	
+	# Spawn projetile and setup transform and stats
+	var projectile_instance = projectile.instantiate()
+	get_tree().root.add_child(projectile_instance)
+	projectile_instance.global_position = projectile_tran.global_position
+	projectile_instance.global_rotation = projectile_tran.global_rotation
+	projectile_instance.setup_and_move(projectile_damage, projectile_speed)
+	# TODO - play sound?
 
 
-# Returns the closest enemy in attack range.
+### Returns the closest enemy in attack range.
 func get_nearest_enemy() -> Node3D:
 	
 	# Get all enemies in range TODO: Grab from enemy manager instead
@@ -75,13 +82,14 @@ func get_nearest_enemy() -> Node3D:
 	for enemy in all_enemies:
 		# If this is the new closest enemy and is in attack range
 		var cur_dist_sqr := global_position.distance_squared_to(enemy.global_position)
-		if cur_dist_sqr < closest_dist_sqr and cur_dist_sqr < attack_range_sqr:  # NOTE - range check is redundant now, but I will need it when I remove Area3D later
+		if cur_dist_sqr < closest_dist_sqr and cur_dist_sqr < attack_range_sqr:   # NOTE - range check is redundant now, but I will need it when I remove Area3D later
 			closest_enemy = enemy
 			closest_dist_sqr = cur_dist_sqr
 	
-	return closest_enemy # Return closest enemy
+	return closest_enemy
 
 
+### Rotates the ProjectileSpawnRotation node toward target
 func rotate_to_target(target_pos: Vector3) -> void:
 	
 	# Get 2D direction from building to target
@@ -91,5 +99,3 @@ func rotate_to_target(target_pos: Vector3) -> void:
 	
 	# Rotate on y axis in direction
 	rot_target.rotation.y = atan2(direction.x, direction.y)
-	print("Rotation.y: ", rotation.y)
-	

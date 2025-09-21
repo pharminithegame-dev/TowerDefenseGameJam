@@ -45,37 +45,37 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 [node name="Enemies" type="Node3D" parent="."]
 
 [node name="TestEnemy" type="Node3D" parent="Enemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.71841, 1, -0.404607)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.71841, 1, -11.5366)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies/TestEnemy"]
 layers = 3
 mesh = SubResource("CapsuleMesh_evmbc")
 
-[node name="StaticBody3D" type="CharacterBody3D" parent="Enemies/TestEnemy"]
+[node name="StaticBody3D" type="CharacterBody3D" parent="Enemies/TestEnemy" groups=["enemies"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/TestEnemy/StaticBody3D"]
 shape = SubResource("CapsuleShape3D_21yvm")
 
 [node name="TestEnemy2" type="Node3D" parent="Enemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.16513, -0.0768661, 7.78159)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.13767, 1, 7.782)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies/TestEnemy2"]
 layers = 3
 mesh = SubResource("CapsuleMesh_evmbc")
 
-[node name="StaticBody3D" type="CharacterBody3D" parent="Enemies/TestEnemy2"]
+[node name="StaticBody3D" type="CharacterBody3D" parent="Enemies/TestEnemy2" groups=["enemies"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/TestEnemy2/StaticBody3D"]
 shape = SubResource("CapsuleShape3D_21yvm")
 
 [node name="TestEnemy3" type="Node3D" parent="Enemies"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.67096, -0.0277576, -10.9356)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.671, 1, -10.936)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enemies/TestEnemy3"]
 layers = 3
 mesh = SubResource("CapsuleMesh_evmbc")
 
-[node name="StaticBody3D" type="CharacterBody3D" parent="Enemies/TestEnemy3"]
+[node name="StaticBody3D" type="CharacterBody3D" parent="Enemies/TestEnemy3" groups=["enemies"]]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Enemies/TestEnemy3/StaticBody3D"]
 shape = SubResource("CapsuleShape3D_21yvm")
