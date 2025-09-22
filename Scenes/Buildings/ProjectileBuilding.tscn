@@ -2,23 +2,19 @@
 
 [ext_resource type="Script" path="res://Scripts/ProjectileBuilding.gd" id="1_vsosm"]
 [ext_resource type="PackedScene" uid="uid://cgnw1f6o2ucq" path="res://Scenes/Projectiles/Projectile.tscn" id="2_ichgm"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_ketq4"]
+[ext_resource type="PackedScene" uid="uid://cimnsj1tefe6p" path="res://Art/Meshes/Tiles/weapon-cannon.glb" id="3_h0g7m"]
+[ext_resource type="AudioStream" uid="uid://davmk1lnyseyw" path="res://Art/SFX/ProjectileShoot.mp3" id="4_576yh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_drxj4"]
 
-[sub_resource type="PrismMesh" id="PrismMesh_sh8mp"]
-
-[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_target", "area_3d", "collision_shape", "projectile_tran")]
+[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_target", "area_3d", "collision_shape", "projectile_tran", "audio_player")]
 script = ExtResource("1_vsosm")
 rot_target = NodePath("ProjectileSpawnRotation")
 area_3d = NodePath("Area3D")
 collision_shape = NodePath("Area3D/CollisionShape3D")
 projectile_tran = NodePath("ProjectileSpawnRotation/ProjectileSpawnTran")
 projectile = ExtResource("2_ichgm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("BoxMesh_ketq4")
+audio_player = NodePath("AudioStreamPlayer")
 
 [node name="Area3D" type="Area3D" parent="."]
 
@@ -27,10 +23,12 @@ shape = SubResource("SphereShape3D_drxj4")
 
 [node name="ProjectileSpawnRotation" type="Node3D" parent="."]
 
-[node name="ProjectileSpawnTran" type="Node3D" parent="ProjectileSpawnRotation"]
-transform = Transform3D(1, -4.23516e-22, 1.67037e-22, -4.23516e-22, 1, 0, 1.67037e-22, -3.55271e-15, 1, 0, 0, 2)
+[node name="CannonModel" parent="ProjectileSpawnRotation" instance=ExtResource("3_h0g7m")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.375, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ProjectileSpawnRotation/ProjectileSpawnTran"]
-transform = Transform3D(0.75, 0, 0, 0, -3.27835e-08, -0.75, 0, 0.75, -3.27835e-08, 0, 0, 0)
-mesh = SubResource("PrismMesh_sh8mp")
-skeleton = NodePath("../..")
+[node name="ProjectileSpawnTran" type="Node3D" parent="ProjectileSpawnRotation"]
+transform = Transform3D(1, -4.23516e-22, 1.67037e-22, -4.23516e-22, 1, 0, 1.67037e-22, -3.55271e-15, 1, 0, 0.38, 0.6)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_576yh")
+volume_db = -20.0

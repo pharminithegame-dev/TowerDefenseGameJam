@@ -6,13 +6,14 @@ extends Node3D
 @export var collision_shape: CollisionShape3D
 @export var projectile_tran: Node3D
 @export var projectile: PackedScene
+@export var audio_player: AudioStreamPlayer
 
 ### Stats
 @export var projectile_damage := 5.0
 @export var projectile_speed := 20.0
 @export var attack_range := 30.0
 @export var attack_cooldown := 1.0
-@export var sell_cost := 100.0
+@export var sell_value := 100.0
 
 ### Private Variables
 var attack_timer := 0.0
@@ -63,7 +64,8 @@ func shoot_projectile() -> void:
 	projectile_instance.global_position = projectile_tran.global_position
 	projectile_instance.global_rotation = projectile_tran.global_rotation
 	projectile_instance.setup_and_move(projectile_damage, projectile_speed)
-	# TODO - play sound?
+	
+	audio_player.play()   # Play projectile shoot sfx
 
 
 ### Returns the closest enemy in attack range.
@@ -99,3 +101,9 @@ func rotate_to_target(target_pos: Vector3) -> void:
 	
 	# Rotate on y axis in direction
 	rot_target.rotation.y = atan2(direction.x, direction.y)
+
+
+### Despawns building and returns the sell value
+func sell_building() -> float:
+	queue_free()   # Despawn building
+	return sell_value
