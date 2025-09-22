@@ -1,0 +1,49 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8x9v2n4m5p6q"]
+
+[ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="1_abc123"]
+[ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="2_def456"]
+[ext_resource type="Script" path="res://Scripts/MoneyManager.gd" id="3_ghi789"]
+[ext_resource type="Script" path="res://Scripts/GameUI.gd" id="4_jkl012"]
+
+[node name="EnemyTestScene" type="Node3D"]
+
+[node name="EnemyManager" type="Node" parent="."]
+script = ExtResource("1_abc123")
+enemy_scene = ExtResource("2_def456")
+spawn_interval = 1.5
+enemies_per_wave = 3
+wave_delay = 3.0
+
+[node name="MoneyManager" type="Node" parent="."]
+script = ExtResource("3_ghi789")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866, 0, -0.866, 0.5, 15, 10, 15)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707, -0.5, 0.5, 0, 0.707, 0.707, -0.707, -0.5, 0.5, 0, 10, 0)
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("4_jkl012")
+
+[node name="MoneyLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 200.0
+offset_bottom = 50.0
+text = "Money: 0"
+theme_override_font_sizes/font_size = 24
+
+[node name="WaveLabel" type="Label" parent="UI"]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 200.0
+offset_bottom = 90.0
+text = "Wave: 1"
+theme_override_font_sizes/font_size = 24
