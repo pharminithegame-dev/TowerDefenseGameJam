@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://bck6gktbl24l2"]
+[gd_scene load_steps=15 format=3 uid="uid://bck6gktbl24l2"]
 
 [ext_resource type="MeshLibrary" uid="uid://dtdo55xeoadov" path="res://Art/Meshes/Tiles2.tres" id="1_tnfu6"]
 [ext_resource type="Texture2D" uid="uid://ck7j7ja0kykng" path="res://icon.svg" id="2_1qhbn"]
-[ext_resource type="Script" uid="uid://by5l77n1wsr7l" path="res://Scenes/place_tower.gd" id="3_lvvd4"]
+[ext_resource type="Script" path="res://Scenes/place_tower.gd" id="3_lvvd4"]
 [ext_resource type="PackedScene" uid="uid://c8q2j8jq76fci" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
+[ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="5_enemy"]
 [ext_resource type="Texture2D" uid="uid://chod7ibmhyd5a" path="res://Art/Sprites/Laser.png" id="6_2cw73"]
+[ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="6_enemy"]
 [ext_resource type="Script" path="res://Scenes/laser_button.gd" id="7_oq4g7"]
 [ext_resource type="PackedScene" uid="uid://ct0upn61sqrxa" path="res://Scenes/Buildings/HitscanBuilding.tscn" id="8_bjwje"]
 [ext_resource type="Texture2D" uid="uid://bw3qryxajb4qg" path="res://Art/Sprites/Bullet.png" id="9_sl7ii"]
@@ -12,8 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://b20lo5g1ygq0a" path="res://Scenes/Buildings/ProjectileBuilding.tscn" id="11_6b8h4"]
 [ext_resource type="Texture2D" uid="uid://c7pfirl5udivg" path="res://Art/Sprites/Delete.png" id="12_kxvl4"]
 [ext_resource type="Script" path="res://Scenes/delete_button.gd" id="13_p5ayb"]
-[ext_resource type="Script" uid="uid://sdgsinnel2jx" path="res://Scripts/EnemyManager.gd" id="5_enemy"]
-[ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="6_enemy"]
 
 [node name="Main" type="Node3D"]
 
