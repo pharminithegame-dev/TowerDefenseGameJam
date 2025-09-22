@@ -1,14 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://bck6gktbl24l2"]
+[gd_scene load_steps=5 format=3 uid="uid://bck6gktbl24l2"]
 
 [ext_resource type="MeshLibrary" uid="uid://dtdo55xeoadov" path="res://Art/Meshes/Tiles2.tres" id="1_tnfu6"]
 [ext_resource type="Texture2D" uid="uid://ck7j7ja0kykng" path="res://icon.svg" id="2_1qhbn"]
-[ext_resource type="Script" path="res://Scripts/place_tower.gd" id="3_lvvd4"]
-[ext_resource type="PackedScene" uid="uid://c8q2j8jq76fci" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
-[ext_resource type="Theme" uid="uid://vlqshjfebmsj" path="res://Art/Materials/Buttons.tres" id="5_gc41t"]
-[ext_resource type="Script" path="res://Scripts/HitScanPlacement.gd" id="6_5nx5k"]
-[ext_resource type="PackedScene" uid="uid://ct0upn61sqrxa" path="res://Scenes/Buildings/HitscanBuilding.tscn" id="7_era3j"]
-[ext_resource type="Script" path="res://Scripts/ProjectilePlacement.gd" id="8_5o1pp"]
-[ext_resource type="PackedScene" uid="uid://b20lo5g1ygq0a" path="res://Scenes/Buildings/ProjectileBuilding.tscn" id="9_ngwrd"]
+[ext_resource type="Script" path="res://Scenes/place_tower.gd" id="3_lvvd4"]
+[ext_resource type="PackedScene" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
 
 [node name="Main" type="Node3D"]
 
@@ -40,37 +35,3 @@ toggle_mode = true
 texture_normal = ExtResource("2_1qhbn")
 script = ExtResource("3_lvvd4")
 draggableTower = ExtResource("4_y0l8b")
-gridmap_path = NodePath("../GridMap")
-
-[node name="Building1 Button" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 112.0
-offset_right = 104.0
-offset_bottom = 168.0
-theme = ExtResource("5_gc41t")
-toggle_mode = true
-text = "Laser"
-script = ExtResource("6_5nx5k")
-draggableTower = ExtResource("7_era3j")
-gridmap_path = NodePath("../GridMap")
-
-[node name="Building2 Button" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 176.0
-offset_right = 104.0
-offset_bottom = 232.0
-theme = ExtResource("5_gc41t")
-toggle_mode = true
-text = "Bullet"
-script = ExtResource("8_5o1pp")
-draggableTower = ExtResource("9_ngwrd")
-gridmap_path = NodePath("../GridMap")
-
-[node name="Delete Button" type="Button" parent="."]
-offset_left = 16.0
-offset_top = 240.0
-offset_right = 104.0
-offset_bottom = 296.0
-theme = ExtResource("5_gc41t")
-toggle_mode = true
-text = "Delete"
