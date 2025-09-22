@@ -51,9 +51,6 @@ offset_bottom = 256.0
 theme = ExtResource("2_1oaqe")
 text = "B1"
 script = ExtResource("3_4qvx7")
-world_root_path = NodePath("../..")
-camera_path = NodePath("../../Tile/Camera3D")
-box_size = Vector3(1, 1, 0)
 
 [node name="Building2 Button" type="Button" parent="TempUI"]
 layout_mode = 2
