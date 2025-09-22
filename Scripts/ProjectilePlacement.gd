@@ -1,4 +1,4 @@
-extends Button
+extends TextureButton
 
 @export var draggableTower: PackedScene
 @export_node_path("GridMap") var gridmap_path: NodePath   
