@@ -1,0 +1,78 @@
+[gd_scene load_steps=9 format=3 uid="uid://cplm4xnd0t70p"]
+
+[ext_resource type="Script" path="res://Scripts/ButtonTestFolder/camera_3d.gd" id="1_sbrpl"]
+[ext_resource type="Theme" uid="uid://vlqshjfebmsj" path="res://Art/Materials/Buttons.tres" id="2_1oaqe"]
+[ext_resource type="Script" path="res://Scripts/ButtonTestFolder/building_1_button.gd" id="3_4qvx7"]
+[ext_resource type="Script" path="res://Scripts/ButtonTestFolder/building_2_button.gd" id="4_2u87q"]
+[ext_resource type="Script" path="res://Scripts/ButtonTestFolder/delete_button.gd" id="5_rr6yj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_edwtt"]
+size = Vector3(100, 100, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vm46q"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hhkaj"]
+albedo_color = Color(0.576471, 0.345098, 0.196078, 1)
+
+[node name="ButtonTestScene" type="Node3D"]
+
+[node name="Tile" type="Node3D" parent="."]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Tile"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile/StaticBody3D"]
+shape = SubResource("BoxShape3D_edwtt")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Tile"]
+transform = Transform3D(10, 0, 0, 0, 1, 0, 0, 0, 10, 0, 0, 0)
+mesh = SubResource("PlaneMesh_vm46q")
+surface_material_override/0 = SubResource("StandardMaterial3D_hhkaj")
+
+[node name="Camera3D" type="Camera3D" parent="Tile"]
+transform = Transform3D(-4.37114e-08, -0.866025, 0.5, 0, 0.5, 0.866025, -1, 3.78552e-08, -2.18557e-08, 5, 10, 0)
+current = true
+script = ExtResource("1_sbrpl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Tile"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+
+[node name="TempUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 270.0
+offset_bottom = 175.0
+
+[node name="Building1 Button" type="Button" parent="TempUI"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 200.0
+offset_right = 96.0
+offset_bottom = 256.0
+theme = ExtResource("2_1oaqe")
+text = "B1"
+script = ExtResource("3_4qvx7")
+world_root_path = NodePath("../..")
+camera_path = NodePath("../../Tile/Camera3D")
+box_size = Vector3(1, 1, 0)
+
+[node name="Building2 Button" type="Button" parent="TempUI"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 272.0
+offset_right = 96.0
+offset_bottom = 328.0
+theme = ExtResource("2_1oaqe")
+toggle_mode = true
+text = "B2"
+script = ExtResource("4_2u87q")
+
+[node name="Delete Button" type="Button" parent="TempUI"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 344.0
+offset_right = 96.0
+offset_bottom = 400.0
+theme = ExtResource("2_1oaqe")
+toggle_mode = true
+text = "Del"
+script = ExtResource("5_rr6yj")
