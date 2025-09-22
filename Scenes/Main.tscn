@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://ko6h5f7gm3gw"]
+[gd_scene load_steps=7 format=3 uid="uid://ko6h5f7gm3gw"]
 
 [ext_resource type="MeshLibrary" uid="uid://ympke52h2kvt" path="res://Art/Meshes/Tiles2.tres" id="1_tnfu6"]
 [ext_resource type="Texture2D" uid="uid://ck7j7ja0kykng" path="res://icon.svg" id="2_1qhbn"]
-[ext_resource type="Script" path="res://Scenes/place_tower.gd" id="3_lvvd4"]
+[ext_resource type="Script" uid="uid://by5l77n1wsr7l" path="res://Scenes/place_tower.gd" id="3_lvvd4"]
 [ext_resource type="PackedScene" uid="uid://cn1qem2o7o30i" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
+[ext_resource type="Script" uid="uid://sdgsinnel2jx" path="res://Scripts/EnemyManager.gd" id="5_enemy"]
+[ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="6_enemy"]
 
 [node name="Main" type="Node3D"]
 
@@ -24,6 +26,12 @@ light_energy = 2.616
 light_indirect_energy = 1.095
 light_volumetric_fog_energy = 3.909
 sky_mode = 1
+
+[node name="EnemyManager" type="Node" parent="."]
+physics_interpolation_mode = 2
+script = ExtResource("5_enemy")
+enemy_scene = ExtResource("6_enemy")
+path_points = Array[Vector3]([Vector3(-1, 2, 6), Vector3(6.5, 2, 6), Vector3(6.5, 2, 8), Vector3(1, 2, 8), Vector3(1, 2, 11), Vector3(9, 2, 11)])
 
 [node name="placeTower" type="TextureButton" parent="."]
 offset_left = 1093.0
