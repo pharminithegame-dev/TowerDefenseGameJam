@@ -1,10 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cplm4xnd0t70p"]
+[gd_scene load_steps=6 format=3 uid="uid://cplm4xnd0t70p"]
 
 [ext_resource type="Script" path="res://Scripts/ButtonTestFolder/camera_3d.gd" id="1_sbrpl"]
 [ext_resource type="Theme" uid="uid://vlqshjfebmsj" path="res://Art/Materials/Buttons.tres" id="2_1oaqe"]
-[ext_resource type="Script" path="res://Scripts/ButtonTestFolder/building_1_button.gd" id="3_4qvx7"]
-[ext_resource type="Script" path="res://Scripts/ButtonTestFolder/building_2_button.gd" id="4_2u87q"]
-[ext_resource type="Script" path="res://Scripts/ButtonTestFolder/delete_button.gd" id="5_rr6yj"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_edwtt"]
 size = Vector3(100, 100, 1)
@@ -50,10 +47,6 @@ offset_right = 96.0
 offset_bottom = 256.0
 theme = ExtResource("2_1oaqe")
 text = "B1"
-script = ExtResource("3_4qvx7")
-world_root_path = NodePath("../..")
-camera_path = NodePath("../../Tile/Camera3D")
-box_size = Vector3(1, 1, 0)
 
 [node name="Building2 Button" type="Button" parent="TempUI"]
 layout_mode = 2
@@ -64,7 +57,6 @@ offset_bottom = 328.0
 theme = ExtResource("2_1oaqe")
 toggle_mode = true
 text = "B2"
-script = ExtResource("4_2u87q")
 
 [node name="Delete Button" type="Button" parent="TempUI"]
 layout_mode = 2
@@ -75,4 +67,3 @@ offset_bottom = 400.0
 theme = ExtResource("2_1oaqe")
 toggle_mode = true
 text = "Del"
-script = ExtResource("5_rr6yj")
