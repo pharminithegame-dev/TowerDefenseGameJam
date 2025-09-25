@@ -1,10 +1,12 @@
-[gd_scene load_steps=13 format=3 uid="uid://bck6gktbl24l2"]
+[gd_scene load_steps=15 format=3 uid="uid://bck6gktbl24l2"]
 
 [ext_resource type="MeshLibrary" uid="uid://dtdo55xeoadov" path="res://Art/Meshes/Tiles2.tres" id="1_tnfu6"]
 [ext_resource type="Texture2D" uid="uid://ck7j7ja0kykng" path="res://icon.svg" id="2_1qhbn"]
 [ext_resource type="Script" path="res://Scenes/place_tower.gd" id="3_lvvd4"]
 [ext_resource type="PackedScene" uid="uid://c8q2j8jq76fci" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
+[ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="5_enemy"]
 [ext_resource type="Texture2D" uid="uid://chod7ibmhyd5a" path="res://Art/Sprites/Laser.png" id="6_2cw73"]
+[ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="6_enemy"]
 [ext_resource type="Script" path="res://Scenes/laser_button.gd" id="7_oq4g7"]
 [ext_resource type="PackedScene" uid="uid://ct0upn61sqrxa" path="res://Scenes/Buildings/HitscanBuilding.tscn" id="8_bjwje"]
 [ext_resource type="Texture2D" uid="uid://bw3qryxajb4qg" path="res://Art/Sprites/Bullet.png" id="9_sl7ii"]
@@ -32,6 +34,12 @@ light_energy = 2.616
 light_indirect_energy = 1.095
 light_volumetric_fog_energy = 3.909
 sky_mode = 1
+
+[node name="EnemyManager" type="Node" parent="."]
+physics_interpolation_mode = 2
+script = ExtResource("5_enemy")
+enemy_scene = ExtResource("6_enemy")
+path_points = Array[Vector3]([Vector3(-1, 2, 6), Vector3(6.5, 2, 6), Vector3(6.5, 2, 8), Vector3(1, 2, 8), Vector3(1, 2, 11), Vector3(9, 2, 11)])
 
 [node name="placeTower" type="TextureButton" parent="."]
 offset_left = 1093.0
