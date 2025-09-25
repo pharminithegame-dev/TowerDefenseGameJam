@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bck6gktbl24l2"]
+[gd_scene load_steps=15 format=3 uid="uid://bck6gktbl24l2"]
 
 [ext_resource type="MeshLibrary" uid="uid://dtdo55xeoadov" path="res://Art/Meshes/Tiles2.tres" id="1_tnfu6"]
 [ext_resource type="Texture2D" uid="uid://ck7j7ja0kykng" path="res://icon.svg" id="2_1qhbn"]
 [ext_resource type="Script" path="res://Scenes/place_tower.gd" id="3_lvvd4"]
-[ext_resource type="PackedScene" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
+[ext_resource type="PackedScene" uid="uid://c8q2j8jq76fci" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
+[ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="5_enemy"]
+[ext_resource type="Texture2D" uid="uid://chod7ibmhyd5a" path="res://Art/Sprites/Laser.png" id="6_2cw73"]
+[ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="6_enemy"]
+[ext_resource type="Script" path="res://Scenes/laser_button.gd" id="7_oq4g7"]
+[ext_resource type="PackedScene" uid="uid://ct0upn61sqrxa" path="res://Scenes/Buildings/HitscanBuilding.tscn" id="8_bjwje"]
+[ext_resource type="Texture2D" uid="uid://bw3qryxajb4qg" path="res://Art/Sprites/Bullet.png" id="9_sl7ii"]
+[ext_resource type="Script" path="res://Scenes/projectile_button.gd" id="10_su6hg"]
+[ext_resource type="PackedScene" uid="uid://b20lo5g1ygq0a" path="res://Scenes/Buildings/ProjectileBuilding.tscn" id="11_6b8h4"]
+[ext_resource type="Texture2D" uid="uid://c7pfirl5udivg" path="res://Art/Sprites/Delete.png" id="12_kxvl4"]
+[ext_resource type="Script" path="res://Scenes/delete_button.gd" id="13_p5ayb"]
 
 [node name="Main" type="Node3D"]
 
@@ -25,6 +35,12 @@ light_indirect_energy = 1.095
 light_volumetric_fog_energy = 3.909
 sky_mode = 1
 
+[node name="EnemyManager" type="Node" parent="."]
+physics_interpolation_mode = 2
+script = ExtResource("5_enemy")
+enemy_scene = ExtResource("6_enemy")
+path_points = Array[Vector3]([Vector3(-1, 2, 6), Vector3(6.5, 2, 6), Vector3(6.5, 2, 8), Vector3(1, 2, 8), Vector3(1, 2, 11), Vector3(9, 2, 11)])
+
 [node name="placeTower" type="TextureButton" parent="."]
 offset_left = 1093.0
 offset_top = 169.0
@@ -35,3 +51,30 @@ toggle_mode = true
 texture_normal = ExtResource("2_1qhbn")
 script = ExtResource("3_lvvd4")
 draggableTower = ExtResource("4_y0l8b")
+
+[node name="LaserButton" type="TextureButton" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+toggle_mode = true
+texture_normal = ExtResource("6_2cw73")
+script = ExtResource("7_oq4g7")
+draggableTower = ExtResource("8_bjwje")
+gridmap_path = NodePath("../GridMap")
+
+[node name="ProjectileButton" type="TextureButton" parent="."]
+offset_top = 160.0
+offset_right = 256.0
+offset_bottom = 288.0
+toggle_mode = true
+texture_normal = ExtResource("9_sl7ii")
+script = ExtResource("10_su6hg")
+draggableTower = ExtResource("11_6b8h4")
+gridmap_path = NodePath("../GridMap")
+
+[node name="DeleteButton" type="TextureButton" parent="."]
+offset_top = 312.0
+offset_right = 256.0
+offset_bottom = 440.0
+toggle_mode = true
+texture_normal = ExtResource("12_kxvl4")
+script = ExtResource("13_p5ayb")
