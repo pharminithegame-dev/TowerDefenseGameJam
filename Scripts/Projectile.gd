@@ -24,15 +24,17 @@ func setup_and_move(_damage: float, _speed: float) -> void:
 	is_moving = true
 
 
-### Enemy Collision Check   TODO - Change collision check depending on if enemy uses body or area
+### Enemy Collision Check
 func _on_area_3d_body_entered(body):
-	print("Projectile Entered an Area Shape!")
 	
 	if !body.is_in_group("enemies"):   # Only collide with enemies
 		return
 	
-	# TODO - Apply damage to enemy
-	print("Applying damage to enemy and despawning")
+	# Apply damage to enemy
+	if body.has_method("take_damage"):
+		body.take_damage(damage)
+		print("Applied ", damage, " damage to enemy")
+	
 	queue_free()   # Despawn projectile
 
 

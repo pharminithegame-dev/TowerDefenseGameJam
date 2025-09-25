@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8q2j8jq76fci"]
+
+[ext_resource type="PackedScene" uid="uid://bo07a1luxdco0" path="res://Art/Meshes/Tiles/tower-round-bottom-a.glb" id="1_lps3s"]
+[ext_resource type="PackedScene" uid="uid://oln68c2bt4bs" path="res://Art/Meshes/Tiles/tower-round-base.glb" id="2_edy4e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_u6f80"]
+
+[node name="TestTurret" type="Node3D"]
+
+[node name="tower-round-bottom-a2" parent="." instance=ExtResource("1_lps3s")]
+
+[node name="tower-round-base2" parent="." instance=ExtResource("2_edy4e")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.498411, 0)
+shape = SubResource("BoxShape3D_u6f80")
