@@ -26,8 +26,9 @@ func setup_and_move(_damage: float, _speed: float) -> void:
 
 ### Enemy Collision Check
 func _on_area_3d_body_entered(body):
-	
+
 	if !body.is_in_group("enemies"):   # Only collide with enemies
+		print("Projectile entered a non-enemy body named: ", body.name)
 		return
 	
 	# Apply damage to enemy
