@@ -1,7 +1,7 @@
 extends Node3D
 
 ### References
-@export var rot_target: Node3D
+@export var rot_node: Node3D
 @export var area_3d: Area3D
 @export var collision_shape: CollisionShape3D
 @export var projectile_tran: Node3D
@@ -18,6 +18,7 @@ extends Node3D
 ### Private Variables
 var attack_timer := 0.0
 var attack_range_sqr : float
+var is_active := true   # Enabled when building can target/shoot
 
 
 
@@ -26,8 +27,7 @@ func _ready() -> void:
 	
 	# Initialize collision radius
 	if collision_shape.shape != null:
-		collision_shape.shape.radius = attack_range
-		print("New radius for collision shape: ", collision_shape.shape.radius)
+		collision_shape.shape.radius = attack_range 
 	else:
 		push_warning("ProjectileBuilding.Area3D.CollisionShape3D.Shape is null!")
 
@@ -39,20 +39,20 @@ func _ready() -> void:
 ### Starts attack on interval
 func _process(delta: float) -> void:
 	
-	attack_timer -= delta
-	if attack_timer <= 0:
-		# Start attack
-		attack_timer = attack_cooldown
-		shoot_projectile()
+	if is_active: # Only target/shoot when active
+		attack_timer -= delta
+		if attack_timer <= 0:
+			# Start attack
+			attack_timer = attack_cooldown
+			shoot()
 
 
 ### Spawns a projectile in the direction of the closest enemy
-func shoot_projectile() -> void:
+func shoot() -> void:
 	
 	# Get nearest enemy in range
 	var target: Node3D = get_nearest_enemy()
 	if target == null:
-		print("No Targets in Range For Building: ", name)
 		return
 	
 	# Rotate ProjectileSpawnRotation towards target
@@ -71,7 +71,7 @@ func shoot_projectile() -> void:
 ### Returns the closest enemy in attack range.
 func get_nearest_enemy() -> Node3D:
 	
-	# Get all enemies in range TODO: Grab from enemy manager instead
+	# Get all enemies in range
 	var all_enemies: Array[Node3D] = area_3d.get_overlapping_bodies()
 	
 	# Return null if no enemies in range
@@ -84,7 +84,7 @@ func get_nearest_enemy() -> Node3D:
 	for enemy in all_enemies:
 		# If this is the new closest enemy and is in attack range
 		var cur_dist_sqr := global_position.distance_squared_to(enemy.global_position)
-		if cur_dist_sqr < closest_dist_sqr and cur_dist_sqr < attack_range_sqr:   # NOTE - range check is redundant now, but I will need it when I remove Area3D later
+		if cur_dist_sqr < closest_dist_sqr:
 			closest_enemy = enemy
 			closest_dist_sqr = cur_dist_sqr
 	
@@ -92,18 +92,23 @@ func get_nearest_enemy() -> Node3D:
 
 
 ### Rotates the ProjectileSpawnRotation node toward target
-func rotate_to_target(target_pos: Vector3) -> void:
-	
-	# Get 2D direction from building to target
-	var building_pos_2d := Vector2(global_position.x, global_position.z)
-	var target_pos_2d := Vector2(target_pos.x, target_pos.z)
-	var direction: Vector2 = target_pos_2d - building_pos_2d
-	
-	# Rotate on y axis in direction
-	rot_target.rotation.y = atan2(direction.x, direction.y)
+func rotate_to_target(target_pos: Vector3) -> void:	
+	var direction: Vector3 = target_pos - global_position    # Direction to target
+	rot_node.rotation.y = atan2(direction.x, direction.z)  # Rotate on y axis in direction
 
 
 ### Despawns building and returns the sell value
 func sell_building() -> float:
 	queue_free()   # Despawn building
 	return sell_value
+
+
+### Allows building to start targeting and shooting
+func activate_building() -> void:
+	attack_timer = attack_cooldown   # Reset attack timer
+	is_active = true
+
+
+### Stops building from targeting and shooting
+func deactivate_building() -> void:
+	is_active = false

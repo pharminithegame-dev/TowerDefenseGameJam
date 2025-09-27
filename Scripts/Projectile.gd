@@ -28,18 +28,15 @@ func setup_and_move(_damage: float, _speed: float) -> void:
 func _on_area_3d_body_entered(body):
 
 	if !body.is_in_group("enemies"):   # Only collide with enemies
-		print("Projectile entered a non-enemy body named: ", body.name)
 		return
 	
 	# Apply damage to enemy
 	if body.has_method("take_damage"):
 		body.take_damage(damage)
-		print("Applied ", damage, " damage to enemy")
 	
 	queue_free()   # Despawn projectile
 
 
 ### Despawn when off-screen
 func _on_visible_on_screen_notifier_3d_screen_exited():
-	print("Despawning off-screen projectile")
 	queue_free()   # Despawn projectile

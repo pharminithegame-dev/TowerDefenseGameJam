@@ -28,10 +28,10 @@ shape = SubResource("SphereShape3D_4vw6k")
 [node name="RotationNode" type="Node3D" parent="HeightOffset"]
 
 [node name="TurretModel" parent="HeightOffset/RotationNode" instance=ExtResource("2_1wc8h")]
-transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 0, 0)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="HeightOffset/RotationNode"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.65, -0.65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0.65)
 target_position = Vector3(0, 0, 10)
 collision_mask = 2
 debug_shape_custom_color = Color(1, 0, 0, 1)

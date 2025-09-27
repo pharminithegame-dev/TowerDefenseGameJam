@@ -54,10 +54,7 @@ func shoot() -> void:
 	# Get nearest enemy in range
 	var target: Node3D = get_leading_enemy()
 	if target == null:
-		print("No Targets in Range For Building: ", name)
 		return
-	else:
-		print("Found target with name: ", name)
 	
 	# Rotate ProjectileSpawnRotation towards target
 	rotate_to_target(target.global_position)
@@ -80,21 +77,18 @@ func shoot() -> void:
 	
 	# Make sure raycast collides with an enemy
 	if !raycast.is_colliding():
-		print("Got a target in range, but raycast is not colliding with anything")
 		#raycast.enabled = false
 		return
 	
 	# Make sure colliding object is an enemy
 	var collider = raycast.get_collider()
 	if !collider.is_in_group("enemies"):
-		print("Got a raycast target, but target's collider is not in 'enemies' group")
 		return
 	
 	# Apply damage to enemy
 	if collider.has_method("take_damage"):
 		audio_player.play()   # Play hitscan shoot sfx
 		collider.take_damage(attack_damage)
-		print("Applied ", attack_damage, " damage to enemy")
 		
 	#raycast.enabled = false
 
@@ -126,9 +120,8 @@ func get_leading_enemy() -> Node3D:
 
 ### Rotates the ProjectileSpawnRotation node toward target
 func rotate_to_target(target_pos: Vector3) -> void:
-	
-	target_pos.y = rot_node.global_position.y  # Ignore target y pos
-	rot_node.look_at(target_pos, Vector3.UP)
+	var direction: Vector3 = target_pos - global_position   # Direction to target
+	rot_node.rotation.y = atan2(direction.x, direction.z)   # Rotate on y axis in direction
 
 
 ### Despawns building and returns the sell value
