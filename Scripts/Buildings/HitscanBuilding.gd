@@ -5,7 +5,10 @@ extends Node3D
 @export var area_3d: Area3D
 @export var collision_shape: CollisionShape3D
 @export var raycast: RayCast3D
+@export var laser_visuals: MeshInstance3D
 @export var audio_player: AudioStreamPlayer
+@export var shoot_timer: Timer
+@export var laser_visuals_timer: Timer
 
 ### Stats
 @export var attack_damage := 20.0
@@ -13,43 +16,35 @@ extends Node3D
 @export var attack_cooldown := 2.0
 @export var sell_value := 150.0
 
+### Visuals
+@export var laser_visuals_duraion := 0.3
+
 ### Private Variables
-var attack_timer := 0.0
 var attack_range_sqr : float
 var is_active := true   # Enabled when building can target/shoot
+
 
 
 ### Initialize Node
 func _ready() -> void:
 	
-	# Initialize collision radius
+	# Initialize references
 	if collision_shape.shape != null:
 		collision_shape.shape.radius = attack_range
 	else:
 		push_warning("HitscanBuilding.Area3D.CollisionShape3D.Shape is null!")
-
-	# Initialize raycast range
+		
 	raycast.target_position = Vector3(0, 0, attack_range)
+	shoot_timer.wait_time = attack_cooldown
+	laser_visuals_timer.wait_time = laser_visuals_duraion
 
 	# Initialize Variables
-	attack_timer = attack_cooldown
 	attack_range_sqr = pow(attack_range, 2)
-
-
-### Starts attack on interval
-func _process(delta: float) -> void:
-	
-	if is_active:   # Only target/shoot when active
-		attack_timer -= delta
-		
-		if attack_timer <= 0:   # Check to attack
-			attack_timer = attack_cooldown
-			shoot()
 
 
 ### Enables the raycast in the direction of the leading enemy 
 ### 	and applies damage to enemy if hit
-func shoot() -> void:
+func _on_shoot_timer_timeout():
 	
 	# Get nearest enemy in range
 	var target: Node3D = get_leading_enemy()
@@ -59,13 +54,13 @@ func shoot() -> void:
 	# Rotate ProjectileSpawnRotation towards target
 	rotate_to_target(target.global_position)
 	
-	
 	### Raycast Towards Target
 	# Adjust raycast target height in case of a height difference between building and enemy
 	raycast.target_position.y = target.global_position.y - raycast.global_position.y
 	
-	#raycast.enabled = true
+	raycast.enabled = true
 	raycast.force_raycast_update()
+	show_laser_visuals()  # Temporarily show a cylinder mesh following the raycast
 	
 	#print("----------")
 	#print("Enemy position: ", target.global_position)
@@ -77,7 +72,7 @@ func shoot() -> void:
 	
 	# Make sure raycast collides with an enemy
 	if !raycast.is_colliding():
-		#raycast.enabled = false
+		raycast.enabled = false
 		return
 	
 	# Make sure colliding object is an enemy
@@ -90,7 +85,29 @@ func shoot() -> void:
 		audio_player.play()   # Play hitscan shoot sfx
 		collider.take_damage(attack_damage)
 		
-	#raycast.enabled = false
+	raycast.enabled = false
+
+
+### Uses raycast as a guide to update and show laser visual cylinder
+func show_laser_visuals() -> void:
+	
+	var ray_length := 1.0
+	if raycast.is_colliding():
+		ray_length = (raycast.get_collision_point() - raycast.global_position).length() + 1
+	else:
+		ray_length = raycast.target_position.length()
+		
+	# Set height of visual cylinder to length of ray
+	laser_visuals.mesh.height = ray_length
+	# Set position of visual cylinder between position and target
+	laser_visuals.position = raycast.position + (raycast.target_position.normalized() * ray_length/2)
+	laser_visuals.visible = true
+	laser_visuals_timer.start()
+
+
+### Hides laser visuals when laser visuals timer expires
+func _on_laser_visuals_timer_timeout():
+	laser_visuals.visible = false
 
 
 ### Returns the enemy who is furthest along in enemy path.
@@ -132,10 +149,11 @@ func sell_building() -> float:
 
 ### Allows building to start targeting and shooting
 func activate_building() -> void:
-	attack_timer = attack_cooldown   # Reset attack timer
+	shoot_timer.start()
 	is_active = true
 
 
 ### Stops building from targeting and shooting
 func deactivate_building() -> void:
+	shoot_timer.stop()
 	is_active = false

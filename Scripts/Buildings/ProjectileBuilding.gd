@@ -7,6 +7,7 @@ extends Node3D
 @export var projectile_tran: Node3D
 @export var projectile: PackedScene
 @export var audio_player: AudioStreamPlayer
+@export var shoot_timer: Timer
 
 ### Stats
 @export var projectile_damage := 5.0
@@ -16,7 +17,6 @@ extends Node3D
 @export var sell_value := 100.0
 
 ### Private Variables
-var attack_timer := 0.0
 var attack_range_sqr : float
 var is_active := true   # Enabled when building can target/shoot
 
@@ -25,30 +25,20 @@ var is_active := true   # Enabled when building can target/shoot
 ### Initialize Node
 func _ready() -> void:
 	
-	# Initialize collision radius
+	# Initialize references
 	if collision_shape.shape != null:
 		collision_shape.shape.radius = attack_range 
 	else:
 		push_warning("ProjectileBuilding.Area3D.CollisionShape3D.Shape is null!")
-
+	
+	shoot_timer.wait_time = attack_cooldown
+	
 	# Initialize Variables
-	attack_timer = attack_cooldown
 	attack_range_sqr = pow(attack_range, 2)
 
 
-### Starts attack on interval
-func _process(delta: float) -> void:
-	
-	if is_active: # Only target/shoot when active
-		attack_timer -= delta
-		if attack_timer <= 0:
-			# Start attack
-			attack_timer = attack_cooldown
-			shoot()
-
-
 ### Spawns a projectile in the direction of the closest enemy
-func shoot() -> void:
+func _on_shoot_timer_timeout():
 	
 	# Get nearest enemy in range
 	var target: Node3D = get_nearest_enemy()
@@ -105,10 +95,11 @@ func sell_building() -> float:
 
 ### Allows building to start targeting and shooting
 func activate_building() -> void:
-	attack_timer = attack_cooldown   # Reset attack timer
+	shoot_timer.start()
 	is_active = true
 
 
 ### Stops building from targeting and shooting
 func deactivate_building() -> void:
+	shoot_timer.stop()
 	is_active = false

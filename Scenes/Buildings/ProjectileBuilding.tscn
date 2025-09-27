@@ -1,13 +1,13 @@
 [gd_scene load_steps=6 format=3 uid="uid://b20lo5g1ygq0a"]
 
-[ext_resource type="Script" path="res://Scripts/ProjectileBuilding.gd" id="1_vsosm"]
+[ext_resource type="Script" path="res://Scripts/Buildings/ProjectileBuilding.gd" id="1_vsosm"]
 [ext_resource type="PackedScene" uid="uid://cgnw1f6o2ucq" path="res://Scenes/Projectiles/Projectile.tscn" id="2_ichgm"]
 [ext_resource type="PackedScene" uid="uid://cimnsj1tefe6p" path="res://Art/Meshes/Tiles/weapon-cannon.glb" id="3_h0g7m"]
 [ext_resource type="AudioStream" uid="uid://davmk1lnyseyw" path="res://Art/SFX/ProjectileShoot.mp3" id="4_576yh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_drxj4"]
 
-[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "area_3d", "collision_shape", "projectile_tran", "audio_player")]
+[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "area_3d", "collision_shape", "projectile_tran", "audio_player", "shoot_timer")]
 script = ExtResource("1_vsosm")
 rot_node = NodePath("OffsetNode/RotationNode")
 area_3d = NodePath("OffsetNode/Area3D")
@@ -15,6 +15,7 @@ collision_shape = NodePath("OffsetNode/Area3D/CollisionShape3D")
 projectile_tran = NodePath("OffsetNode/RotationNode/ProjectileSpawnTran")
 projectile = ExtResource("2_ichgm")
 audio_player = NodePath("AudioStreamPlayer")
+shoot_timer = NodePath("ShootTimer")
 
 [node name="OffsetNode" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, 0)
@@ -35,3 +36,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.38, 0.6)
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_576yh")
 volume_db = -20.0
+
+[node name="ShootTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
