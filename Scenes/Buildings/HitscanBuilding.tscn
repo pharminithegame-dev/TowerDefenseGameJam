@@ -6,33 +6,34 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4vw6k"]
 
-[node name="HitscanBuilding" type="Node3D" node_paths=PackedStringArray("rot_target", "area_3d", "collision_shape", "projectile_tran", "raycast", "audio_player")]
+[node name="HitscanBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "area_3d", "collision_shape", "raycast", "audio_player")]
 script = ExtResource("1_esum0")
-rot_target = NodePath("ProjectileSpawnRotation")
-area_3d = NodePath("Area3D")
-collision_shape = NodePath("Area3D/CollisionShape3D")
-projectile_tran = NodePath("ProjectileSpawnRotation/ProjectileSpawnTran")
-raycast = NodePath("ProjectileSpawnRotation/ProjectileSpawnTran/RayCast3D")
+rot_node = NodePath("HeightOffset/RotationNode")
+area_3d = NodePath("HeightOffset/AttackArea3D")
+collision_shape = NodePath("HeightOffset/AttackArea3D/CollisionShape3D")
+raycast = NodePath("HeightOffset/RotationNode/RayCast3D")
 audio_player = NodePath("AudioStreamPlayer")
 attack_cooldown = 2.5
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="HeightOffset" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="AttackArea3D" type="Area3D" parent="HeightOffset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68, 0)
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeightOffset/AttackArea3D"]
 shape = SubResource("SphereShape3D_4vw6k")
 
-[node name="ProjectileSpawnRotation" type="Node3D" parent="."]
+[node name="RotationNode" type="Node3D" parent="HeightOffset"]
 
-[node name="TurretModel" parent="ProjectileSpawnRotation" instance=ExtResource("2_1wc8h")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.53, 0)
+[node name="TurretModel" parent="HeightOffset/RotationNode" instance=ExtResource("2_1wc8h")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 0, 0)
 
-[node name="ProjectileSpawnTran" type="Node3D" parent="ProjectileSpawnRotation"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-
-[node name="RayCast3D" type="RayCast3D" parent="ProjectileSpawnRotation/ProjectileSpawnTran"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.15, -0.4)
-enabled = false
-target_position = Vector3(0, 0, 5)
+[node name="RayCast3D" type="RayCast3D" parent="HeightOffset/RotationNode"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.65, -0.65)
+target_position = Vector3(0, 0, 10)
+collision_mask = 2
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
