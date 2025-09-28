@@ -34,10 +34,9 @@ func _ready() -> void:
 	else:
 		push_warning("HitscanBuilding.Area3D.CollisionShape3D.Shape is null!")
 		
-	raycast.target_position = Vector3(0, 0, attack_range)
 	shoot_timer.wait_time = attack_cooldown
 	laser_visuals_timer.wait_time = laser_visuals_duraion
-
+	
 	# Initialize Variables
 	attack_range_sqr = pow(attack_range, 2)
 
@@ -51,24 +50,20 @@ func _on_shoot_timer_timeout():
 	if target == null:
 		return
 	
-	# Rotate ProjectileSpawnRotation towards target
+	# Rotate rot_node towards target
 	rotate_to_target(target.global_position)
 	
-	### Raycast Towards Target
-	# Adjust raycast target height in case of a height difference between building and enemy
+	# Set height of raycast target (in case of a height difference between building and enemy)
 	raycast.target_position.y = target.global_position.y - raycast.global_position.y
+	
+	# Set length of raycast target (ignore height)
+	var target_pos_2d:= Vector3(target.global_position.x, 0, target.global_position.z)
+	var ray_pos_2d:= Vector3(raycast.global_position.x, 0, raycast.global_position.z)
+	raycast.target_position.z = ray_pos_2d.distance_to(target_pos_2d)
 	
 	raycast.enabled = true
 	raycast.force_raycast_update()
 	show_laser_visuals()  # Temporarily show a cylinder mesh following the raycast
-	
-	#print("----------")
-	#print("Enemy position: ", target.global_position)
-	#print("Raycast position: ", raycast.global_position)
-	#print("Raycast target position: ", raycast.target_position)
-	#print("Raycast forward vector: ", -raycast.global_transform.basis.z)
-	#print("Rotation Node forward vector: ", -rot_node.global_transform.basis.z)
-	#print("----------")
 	
 	# Make sure raycast collides with an enemy
 	if !raycast.is_colliding():
@@ -91,16 +86,14 @@ func _on_shoot_timer_timeout():
 ### Uses raycast as a guide to update and show laser visual cylinder
 func show_laser_visuals() -> void:
 	
-	var ray_length := 1.0
-	if raycast.is_colliding():
-		ray_length = (raycast.get_collision_point() - raycast.global_position).length() + 1
-	else:
-		ray_length = raycast.target_position.length()
-		
 	# Set height of visual cylinder to length of ray
-	laser_visuals.mesh.height = ray_length
-	# Set position of visual cylinder between position and target
-	laser_visuals.position = raycast.position + (raycast.target_position.normalized() * ray_length/2)
+	laser_visuals.mesh.height = raycast.target_position.length()
+	# Set position of visual cylinder between position and target (include offset of ray from building origin)
+	laser_visuals.position = raycast.position + (raycast.target_position / 2)
+	
+	var direction: Vector3 = raycast.target_position.normalized()
+	laser_visuals.rotation.x = atan2(direction.z, direction.y)    # Rotate on x axis in direction
+	
 	laser_visuals.visible = true
 	laser_visuals_timer.start()
 

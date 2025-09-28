@@ -42,13 +42,13 @@ shape = SubResource("SphereShape3D_4vw6k")
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="HeightOffset/RotationNode"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0.65)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0.62)
 target_position = Vector3(0, 0, 10)
 collision_mask = 2
 debug_shape_custom_color = Color(1, 0, 0, 1)
 
 [node name="LaserVisuals" type="MeshInstance3D" parent="HeightOffset/RotationNode"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.685858, 1.61347)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.7, 0.611997)
 visible = false
 mesh = SubResource("CylinderMesh_kq0pa")
 
