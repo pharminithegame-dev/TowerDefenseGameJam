@@ -1,0 +1,69 @@
+[gd_scene load_steps=4 format=3 uid="uid://do7cpi87wb6b3"]
+
+[ext_resource type="Texture2D" uid="uid://cq7xggg0ku845" path="res://Art/Sprites/HUD/suit_hearts.png" id="1_x73o0"]
+[ext_resource type="Texture2D" uid="uid://dklmje353tg41" path="res://Art/Sprites/HUD/dollar.png" id="2_fsebe"]
+[ext_resource type="Texture2D" uid="uid://cfxj8smbbn5qg" path="res://Art/Sprites/HUD/trophy.png" id="2_ow115"]
+
+[node name="HudCanvas" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 160.0
+offset_bottom = 215.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/separation = 20
+
+[node name="HealthHBox" type="HBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HealthTextureRect" type="TextureRect" parent="HBoxContainer/HealthHBox"]
+layout_mode = 2
+texture = ExtResource("1_x73o0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HealthLabel" type="Label" parent="HBoxContainer/HealthHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "100"
+vertical_alignment = 1
+
+[node name="ScoreHBox" type="HBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ScoreTextureRect" type="TextureRect" parent="HBoxContainer/ScoreHBox"]
+layout_mode = 2
+texture = ExtResource("2_ow115")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer/ScoreHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0
+"
+vertical_alignment = 1
+
+[node name="MoneyHBox" type="HBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 60)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MoneyTextureRect" type="TextureRect" parent="HBoxContainer/MoneyHBox"]
+layout_mode = 2
+texture = ExtResource("2_fsebe")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MoneyLabel" type="Label" parent="HBoxContainer/MoneyHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+vertical_alignment = 1
