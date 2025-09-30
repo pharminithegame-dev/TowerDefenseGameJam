@@ -2,9 +2,9 @@
 
 [ext_resource type="MeshLibrary" uid="uid://ympke52h2kvt" path="res://Art/Meshes/Tiles2.tres" id="1_tnfu6"]
 [ext_resource type="Texture2D" uid="uid://ck7j7ja0kykng" path="res://icon.svg" id="2_1qhbn"]
-[ext_resource type="Script" uid="uid://by5l77n1wsr7l" path="res://Scenes/place_tower.gd" id="3_lvvd4"]
+[ext_resource type="Script" path="res://Scenes/place_tower.gd" id="3_lvvd4"]
 [ext_resource type="PackedScene" uid="uid://cn1qem2o7o30i" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
-[ext_resource type="Script" uid="uid://sdgsinnel2jx" path="res://Scripts/EnemyManager.gd" id="5_enemy"]
+[ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="5_enemy"]
 [ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="6_enemy"]
 
 [node name="Main" type="Node3D"]
@@ -31,7 +31,7 @@ sky_mode = 1
 physics_interpolation_mode = 2
 script = ExtResource("5_enemy")
 enemy_scene = ExtResource("6_enemy")
-path_points = Array[Vector3]([Vector3(-1, 2, 6), Vector3(6.5, 2, 6), Vector3(6.5, 2, 8), Vector3(1, 2, 8), Vector3(1, 2, 11), Vector3(9, 2, 11)])
+path_points = Array[Vector3]([Vector3(-2, 0.8, 5.5), Vector3(5.5, 0.8, 5.5), Vector3(5.5, 0.8, 7.5), Vector3(0.55, 0.8, 7.5), Vector3(0.55, 0.8, 10.5), Vector3(8.5, 0.8, 10.5), Vector3(8.5, 0.8, 5.5), Vector3(14.5, 0.8, 5.5), Vector3(14.5, 0.8, 11.5), Vector3(19.5, 0.8, 11.5), Vector3(19.5, 0.8, 5.5), Vector3(24, 0.8, 5.5)])
 
 [node name="placeTower" type="TextureButton" parent="."]
 offset_left = 1093.0

@@ -9,6 +9,7 @@ extends CharacterBody3D
 @export var path_points: Array[Vector3] = []
 var current_path_index := 0
 var path_progress := 0.0
+var path_completion_percentage := 0.0
 
 ### Private Variables
 var current_health: float
@@ -61,6 +62,9 @@ func move_along_path(delta: float) -> void:
 			return
 	
 	move_and_slide()
+	
+	# Update path completion percentage
+	update_path_completion()
 
 ### Takes damage and handles death
 func take_damage(damage: float) -> void:
@@ -114,6 +118,35 @@ func set_path(new_path: Array[Vector3]) -> void:
 ### Gets current health percentage
 func get_health_percentage() -> float:
 	return current_health / max_health
+
+### Updates path completion percentage
+func update_path_completion() -> void:
+	if path_points.is_empty():
+		path_completion_percentage = 0.0
+		return
+	
+	var completed_segments = float(current_path_index)
+	var total_segments = float(path_points.size() - 1)
+	
+	if total_segments <= 0:
+		path_completion_percentage = 1.0
+		return
+	
+	# Add partial progress within current segment
+	if current_path_index < path_points.size():
+		var current_target = path_points[current_path_index]
+		var previous_pos = path_points[current_path_index - 1] if current_path_index > 0 else global_position
+		var segment_length = previous_pos.distance_to(current_target)
+		var distance_to_target = global_position.distance_to(current_target)
+		
+		if segment_length > 0:
+			var segment_progress = 1.0 - (distance_to_target / segment_length)
+			completed_segments += clamp(segment_progress, 0.0, 1.0)
+	
+	path_completion_percentage = completed_segments / total_segments
+	print(path_completion_percentage)
+func get_path_completion_percentage() -> float:
+	return path_completion_percentage
 
 ### Updates the health bar display
 func update_health_bar() -> void:
