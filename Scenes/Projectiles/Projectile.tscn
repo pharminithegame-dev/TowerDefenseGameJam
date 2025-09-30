@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cgnw1f6o2ucq"]
+
+[ext_resource type="Script" path="res://Scripts/Projectile.gd" id="1_i4qwi"]
+[ext_resource type="PackedScene" uid="uid://ddor43yvhfj3h" path="res://Art/Meshes/Tiles/weapon-ammo-cannonball.glb" id="2_t22wt"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ajvwt"]
+
+[node name="Projectile" type="Node3D"]
+script = ExtResource("1_i4qwi")
+
+[node name="CannonAmmoModel" parent="." instance=ExtResource("2_t22wt")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_ajvwt")
+
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

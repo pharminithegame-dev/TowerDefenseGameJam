@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://b20lo5g1ygq0a"]
+
+[ext_resource type="Script" path="res://Scripts/ProjectileBuilding.gd" id="1_vsosm"]
+[ext_resource type="PackedScene" uid="uid://cgnw1f6o2ucq" path="res://Scenes/Projectiles/Projectile.tscn" id="2_ichgm"]
+[ext_resource type="PackedScene" uid="uid://cimnsj1tefe6p" path="res://Art/Meshes/Tiles/weapon-cannon.glb" id="3_h0g7m"]
+[ext_resource type="AudioStream" uid="uid://davmk1lnyseyw" path="res://Art/SFX/ProjectileShoot.mp3" id="4_576yh"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_drxj4"]
+
+[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_target", "area_3d", "collision_shape", "projectile_tran", "audio_player")]
+script = ExtResource("1_vsosm")
+rot_target = NodePath("ProjectileSpawnRotation")
+area_3d = NodePath("Area3D")
+collision_shape = NodePath("Area3D/CollisionShape3D")
+projectile_tran = NodePath("ProjectileSpawnRotation/ProjectileSpawnTran")
+projectile = ExtResource("2_ichgm")
+audio_player = NodePath("AudioStreamPlayer")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_drxj4")
+
+[node name="ProjectileSpawnRotation" type="Node3D" parent="."]
+
+[node name="CannonModel" parent="ProjectileSpawnRotation" instance=ExtResource("3_h0g7m")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.375, 0)
+
+[node name="ProjectileSpawnTran" type="Node3D" parent="ProjectileSpawnRotation"]
+transform = Transform3D(1, -4.23516e-22, 1.67037e-22, -4.23516e-22, 1, 0, 1.67037e-22, -3.55271e-15, 1, 0, 0.38, 0.6)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_576yh")
+volume_db = -20.0
