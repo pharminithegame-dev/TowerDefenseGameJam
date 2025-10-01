@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bck6gktbl24l2"]
+[gd_scene load_steps=17 format=3 uid="uid://bck6gktbl24l2"]
 
 [ext_resource type="MeshLibrary" uid="uid://dtdo55xeoadov" path="res://Art/Meshes/Tiles2.tres" id="1_tnfu6"]
 [ext_resource type="Texture2D" uid="uid://ck7j7ja0kykng" path="res://icon.svg" id="2_1qhbn"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://c7pfirl5udivg" path="res://Art/Sprites/Delete.png" id="12_kxvl4"]
 [ext_resource type="Script" path="res://Scenes/delete_button.gd" id="13_p5ayb"]
 [ext_resource type="PackedScene" uid="uid://do7cpi87wb6b3" path="res://Scenes/UI/HUD.tscn" id="15_p6yx0"]
+[ext_resource type="PackedScene" uid="uid://8mhdoyl1a3jm" path="res://Scenes/Money/moneyUI.tscn" id="16_ki8uc"]
 
 [node name="Main" type="Node3D"]
 
@@ -82,6 +83,7 @@ draggableTower = ExtResource("11_6b8h4")
 gridmap_path = NodePath("../GridMap")
 
 [node name="Label" type="Label" parent="ProjectileButton"]
+layout_mode = 0
 offset_left = 111.0
 offset_top = 96.0
 offset_right = 151.0
@@ -98,3 +100,5 @@ texture_normal = ExtResource("12_kxvl4")
 script = ExtResource("13_p5ayb")
 
 [node name="HudCanvas" parent="." instance=ExtResource("15_p6yx0")]
+
+[node name="MoneyManager" parent="." instance=ExtResource("16_ki8uc")]
