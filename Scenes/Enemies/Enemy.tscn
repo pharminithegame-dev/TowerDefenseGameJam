@@ -6,7 +6,8 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
 height = 1.0
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 3
 script = ExtResource("1_2x3vk")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

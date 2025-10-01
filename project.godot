@@ -43,7 +43,7 @@ money_minus={
 
 [layer_names]
 
-3d_physics/layer_2="Layer 2"
+3d_physics/layer_2="Enemies"
 
 [rendering]
 
