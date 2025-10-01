@@ -74,5 +74,3 @@ toggle_mode = true
 texture_normal = ExtResource("12_kxvl4")
 script = ExtResource("13_p5ayb")
 camera_path = NodePath("../Camera3D")
-require_registered = false
-debug_logs = true

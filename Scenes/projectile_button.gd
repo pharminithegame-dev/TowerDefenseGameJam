@@ -77,5 +77,6 @@ func _input(event: InputEvent) -> void:
 				var inst := draggableTower.instantiate() as Node3D
 				inst.global_position = _last_valid_world_pos
 				add_child(inst)      # keep your parenting
+				BuildingManager.register_building(inst, &"projectile")
 				is_placing = false
 				ghostObject.visible = false
