@@ -151,7 +151,7 @@ func update_path_completion() -> void:
 			completed_segments += clamp(segment_progress, 0.0, 1.0)
 	
 	path_completion_percentage = completed_segments / total_segments
-	print(path_completion_percentage)
+	#print(path_completion_percentage)
 func get_path_completion_percentage() -> float:
 	return path_completion_percentage
 
