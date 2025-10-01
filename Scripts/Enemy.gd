@@ -5,6 +5,9 @@ extends CharacterBody3D
 @export var move_speed := 3.0
 @export var money_reward := 10
 
+### Money Object Spawn
+@export var money_obj: PackedScene
+
 ### Path Following
 @export var path_points: Array[Vector3] = []
 var current_path_index := 0
@@ -70,7 +73,6 @@ func move_along_path(delta: float) -> void:
 func take_damage(damage: float) -> void:
 	if !is_alive:
 		return
-	
 	current_health -= damage
 	update_health_bar()
 	print("Enemy took ", damage, " damage. Health: ", current_health)
@@ -84,9 +86,12 @@ func die() -> void:
 		return
 	
 	is_alive = false
-	print("Enemy died! Rewarding ", money_reward, " money")
+	#print("Enemy died! Rewarding ", money_reward, " money")
+	
+	#spawn_money()
 	
 	# Emit signal for money reward
+	# Note from Alex: Will probably remove next sprint
 	enemy_died.emit(self, money_reward)
 	
 	# Remove from scene
@@ -95,6 +100,8 @@ func die() -> void:
 ### Handles reaching the end of path
 func reach_end() -> void:
 	print("Enemy reached the end!")
+	var pos := global_position
+	spawn_money(pos)
 	enemy_reached_end.emit(self)
 	queue_free()
 
@@ -152,3 +159,9 @@ func get_path_completion_percentage() -> float:
 func update_health_bar() -> void:
 	if health_bar:
 		health_bar.value = get_health_percentage() * 100
+
+### Instantiate's Money to Position of Enemy and Spawns
+func spawn_money(location: Vector3) -> void:
+	var money = money_obj.instantiate();
+	money.global_position = location
+	get_tree().get_root().add_child(money)
