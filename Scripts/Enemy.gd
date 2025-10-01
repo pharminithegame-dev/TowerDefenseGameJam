@@ -5,10 +5,14 @@ extends CharacterBody3D
 @export var move_speed := 3.0
 @export var money_reward := 10
 
+### Money Object Spawn
+@export var money_obj: PackedScene
+
 ### Path Following
 @export var path_points: Array[Vector3] = []
 var current_path_index := 0
 var path_progress := 0.0
+var path_completion_percentage := 0.0
 
 ### Private Variables
 var current_health: float
@@ -61,12 +65,14 @@ func move_along_path(delta: float) -> void:
 			return
 	
 	move_and_slide()
+	
+	# Update path completion percentage
+	update_path_completion()
 
 ### Takes damage and handles death
 func take_damage(damage: float) -> void:
 	if !is_alive:
 		return
-	
 	current_health -= damage
 	update_health_bar()
 	print("Enemy took ", damage, " damage. Health: ", current_health)
@@ -80,9 +86,12 @@ func die() -> void:
 		return
 	
 	is_alive = false
-	print("Enemy died! Rewarding ", money_reward, " money")
+	#print("Enemy died! Rewarding ", money_reward, " money")
+	
+	#spawn_money()
 	
 	# Emit signal for money reward
+	# Note from Alex: Will probably remove next sprint
 	enemy_died.emit(self, money_reward)
 	
 	# Remove from scene
@@ -91,6 +100,8 @@ func die() -> void:
 ### Handles reaching the end of path
 func reach_end() -> void:
 	print("Enemy reached the end!")
+	var pos := global_position
+	spawn_money(pos)
 	enemy_reached_end.emit(self)
 	queue_free()
 
@@ -115,7 +126,42 @@ func set_path(new_path: Array[Vector3]) -> void:
 func get_health_percentage() -> float:
 	return current_health / max_health
 
+### Updates path completion percentage
+func update_path_completion() -> void:
+	if path_points.is_empty():
+		path_completion_percentage = 0.0
+		return
+	
+	var completed_segments = float(current_path_index)
+	var total_segments = float(path_points.size() - 1)
+	
+	if total_segments <= 0:
+		path_completion_percentage = 1.0
+		return
+	
+	# Add partial progress within current segment
+	if current_path_index < path_points.size():
+		var current_target = path_points[current_path_index]
+		var previous_pos = path_points[current_path_index - 1] if current_path_index > 0 else global_position
+		var segment_length = previous_pos.distance_to(current_target)
+		var distance_to_target = global_position.distance_to(current_target)
+		
+		if segment_length > 0:
+			var segment_progress = 1.0 - (distance_to_target / segment_length)
+			completed_segments += clamp(segment_progress, 0.0, 1.0)
+	
+	path_completion_percentage = completed_segments / total_segments
+	#print(path_completion_percentage)
+func get_path_completion_percentage() -> float:
+	return path_completion_percentage
+
 ### Updates the health bar display
 func update_health_bar() -> void:
 	if health_bar:
 		health_bar.value = get_health_percentage() * 100
+
+### Instantiate's Money to Position of Enemy and Spawns
+func spawn_money(location: Vector3) -> void:
+	var money = money_obj.instantiate();
+	money.global_position = location
+	get_tree().get_root().add_child(money)
