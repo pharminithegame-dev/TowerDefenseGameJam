@@ -40,7 +40,7 @@ sky_mode = 1
 physics_interpolation_mode = 2
 script = ExtResource("5_enemy")
 enemy_scene = ExtResource("6_enemy")
-path_points = Array[Vector3]([Vector3(-1, 2, 6), Vector3(6.5, 2, 6), Vector3(6.5, 2, 8), Vector3(1, 2, 8), Vector3(1, 2, 11), Vector3(9, 2, 11)])
+path_points = Array[Vector3]([Vector3(-2, 0.8, 5.5), Vector3(5.5, 0.8, 5.5), Vector3(5.5, 0.8, 7.5), Vector3(0.55, 0.8, 7.5), Vector3(0.55, 0.8, 10.5), Vector3(8.5, 0.8, 10.5), Vector3(8.5, 0.8, 5.5), Vector3(14.5, 0.8, 5.5), Vector3(14.5, 0.8, 11.5), Vector3(19.5, 0.8, 11.5), Vector3(19.5, 0.8, 5.5), Vector3(24, 0.8, 5.5)])
 
 [node name="placeTower" type="TextureButton" parent="."]
 offset_left = 1093.0
