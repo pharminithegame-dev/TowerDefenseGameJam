@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://8mhdoyl1a3jm"]
+
+[ext_resource type="Script" path="res://Scripts/money_layer.gd" id="1_eqsrw"]
+
+[node name="MoneyManager" type="CanvasLayer"]
+script = ExtResource("1_eqsrw")
+
+[node name="MoneyLabel" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

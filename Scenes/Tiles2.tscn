@@ -1,4 +1,4 @@
-[gd_scene load_steps=165 format=4 uid="uid://ohuparninmju"]
+[gd_scene load_steps=169 format=4 uid="uid://ohuparninmju"]
 
 [ext_resource type="PackedScene" uid="uid://bc5qxme0lxwof" path="res://Art/Meshes/Tiles/detail-crystal-large.glb" id="1_1lt3s"]
 [ext_resource type="PackedScene" uid="uid://cvlcd6fge4wxx" path="res://Art/Meshes/Tiles/detail-crystal.glb" id="2_fre8a"]
@@ -65,7 +65,6 @@
 [ext_resource type="PackedScene" uid="uid://egvpklnbkrrj" path="res://Art/Meshes/Tiles/snow-tile-wide-split.glb" id="63_radjv"]
 [ext_resource type="PackedScene" uid="uid://cm57aesegtmmh" path="res://Art/Meshes/Tiles/snow-tile-wide-straight.glb" id="64_4nmgt"]
 [ext_resource type="PackedScene" uid="uid://cmaxbmwkt88gk" path="res://Art/Meshes/Tiles/snow-tile-wide-transition.glb" id="65_ij4ol"]
-[ext_resource type="PackedScene" uid="uid://buw10x1n0fsge" path="res://Art/Meshes/Tiles/snow-tile.glb" id="66_np0su"]
 [ext_resource type="PackedScene" uid="uid://bwi2ca2eu1ucu" path="res://Art/Meshes/Tiles/snow-wood-structure-high-part.glb" id="67_4bq4y"]
 [ext_resource type="PackedScene" uid="uid://v8s8xe5nrul8" path="res://Art/Meshes/Tiles/snow-wood-structure-high.glb" id="68_sqhwy"]
 [ext_resource type="PackedScene" uid="uid://dkc1b2bb4qq0q" path="res://Art/Meshes/Tiles/snow-wood-structure-part.glb" id="69_jc8gg"]
@@ -109,7 +108,7 @@
 [ext_resource type="PackedScene" uid="uid://bipxdu2qnxm8u" path="res://Art/Meshes/Tiles/tile-wide-split.glb" id="107_y43db"]
 [ext_resource type="PackedScene" uid="uid://c2tmaw88gitur" path="res://Art/Meshes/Tiles/tile-wide-straight.glb" id="108_ntolp"]
 [ext_resource type="PackedScene" uid="uid://psohnr3uw30p" path="res://Art/Meshes/Tiles/tile-wide-transition.glb" id="109_jhduc"]
-[ext_resource type="Texture2D" uid="uid://c608rb0hqe8aj" path="res://Art/Meshes/Tiles/Textures/colormap.png" id="110_q5vfn"]
+[ext_resource type="Texture2D" uid="uid://ds4i7akrsdxx4" path="res://Art/Meshes/Tiles/Textures/colormap.png" id="110_q5vfn"]
 [ext_resource type="PackedScene" uid="uid://oln68c2bt4bs" path="res://Art/Meshes/Tiles/tower-round-base.glb" id="111_u7im7"]
 [ext_resource type="PackedScene" uid="uid://bo07a1luxdco0" path="res://Art/Meshes/Tiles/tower-round-bottom-a.glb" id="112_avp0p"]
 [ext_resource type="PackedScene" uid="uid://xevci2jjh8gx" path="res://Art/Meshes/Tiles/tower-round-bottom-b.glb" id="113_ombhh"]
@@ -160,6 +159,50 @@
 [ext_resource type="PackedScene" uid="uid://cw5346lfahxdn" path="res://Art/Meshes/Tiles/wood-structure-high.glb" id="158_e6yit"]
 [ext_resource type="PackedScene" uid="uid://byqljvx0sefwc" path="res://Art/Meshes/Tiles/wood-structure-part.glb" id="159_b68jy"]
 [ext_resource type="PackedScene" uid="uid://c7aqo1m1o7uae" path="res://Art/Meshes/Tiles/wood-structure.glb" id="160_ibrrf"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0m5r4"]
+data = PackedVector3Array(-0.5, 0, 0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, 0.5, 0, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, -0.5, 0, 0.5, 0.5, 0.1, 0.5, 0.5, 0.1, -0.5, 0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0.1, 0.5, 0.5, 0.1, -0.5, 0.5, 0.1, 0.5, 0.5, 0, -0.5, 0.5, 0, 0.5, 0.5, 0, -0.5, 0.5, 0.1, 0.5, 0.5, 0.1, 0.5, 0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0, 0.5, -0.5, 0.1, 0.5, 0.5, 0.1, 0.5, 0.5, 0, 0.5, 0.5, 0.1, 0.5, -0.5, 0, 0.5, -0.5, 0.1, 0.5, -0.5, 0, 0.5, 0.5, 0.1, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0.1, -0.5, -0.5, 0.1, -0.5, -0.5, 0.1, 0.5, -0.5, 0, 0.5, -0.5, 0, -0.5, -0.5, 0, 0.5, -0.5, 0.1, -0.5, -0.5, 0.1, 0.5, -0.5, 0.1, -0.5, -0.5, 0, 0.5, -0.5, 0.1, -0.5, -0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 0, -0.5, 0.5, 0.1, -0.5, -0.5, 0.1, -0.5, -0.5, 0, -0.5, -0.5, 0.1, -0.5, 0.5, 0, -0.5, 0.5, 0.1, -0.5, 0.5, 0, -0.5, -0.5, 0.1, -0.5, -0.5, 0.1, -0.5, 0.5, 0.1, -0.5, 0.5, 0.1, 0.5, 0.5, 0.1, 0.5, -0.5, 0.1, 0.5, -0.5, 0.1, -0.5, 0.5, 0.1, -0.5, -0.5, 0.1, -0.5, 0.5, 0.1, 0.5, -0.5, 0.1, 0.5, 0.5, 0.1, 0.5, -0.5, 0.1, -0.5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vamnk"]
+resource_name = "colormap"
+cull_mode = 2
+albedo_texture = ExtResource("110_q5vfn")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_uqf25"]
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 0.2, 1),
+"format": 34896613377,
+"index_count": 72,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIAAAACAAEAAwABAAIABQAEAAEAAQAAAAUABAAFAAEAAAABAAUABQAAAAIAAgAGAAUAAAAFAAIABgACAAUAAgADAAcABwAGAAIAAwACAAcABgAHAAIABwADAAEAAQAEAAcAAwAHAAEABAABAAcABwAEAAUABQAGAAcABAAHAAUABgAFAAcA"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 8,
+"vertex_data": PackedByteArray("//8AAP//AAD//wAAAAAAAAAAAAD//wAAAAAAAAAAAAD/////AAAAAP///////wAAAAD/////AAAAAP//AAAAAA==")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5vl8u"]
+resource_name = "snow-tile_snow-tile"
+_surfaces = [{
+"aabb": AABB(-0.5, 0, -0.5, 1, 0.2, 1),
+"attribute_data": PackedByteArray("//eY+f/3mPn/95j5//eY+f/3mPn/95j5//eY+f/3mPn/92XG//eY+f/3Zcb/95j5//dlxv/3mPn/92XG//eY+f/3mPn/95j5//dlxv/3Zcb/92XG//eY+f/3mPn/92XG//eY+f/3Zcb/95j5//dlxv/3mPn/92XG//eY+f/3Zcb/95j5//eY+f/3Zcb/92XG//dlxv/3mPn/95j5//dlxv/3Zcb/92XG//dlxv/3Zcb/92XG//dlxv/3Zcb/92XG"),
+"format": 34896613399,
+"index_count": 72,
+"index_data": PackedByteArray("AgAAAAEAAQADAAIABgAEAAUABwAFAAQACgAIAAkACQALAAoADgAMAA0ADwANAAwAEgAQABEAEQATABIAFgAUABUAFwAVABQAGgAYABkAGQAbABoAHgAcAB0AHwAdABwAIgAgACEAIQAjACIAJgAkACUAJwAlACQAKgAoACkAKQArACoALgAsAC0ALwAtACwA"),
+"material": SubResource("StandardMaterial3D_vamnk"),
+"name": "colormap",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 48,
+"vertex_data": PackedByteArray("//8AAP///7///wAAAAD/vwAAAAD///+/AAAAAAAA/78AAAAA////P///AAAAAP8///8AAP///z8AAAAAAAD/P/////8AAP+///8AAAAA/7//////////v///AAD///+/////////AAD//wAAAAAAAP////8AAAAA//8AAP//AAD//wAA//8AgAAAAAD//wCA////////AIAAAP////8AgP///////wAAAAAAAP//AAD//wAA//8AAAAA/////wAAAAAAAAAA/78AAP//AAD/vwAAAAD///+/AAD//////78AAAAA//8AAAAA//8AAAAAAAAAAAAAAAAAAP////8AAAAAAAAAAP////8AAAAA//8AAP//AAD///////8AAP//AAD//wAAAAD//wAAAAAAAAAAAAAAAAAA/////wAAAAD/////AAD/////////////AAD//wAA//8AAP///////wAA//8AAAAA////////AAD/////AAAAAAAA/////wAAAAD/fwAA/38AAP9/AAD/f////3////9/////f////3//fwAA/38AAP9/AAD/fwAA/z//f/8//3//P/9//z//f/9/////f////3////9///////9/////f////3////9//3////9/////f////3////+//3//v/9//7//f/+//3//f////3////9/////f////3//f/9//3//f/9//3//f/9//7//f/+//3//v/9//7//f/8//3//P/9//z//f/8/")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_uqf25")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ypfqn"]
+size = Vector3(1, 0.203, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_utaos"]
 resource_name = "colormap"
@@ -315,6 +358,11 @@ visible = false
 [node name="snow-tile-dirt2" parent="." instance=ExtResource("37_nydic")]
 visible = false
 
+[node name="StaticBody3D" type="StaticBody3D" parent="snow-tile-dirt2/snow-tile-dirt" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="snow-tile-dirt2/snow-tile-dirt/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_0m5r4")
+
 [node name="snow-tile-end-round2" parent="." instance=ExtResource("38_smjku")]
 visible = false
 
@@ -399,8 +447,18 @@ visible = false
 [node name="snow-tile-wide-transition2" parent="." instance=ExtResource("65_ij4ol")]
 visible = false
 
-[node name="snow-tile2" parent="." instance=ExtResource("66_np0su")]
+[node name="snow-tile" type="Node3D" parent="."]
 visible = false
+
+[node name="snow-tile" type="MeshInstance3D" parent="snow-tile"]
+mesh = SubResource("ArrayMesh_5vl8u")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="snow-tile/snow-tile"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="snow-tile/snow-tile/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0984935, 0)
+shape = SubResource("BoxShape3D_ypfqn")
 
 [node name="snow-wood-structure-high-part2" parent="." instance=ExtResource("67_4bq4y")]
 visible = false
@@ -532,6 +590,7 @@ visible = false
 visible = false
 
 [node name="tile2" type="Node3D" parent="."]
+visible = false
 
 [node name="tile" type="MeshInstance3D" parent="tile2"]
 mesh = SubResource("ArrayMesh_sdcqb")
@@ -692,3 +751,5 @@ visible = false
 
 [node name="wood-structure2" parent="." instance=ExtResource("160_ibrrf")]
 visible = false
+
+[editable path="snow-tile-dirt2"]
