@@ -1,9 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://c8x9v2n4m5p6q"]
+[gd_scene load_steps=4 format=3 uid="uid://c8yav2n4m5p6q"]
 
 [ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="1_abc123"]
 [ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="2_def456"]
 [ext_resource type="Script" path="res://Scripts/MoneyManager.gd" id="3_ghi789"]
-[ext_resource type="Script" path="res://Scripts/GameUI.gd" id="4_jkl012"]
 
 [node name="EnemyTestScene" type="Node3D"]
 
@@ -28,7 +27,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource("4_jkl012")
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="MoneyLabel" type="Label" parent="UI"]
 layout_mode = 0
@@ -36,8 +36,8 @@ offset_left = 20.0
 offset_top = 20.0
 offset_right = 200.0
 offset_bottom = 50.0
-text = "Money: 0"
 theme_override_font_sizes/font_size = 24
+text = "Money: 0"
 
 [node name="WaveLabel" type="Label" parent="UI"]
 layout_mode = 0
@@ -45,5 +45,5 @@ offset_left = 20.0
 offset_top = 60.0
 offset_right = 200.0
 offset_bottom = 90.0
-text = "Wave: 1"
 theme_override_font_sizes/font_size = 24
+text = "Wave: 1"

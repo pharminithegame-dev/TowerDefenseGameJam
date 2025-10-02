@@ -1,6 +1,8 @@
 extends TextureButton
 
 @export var draggableTower: PackedScene
+@export var cost: int = 50
+@onready var cost_label: Label = $Label
 @export_node_path("GridMap") var gridmap_path: NodePath   # minimal addition so we always resolve cells via this GridMap
 
 var camera : Camera3D
@@ -13,6 +15,7 @@ var _last_valid_world_pos: Vector3 = Vector3.ZERO
 var _has_valid: bool = false
 
 func _ready() -> void:
+	cost_label.text = "$" + str(cost)
 	ghostObject = draggableTower.instantiate() as Node3D
 	add_child(ghostObject)                 # keep your parenting unchanged
 	# Stop building from targeting/shooting
@@ -60,8 +63,17 @@ func _process(delta: float) -> void:
 			ghostObject.visible = false
 
 func _toggled(toggled_on: bool) -> void:
-	is_placing = toggled_on
-	if not toggled_on:
+	if toggled_on:
+		if MoneyManager.get_money() >= cost:
+			MoneyManager.subtract_money(cost)
+			is_placing = true
+			ghostObject.visible = true
+		else:
+			modulate = Color(1, 0, 0)
+			await get_tree().create_timer(0.2).timeout
+			modulate = Color(1, 1, 1)
+			button_pressed = false
+	else:
 		ghostObject.visible = false
 		_has_valid = false
 
@@ -81,5 +93,6 @@ func _input(event: InputEvent) -> void:
 				var inst := draggableTower.instantiate() as Node3D
 				inst.global_position = _last_valid_world_pos
 				add_child(inst)      # keep your parenting
+				BuildingManager.register_building(inst, &"projectile")
 				is_placing = false
 				ghostObject.visible = false

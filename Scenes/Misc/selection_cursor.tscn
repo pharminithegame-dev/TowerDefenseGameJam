@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://x68fn6t36qs7"]
+
+[ext_resource type="PackedScene" uid="uid://c0u5sfe575kfv" path="res://Art/Meshes/Tiles/selection-a.glb" id="1_dhehd"]
+
+[node name="selectionCursor" instance=ExtResource("1_dhehd")]
