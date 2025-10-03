@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b20lo5g1ygq0a"]
+[gd_scene load_steps=7 format=3 uid="uid://b20lo5g1ygq0a"]
 
 [ext_resource type="Script" path="res://Scripts/Buildings/ProjectileBuilding.gd" id="1_vsosm"]
 [ext_resource type="PackedScene" uid="uid://cgnw1f6o2ucq" path="res://Scenes/Projectiles/Projectile.tscn" id="2_ichgm"]
@@ -7,11 +7,14 @@
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_drxj4"]
 
-[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "area_3d", "collision_shape", "projectile_tran", "audio_player", "shoot_timer")]
+[sub_resource type="SphereShape3D" id="SphereShape3D_1ypet"]
+
+[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "attack_area_3d", "attack_collision_shape", "select_area_3d", "projectile_tran", "audio_player", "shoot_timer")]
 script = ExtResource("1_vsosm")
 rot_node = NodePath("OffsetNode/RotationNode")
-area_3d = NodePath("OffsetNode/Area3D")
-collision_shape = NodePath("OffsetNode/Area3D/CollisionShape3D")
+attack_area_3d = NodePath("OffsetNode/AttackArea3D")
+attack_collision_shape = NodePath("OffsetNode/AttackArea3D/CollisionShape3D")
+select_area_3d = NodePath("OffsetNode/SelectArea3D")
 projectile_tran = NodePath("OffsetNode/RotationNode/ProjectileSpawnTran")
 projectile = ExtResource("2_ichgm")
 audio_player = NodePath("AudioStreamPlayer")
@@ -20,10 +23,21 @@ shoot_timer = NodePath("ShootTimer")
 [node name="OffsetNode" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, 0)
 
-[node name="Area3D" type="Area3D" parent="OffsetNode"]
+[node name="AttackArea3D" type="Area3D" parent="OffsetNode"]
+transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OffsetNode/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OffsetNode/AttackArea3D"]
 shape = SubResource("SphereShape3D_drxj4")
+
+[node name="SelectArea3D" type="Area3D" parent="OffsetNode"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="OffsetNode/SelectArea3D"]
+shape = SubResource("SphereShape3D_1ypet")
 
 [node name="RotationNode" type="Node3D" parent="OffsetNode"]
 

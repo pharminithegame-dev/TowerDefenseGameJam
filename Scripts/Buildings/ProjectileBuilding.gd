@@ -2,8 +2,9 @@ extends Node3D
 
 ### References
 @export var rot_node: Node3D
-@export var area_3d: Area3D
-@export var collision_shape: CollisionShape3D
+@export var attack_area_3d: Area3D
+@export var attack_collision_shape: CollisionShape3D
+@export var select_area_3d: Area3D
 @export var projectile_tran: Node3D
 @export var projectile: PackedScene
 @export var audio_player: AudioStreamPlayer
@@ -26,8 +27,8 @@ var is_active := true   # Enabled when building can target/shoot
 func _ready() -> void:
 	
 	# Initialize references
-	if collision_shape.shape != null:
-		collision_shape.shape.radius = attack_range 
+	if attack_collision_shape.shape != null:
+		attack_collision_shape.shape.radius = attack_range 
 	else:
 		push_warning("ProjectileBuilding.Area3D.CollisionShape3D.Shape is null!")
 	
@@ -62,7 +63,7 @@ func _on_shoot_timer_timeout():
 func get_nearest_enemy() -> Node3D:
 	
 	# Get all enemies in range
-	var all_enemies: Array[Node3D] = area_3d.get_overlapping_bodies()
+	var all_enemies: Array[Node3D] = attack_area_3d.get_overlapping_bodies()
 	
 	# Return null if no enemies in range
 	if all_enemies.size() == 0:
@@ -97,9 +98,11 @@ func sell_building() -> float:
 func activate_building() -> void:
 	shoot_timer.start()
 	is_active = true
+	select_area_3d.monitorable = true   # Allow camera to select
 
 
 ### Stops building from targeting and shooting
 func deactivate_building() -> void:
 	shoot_timer.stop()
 	is_active = false
+	select_area_3d.monitorable = false   # Don't allow camera to select

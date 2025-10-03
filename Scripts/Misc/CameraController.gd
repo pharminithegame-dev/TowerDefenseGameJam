@@ -1,10 +1,14 @@
 extends Camera3D
 
-### Export Variables
+### Settings
 @export var pan_speed_with_mouse := 4.25
 @export var pan_speed_with_keys := 15
 @export var max_x_cam_dist := 15
 @export var max_z_cam_dist := 8
+@export var raycast_dist := 50
+
+### References
+@onready var ray := $RayCast3D
 
 ### Private Variables
 var last_drag_pos := Vector2.ZERO
@@ -31,6 +35,10 @@ func _unhandled_input(event) -> void:
 	# Stop panning when releasing input
 	elif event.is_action_released("camera_pan_toggle"):
 		is_panning = false
+	
+	# Start raycasting for buildings when pressing input
+	elif event.is_action_pressed("select"):
+		raycast_for_buildings()
 
 
 ### Called every frame, handles camera pan input
@@ -71,3 +79,24 @@ func update_camera_pan_with_keys(delta: float) -> void:
 func move_and_clamp_cam_pos(new_cam_pos_2d: Vector2) -> void: 
 	position.x = clamp(new_cam_pos_2d.x, cam_min_pos_2d.x, cam_max_pos_2d.x) 
 	position.z = clamp(new_cam_pos_2d.y, cam_min_pos_2d.y, cam_max_pos_2d.y)
+
+
+### Raycasts from camera to mouse world position and checks for collisions with buildings
+func raycast_for_buildings() -> void:
+	# Move raycast target to position of mouse in 3d world space
+	var mouse_pos := get_viewport().get_mouse_position()
+	ray.target_position = project_local_ray_normal(mouse_pos) * raycast_dist
+	ray.force_raycast_update()
+	
+	if !ray.is_colliding(): 
+		print("Raycast did not collide with anything")
+		return   # Exit if no building collision
+	
+	# Lerp camera to building position
+	print("Raycast collided with object name: ", ray.get_collider().name)
+	var building_pos_2d := Vector2(ray.get_collider().global_position.x, ray.get_collider().global_position.y)
+	move_and_clamp_cam_pos(building_pos_2d)
+
+
+func lerp_cam_to_position(target_pos: Vector2) -> void:
+	pass
