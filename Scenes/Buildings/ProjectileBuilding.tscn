@@ -20,6 +20,8 @@ projectile_tran = NodePath("OffsetNode/RotationNode/ProjectileSpawnTran")
 projectile = ExtResource("2_ichgm")
 audio_player = NodePath("AudioStreamPlayer")
 shoot_timer = NodePath("ShootTimer")
+projectile_damage = 40.0
+attack_range = 15.0
 
 [node name="OffsetNode" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, 0)

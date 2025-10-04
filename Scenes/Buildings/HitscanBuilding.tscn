@@ -24,6 +24,8 @@ laser_visuals = NodePath("HeightOffset/RotationNode/LaserVisuals")
 audio_player = NodePath("AudioStreamPlayer")
 shoot_timer = NodePath("ShootTimer")
 laser_visuals_timer = NodePath("LaserVisualsTimer")
+attack_damage = 80.0
+attack_range = 30.0
 attack_cooldown = 2.5
 
 [node name="HeightOffset" type="Node3D" parent="."]

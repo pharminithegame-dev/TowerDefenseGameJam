@@ -20,7 +20,6 @@ extends Node3D
 @export var laser_visuals_duraion := 0.3
 
 ### Private Variables
-var attack_range_sqr : float
 var is_active := true   # Enabled when building can target/shoot
 
 
@@ -36,13 +35,9 @@ func _ready() -> void:
 		
 	shoot_timer.wait_time = attack_cooldown
 	laser_visuals_timer.wait_time = laser_visuals_duraion
-	
-	# Initialize Variables
-	attack_range_sqr = pow(attack_range, 2)
 
 
-### Enables the raycast in the direction of the leading enemy 
-### 	and applies damage to enemy if hit
+### Enables the raycast in the direction of the leading enemy and applies damage to enemy if hit
 func _on_shoot_timer_timeout():
 	
 	# Get nearest enemy in range
@@ -105,27 +100,27 @@ func _on_laser_visuals_timer_timeout():
 
 ### Returns the enemy who is furthest along in enemy path.
 func get_leading_enemy() -> Node3D:
-	
-	# TODO - need enemies to be implemented so I can determine which one is furthest in path
-	# NOTE - for now I am just using closest enemy to building
-	
+	# Get all enemies in attack range
 	var all_enemies: Array[Node3D] = area_3d.get_overlapping_bodies()
 	
-	# Return null if no enemies in range
-	if all_enemies.size() == 0:
+	if all_enemies.size() == 0:   # Return null if no enemies in range
 		return null
 	
-	# Get closest enemy in all enemies array
-	var closest_enemy: Node3D = null
-	var closest_dist_sqr: float = INF
+	# Get furthest enemy on path from all enemies in attack range
+	var furthest_enemy_on_path: Node3D = null
+	var furthest_enemy_path_percent := 0.0
 	for enemy in all_enemies:
-		# If this is the new closest enemy and is in attack range
-		var cur_dist_sqr := global_position.distance_squared_to(enemy.global_position)
-		if cur_dist_sqr < closest_dist_sqr:
-			closest_enemy = enemy
-			closest_dist_sqr = cur_dist_sqr
+		
+		if !enemy.has_method("get_path_completion_percentage"): # Make sure we can access path percent
+			continue
+		
+		# Check if current enemy is new furthest enemy on path
+		var cur_enemy_path_percent: float = enemy.get_path_completion_percentage()
+		if cur_enemy_path_percent > furthest_enemy_path_percent:
+			furthest_enemy_path_percent = cur_enemy_path_percent
+			furthest_enemy_on_path = enemy
 	
-	return closest_enemy
+	return furthest_enemy_on_path
 
 
 ### Rotates the ProjectileSpawnRotation node toward target
