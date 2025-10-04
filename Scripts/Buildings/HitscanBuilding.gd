@@ -4,6 +4,7 @@ extends Node3D
 @export var rot_node: Node3D
 @export var area_3d: Area3D
 @export var collision_shape: CollisionShape3D
+@export var select_collision_shape: CollisionShape3D
 @export var raycast: RayCast3D
 @export var laser_visuals: MeshInstance3D
 @export var audio_player: AudioStreamPlayer
@@ -27,14 +28,19 @@ var is_active := true   # Enabled when building can target/shoot
 ### Initialize Node
 func _ready() -> void:
 	
-	# Initialize references
+	# Set attack collision radius to the export var value
 	if collision_shape.shape != null:
 		collision_shape.shape.radius = attack_range
 	else:
 		push_warning("HitscanBuilding.Area3D.CollisionShape3D.Shape is null!")
-		
+	
 	shoot_timer.wait_time = attack_cooldown
 	laser_visuals_timer.wait_time = laser_visuals_duraion
+	
+	# Don't allow camera ray to select building for the first couple frames of existence
+	select_collision_shape.disabled = true
+	await get_tree().create_timer(0.1).timeout   # Wait a few frames
+	if is_active: select_collision_shape.disabled = false
 
 
 ### Enables the raycast in the direction of the leading enemy and applies damage to enemy if hit
@@ -139,9 +145,16 @@ func sell_building() -> float:
 func activate_building() -> void:
 	shoot_timer.start()
 	is_active = true
+	select_collision_shape.disabled = false   # Allow camera to select
 
 
 ### Stops building from targeting and shooting
 func deactivate_building() -> void:
 	shoot_timer.stop()
 	is_active = false
+	select_collision_shape.disabled = true   # Don't allow camera to select
+
+
+### Displays building UI
+func select_building() -> void:
+	pass # TODO

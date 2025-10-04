@@ -50,9 +50,8 @@ func _process(delta) -> void:
 	# Pan camera when holding input
 	if is_panning and Input.is_action_pressed("camera_pan_toggle"):
 		update_camera_pan_with_mouse()
-	
-	# Move mouse with keys
-	update_camera_pan_with_keys()
+	else:               # Move mouse with keys
+		update_camera_pan_with_keys()
 	
 	if is_cam_moving:   # Smoothly move cam to target
 		lerp_camera_to_target(delta)
@@ -68,6 +67,7 @@ func update_camera_pan_with_mouse() -> void:
 	# Move camera in opposite direction of drag
 	var new_cam_pos := position - (Vector3(delta_drag_pos.x, 0, delta_drag_pos.y) * pan_speed_with_mouse)
 	snap_camera_to_target(new_cam_pos)
+	is_cam_moving = false   # Stop movement to target position, instead just move using mouse
 
 
 ### Called every frame, moves camera with WASD

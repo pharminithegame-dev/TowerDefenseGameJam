@@ -18,7 +18,6 @@ extends Node3D
 @export var sell_value := 100.0
 
 ### Private Variables
-var attack_range_sqr : float
 var is_active := true   # Enabled when building can target/shoot
 
 
@@ -26,16 +25,13 @@ var is_active := true   # Enabled when building can target/shoot
 ### Initialize Node
 func _ready() -> void:
 	
-	# Initialize references
+	# Set attack collision radius to the export var value
 	if attack_collision_shape.shape != null:
 		attack_collision_shape.shape.radius = attack_range 
 	else:
 		push_warning("ProjectileBuilding.Area3D.CollisionShape3D.Shape is null!")
 	
 	shoot_timer.wait_time = attack_cooldown
-	
-	# Initialize Variables
-	attack_range_sqr = pow(attack_range, 2)
 	
 	# Don't allow camera ray to select building for the first couple frames of existence
 	select_collision_shape.disabled = true
