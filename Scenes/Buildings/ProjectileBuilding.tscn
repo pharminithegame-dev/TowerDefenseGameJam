@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b20lo5g1ygq0a"]
+[gd_scene load_steps=8 format=3 uid="uid://b20lo5g1ygq0a"]
 
 [ext_resource type="Script" path="res://Scripts/Buildings/ProjectileBuilding.gd" id="1_vsosm"]
 [ext_resource type="PackedScene" uid="uid://cgnw1f6o2ucq" path="res://Scenes/Projectiles/Projectile.tscn" id="2_ichgm"]
 [ext_resource type="PackedScene" uid="uid://cimnsj1tefe6p" path="res://Art/Meshes/Tiles/weapon-cannon.glb" id="3_h0g7m"]
+[ext_resource type="Script" path="res://Scripts/Buildings/BuildingSelectBase.gd" id="3_tds4i"]
 [ext_resource type="AudioStream" uid="uid://davmk1lnyseyw" path="res://Art/SFX/ProjectileShoot.mp3" id="4_576yh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_drxj4"]
@@ -39,6 +40,7 @@ collision_mask = 0
 input_ray_pickable = false
 monitoring = false
 monitorable = false
+script = ExtResource("3_tds4i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OffsetNode/SelectArea3D"]
 shape = SubResource("SphereShape3D_1ypet")
