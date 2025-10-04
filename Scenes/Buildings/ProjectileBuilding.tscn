@@ -8,13 +8,14 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_drxj4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1ypet"]
+radius = 0.75
 
-[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "attack_area_3d", "attack_collision_shape", "select_area_3d", "projectile_tran", "audio_player", "shoot_timer")]
+[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "attack_area_3d", "attack_collision_shape", "select_collision_shape", "projectile_tran", "audio_player", "shoot_timer")]
 script = ExtResource("1_vsosm")
 rot_node = NodePath("OffsetNode/RotationNode")
 attack_area_3d = NodePath("OffsetNode/AttackArea3D")
 attack_collision_shape = NodePath("OffsetNode/AttackArea3D/CollisionShape3D")
-select_area_3d = NodePath("OffsetNode/SelectArea3D")
+select_collision_shape = NodePath("OffsetNode/SelectArea3D/CollisionShape3D")
 projectile_tran = NodePath("OffsetNode/RotationNode/ProjectileSpawnTran")
 projectile = ExtResource("2_ichgm")
 audio_player = NodePath("AudioStreamPlayer")
@@ -25,16 +26,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.58, 0)
 
 [node name="AttackArea3D" type="Area3D" parent="OffsetNode"]
 transform = Transform3D(30, 0, 0, 0, 30, 0, 0, 0, 30, 0, 0, 0)
+input_ray_pickable = false
 monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OffsetNode/AttackArea3D"]
 shape = SubResource("SphereShape3D_drxj4")
 
 [node name="SelectArea3D" type="Area3D" parent="OffsetNode"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 collision_layer = 4
 collision_mask = 0
+input_ray_pickable = false
 monitoring = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="OffsetNode/SelectArea3D"]
 shape = SubResource("SphereShape3D_1ypet")

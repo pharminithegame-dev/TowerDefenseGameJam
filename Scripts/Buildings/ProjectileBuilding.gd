@@ -4,7 +4,7 @@ extends Node3D
 @export var rot_node: Node3D
 @export var attack_area_3d: Area3D
 @export var attack_collision_shape: CollisionShape3D
-@export var select_area_3d: Area3D
+@export var select_collision_shape: CollisionShape3D
 @export var projectile_tran: Node3D
 @export var projectile: PackedScene
 @export var audio_player: AudioStreamPlayer
@@ -36,6 +36,11 @@ func _ready() -> void:
 	
 	# Initialize Variables
 	attack_range_sqr = pow(attack_range, 2)
+	
+	# Don't allow camera ray to select building for the first couple frames of existence
+	select_collision_shape.disabled = true
+	await get_tree().create_timer(0.1).timeout   # Wait a few frames
+	if is_active: select_collision_shape.disabled = false
 
 
 ### Spawns a projectile in the direction of the closest enemy
@@ -83,7 +88,7 @@ func get_nearest_enemy() -> Node3D:
 
 
 ### Rotates the ProjectileSpawnRotation node toward target
-func rotate_to_target(target_pos: Vector3) -> void:	
+func rotate_to_target(target_pos: Vector3) -> void:
 	var direction: Vector3 = target_pos - global_position    # Direction to target
 	rot_node.rotation.y = atan2(direction.x, direction.z)  # Rotate on y axis in direction
 
@@ -98,11 +103,16 @@ func sell_building() -> float:
 func activate_building() -> void:
 	shoot_timer.start()
 	is_active = true
-	select_area_3d.monitorable = true   # Allow camera to select
+	select_collision_shape.disabled = false   # Allow camera to select
 
 
 ### Stops building from targeting and shooting
 func deactivate_building() -> void:
 	shoot_timer.stop()
 	is_active = false
-	select_area_3d.monitorable = false   # Don't allow camera to select
+	select_collision_shape.disabled = true   # Don't allow camera to select
+
+
+### Displays building UI
+func select_building() -> void:
+	pass # TODO
