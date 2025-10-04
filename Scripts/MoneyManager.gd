@@ -3,7 +3,9 @@ extends Node
 # Signal for when any form of money change is done
 signal money_altered(new_money: int)
 
-var money: int = 150
+# Starting Amount. Adjust here since
+# MoneyManager is a singleton autoload.
+var money: int = 200
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#used to check money value
@@ -28,9 +30,9 @@ func get_money() -> int:
 func _process(_delta: float) -> void:
 	# P event
 	if Input.is_action_just_pressed("money_plus"):
-		add_money(10)
-		print("Added 10 money. Total:", money)
+		add_money(25)
+		print("Added 25 money. Total:", money)
 	# O event
 	if Input.is_action_just_pressed("money_minus"):
-		subtract_money(10)
-		print("Subtracted 10 money. Total:", money)
+		subtract_money(25)
+		print("Subtracted 25 money. Total:", money)
