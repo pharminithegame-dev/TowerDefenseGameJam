@@ -2,8 +2,9 @@ extends Node3D
 
 ### References
 @export var rot_node: Node3D
-@export var area_3d: Area3D
-@export var collision_shape: CollisionShape3D
+@export var attack_area_3d: Area3D
+@export var attack_collision_shape: CollisionShape3D
+@export var select_collision_shape: CollisionShape3D
 @export var projectile_tran: Node3D
 @export var projectile: PackedScene
 @export var audio_player: AudioStreamPlayer
@@ -17,7 +18,6 @@ extends Node3D
 @export var sell_value := 100.0
 
 ### Private Variables
-var attack_range_sqr : float
 var is_active := true   # Enabled when building can target/shoot
 
 
@@ -25,16 +25,18 @@ var is_active := true   # Enabled when building can target/shoot
 ### Initialize Node
 func _ready() -> void:
 	
-	# Initialize references
-	if collision_shape.shape != null:
-		collision_shape.shape.radius = attack_range 
+	# Set attack collision radius to the export var value
+	if attack_collision_shape.shape != null:
+		attack_collision_shape.shape.radius = attack_range 
 	else:
 		push_warning("ProjectileBuilding.Area3D.CollisionShape3D.Shape is null!")
 	
 	shoot_timer.wait_time = attack_cooldown
 	
-	# Initialize Variables
-	attack_range_sqr = pow(attack_range, 2)
+	# Don't allow camera ray to select building for the first couple frames of existence
+	select_collision_shape.disabled = true
+	await get_tree().create_timer(0.1).timeout   # Wait a few frames
+	if is_active: select_collision_shape.disabled = false
 
 
 ### Spawns a projectile in the direction of the closest enemy
@@ -62,7 +64,7 @@ func _on_shoot_timer_timeout():
 func get_nearest_enemy() -> Node3D:
 	
 	# Get all enemies in range
-	var all_enemies: Array[Node3D] = area_3d.get_overlapping_bodies()
+	var all_enemies: Array[Node3D] = attack_area_3d.get_overlapping_bodies()
 	
 	# Return null if no enemies in range
 	if all_enemies.size() == 0:
@@ -82,7 +84,7 @@ func get_nearest_enemy() -> Node3D:
 
 
 ### Rotates the ProjectileSpawnRotation node toward target
-func rotate_to_target(target_pos: Vector3) -> void:	
+func rotate_to_target(target_pos: Vector3) -> void:
 	var direction: Vector3 = target_pos - global_position    # Direction to target
 	rot_node.rotation.y = atan2(direction.x, direction.z)  # Rotate on y axis in direction
 
@@ -97,9 +99,16 @@ func sell_building() -> float:
 func activate_building() -> void:
 	shoot_timer.start()
 	is_active = true
+	select_collision_shape.disabled = false   # Allow camera to select
 
 
 ### Stops building from targeting and shooting
 func deactivate_building() -> void:
 	shoot_timer.stop()
 	is_active = false
+	select_collision_shape.disabled = true   # Don't allow camera to select
+
+
+### Displays building UI
+func select_building() -> void:
+	pass # TODO
