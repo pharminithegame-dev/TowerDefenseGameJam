@@ -1,13 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqxvn8y7qg8qr"]
+[gd_scene load_steps=5 format=3 uid="uid://bqxvn8y7qg8qr"]
 
 [ext_resource type="Script" path="res://Scripts/Enemy.gd" id="1_2x3vk"]
 [ext_resource type="PackedScene" uid="uid://58jcr6d2e3e1" path="res://Art/Meshes/Tiles/enemy-ufo-a.glb" id="2_h8k9m"]
+[ext_resource type="PackedScene" uid="uid://8gp71ntyt4f3" path="res://Scenes/Money/money.tscn" id="2_mafgg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1"]
 height = 1.0
 
-[node name="Enemy" type="CharacterBody3D"]
+[node name="Enemy" type="CharacterBody3D" groups=["enemies"]]
+collision_layer = 3
 script = ExtResource("1_2x3vk")
+money_obj = ExtResource("2_mafgg")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

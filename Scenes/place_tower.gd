@@ -1,17 +1,25 @@
 extends TextureButton
 
 @export var draggableTower: PackedScene
+@export var cursor : PackedScene
 var camera : Camera3D
 
 var ghostObject : Node
+var placementCursor : Node
 var is_placing : bool
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ghostObject = draggableTower.instantiate()
+	placementCursor = cursor.instantiate()
 	add_child(ghostObject)
+	# Stop building from targeting/shooting
+	if ghostObject.has_method("deactivate_building"):
+		ghostObject.deactivate_building()
+	
 	camera = get_viewport().get_camera_3d()
 	ghostObject.visible = false
+	placementCursor.visible = false
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -33,14 +41,13 @@ func _process(delta: float) -> void:
 				var cell_origin: Vector3 = gridmap.map_to_local(cell)
 				
 				# Only placeable on grass tiles
-				if gridmap.get_cell_item(cell) == 109:
+				if gridmap.get_cell_item(cell) == 109 || gridmap.get_cell_item(cell) == 36 || gridmap.get_cell_item(cell) == 109 :
 					ghostObject.visible = true
 					ghostObject.global_position = gridmap.to_global(cell_origin)
 				else:
 					ghostObject.visible = false
 				print("Collided with cell:", cell, "at world position:", ghostObject.global_position)
 		else:
-			ghostObject.visible = false
-			
+			ghostObject.visible = false	
 func _toggled(toggled_on: bool) -> void:
 	is_placing = toggled_on
