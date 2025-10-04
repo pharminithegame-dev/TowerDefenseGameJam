@@ -1,0 +1,79 @@
+[gd_scene load_steps=5 format=3 uid="uid://do7cpi87wb6b3"]
+
+[ext_resource type="Script" path="res://Scripts/UI/HudManager.gd" id="1_6lo62"]
+[ext_resource type="Texture2D" uid="uid://cq7xggg0ku845" path="res://Art/Sprites/HUD/suit_hearts.png" id="1_x73o0"]
+[ext_resource type="Texture2D" uid="uid://dklmje353tg41" path="res://Art/Sprites/HUD/dollar.png" id="2_fsebe"]
+[ext_resource type="Texture2D" uid="uid://cfxj8smbbn5qg" path="res://Art/Sprites/HUD/trophy.png" id="2_ow115"]
+
+[node name="HudCanvas" type="CanvasLayer" node_paths=PackedStringArray("health_label", "score_label", "money_label")]
+script = ExtResource("1_6lo62")
+health_label = NodePath("HBoxContainer/HealthHBox/HealthLabel")
+score_label = NodePath("HBoxContainer/ScoreHBox/ScoreLabel")
+money_label = NodePath("HBoxContainer/MoneyHBox/MoneyLabel")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -275.0
+offset_top = 10.0
+offset_right = 275.0
+offset_bottom = 80.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 20
+
+[node name="HealthHBox" type="HBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="HealthTextureRect" type="TextureRect" parent="HBoxContainer/HealthHBox"]
+layout_mode = 2
+texture = ExtResource("1_x73o0")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="HealthLabel" type="Label" parent="HBoxContainer/HealthHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "100"
+vertical_alignment = 1
+
+[node name="ScoreHBox" type="HBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="ScoreTextureRect" type="TextureRect" parent="HBoxContainer/ScoreHBox"]
+layout_mode = 2
+texture = ExtResource("2_ow115")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="ScoreLabel" type="Label" parent="HBoxContainer/ScoreHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0
+"
+vertical_alignment = 1
+
+[node name="MoneyHBox" type="HBoxContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(170, 70)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="MoneyTextureRect" type="TextureRect" parent="HBoxContainer/MoneyHBox"]
+layout_mode = 2
+texture = ExtResource("2_fsebe")
+expand_mode = 2
+stretch_mode = 4
+
+[node name="MoneyLabel" type="Label" parent="HBoxContainer/MoneyHBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "0"
+vertical_alignment = 1

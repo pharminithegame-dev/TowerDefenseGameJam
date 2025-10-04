@@ -7,7 +7,7 @@ extends Node
 @export var wave_delay := 5.0
 
 ### Path Configuration
-@export var spawn_position := Vector3(-1, 2, 6)
+@export var spawn_position := Vector3(-1, 0, 6)
 @export var path_points: Array[Vector3] = []
 
 ### Private Variables
@@ -105,13 +105,13 @@ func _on_enemy_reached_end(enemy: Node3D) -> void:
 func setup_default_path() -> void:
 	if path_points.is_empty():
 		path_points = [
-			Vector3(-1, 2, 6),  # Spawn off-screen
-		Vector3(0, 2, 6),   # Enter map
-		Vector3(6.5, 2, 6),   # First waypoint
-		Vector3(6.5, 2, 8),  # Second waypoint
-		Vector3(1, 2, 8),  # Turn point
-		Vector3(1, 2, 11), # Final stretch
-		#Vector3(28, 2, 11)
+			Vector3(-1, 0, 6),  # Spawn off-screen
+		Vector3(0, 0, 6),   # Enter map
+		Vector3(6.5, 0, 6),   # First waypoint
+		Vector3(6.5, 0, 8),  # Second waypoint
+		Vector3(1, 0, 8),  # Turn point
+		Vector3(1, 0, 11), # Final stretch
+		#Vector3(28, 0, 11)
 		]
 
 ### Manually trigger next wave (for testing)

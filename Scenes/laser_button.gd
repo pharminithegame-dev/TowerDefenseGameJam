@@ -18,6 +18,10 @@ func _ready() -> void:
 	cost_label.text = "$" + str(cost)
 	ghostObject = draggableTower.instantiate() as Node3D
 	add_child(ghostObject)                 # keep your parenting unchanged
+	# Stop building from targeting/shooting
+	if ghostObject.has_method("deactivate_building"):
+		ghostObject.deactivate_building()
+	
 	camera = get_viewport().get_camera_3d()
 	ghostObject.visible = false
 
