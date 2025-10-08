@@ -1,0 +1,207 @@
+[gd_scene load_steps=8 format=3 uid="uid://24wwm6qa06jb"]
+
+[ext_resource type="Texture2D" uid="uid://dwybl6bx7m05b" path="res://Art/Sprites/PopupUI/icon_cross.png" id="1_gfbnp"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p8chi"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+bg_color = Color(0.180392, 0.180392, 0.180392, 0)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+shadow_size = 5
+shadow_offset = Vector2(0, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u7opr"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4qstm"]
+bg_color = Color(0.627451, 0, 0, 0.588235)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cic21"]
+bg_color = Color(0.686275, 0, 0, 0.784314)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tmm7k"]
+bg_color = Color(1, 0, 0, 0.784314)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_51mf3"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="BuildingPopupBase" type="CanvasLayer"]
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(250, 400)
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -20.0
+offset_bottom = 20.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_p8chi")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="BuildingNameLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+text = "Building Name"
+vertical_alignment = 1
+
+[node name="AttackRangeHBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="StatTypeLabel" type="Label" parent="PanelContainer/VBoxContainer/AttackRangeHBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Attack Range"
+vertical_alignment = 1
+
+[node name="StatValueLabel" type="Label" parent="PanelContainer/VBoxContainer/AttackRangeHBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DamageHBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="StatTypeLabel" type="Label" parent="PanelContainer/VBoxContainer/DamageHBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Damage"
+vertical_alignment = 1
+
+[node name="StatValueLabel" type="Label" parent="PanelContainer/VBoxContainer/DamageHBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackRateHBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="StatTypeLabel" type="Label" parent="PanelContainer/VBoxContainer/AttackRateHBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Attack Rate"
+vertical_alignment = 1
+
+[node name="StatValueLabel" type="Label" parent="PanelContainer/VBoxContainer/AttackRateHBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SellValueHBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="StatTypeLabel" type="Label" parent="PanelContainer/VBoxContainer/SellValueHBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Sell Value"
+vertical_alignment = 1
+
+[node name="StatValueLabel" type="Label" parent="PanelContainer/VBoxContainer/SellValueHBox"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackStratLabel" type="Label" parent="PanelContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Attack Strategy: "
+autowrap_mode = 2
+
+[node name="CloseButton" type="Button" parent="."]
+custom_minimum_size = Vector2(50, 50)
+offset_left = 1092.0
+offset_top = 134.0
+offset_right = 1142.0
+offset_bottom = 184.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_constants/icon_max_width = 30
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxFlat_u7opr")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_4qstm")
+theme_override_styles/hover_pressed = SubResource("StyleBoxFlat_cic21")
+theme_override_styles/hover = SubResource("StyleBoxFlat_tmm7k")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_cic21")
+theme_override_styles/normal = SubResource("StyleBoxFlat_51mf3")
+icon = ExtResource("1_gfbnp")
+icon_alignment = 1
