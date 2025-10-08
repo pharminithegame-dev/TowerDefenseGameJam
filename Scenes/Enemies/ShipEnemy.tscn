@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://ceyti8vwhgip5"]
+
+[ext_resource type="Script" path="res://Scripts/PirateShipEnemy.gd" id="1_tjomq"]
+[ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="2_bacei"]
+[ext_resource type="PackedScene" uid="uid://buclsihtj85j7" path="res://Art/Meshes/Tiles/ship-pirate-small.glb" id="3_tsyq8"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_6w0s7"]
+height = 1.0
+
+[node name="ShipEnemy" type="CharacterBody3D"]
+script = ExtResource("1_tjomq")
+ufo_enemy_scene = ExtResource("2_bacei")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+
+[node name="ship-pirate-small2" parent="MeshInstance3D" instance=ExtResource("3_tsyq8")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.331155, 0)
+shape = SubResource("CapsuleShape3D_6w0s7")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -25.0
+offset_top = -40.0
+offset_right = 25.0
+offset_bottom = -30.0
+value = 100.0
+show_percentage = false

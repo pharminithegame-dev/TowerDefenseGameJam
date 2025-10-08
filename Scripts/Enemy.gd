@@ -29,6 +29,10 @@ func _ready() -> void:
 	current_health = max_health
 	add_to_group("enemies")
 	
+	# Disable collision with other enemies
+	collision_layer = 2  # Enemy layer
+	collision_mask = 1   # Only collide with world (not other enemies)
+	
 	# Set up basic path if none provided
 	if path_points.is_empty():
 		setup_default_path()
@@ -54,6 +58,10 @@ func move_along_path(delta: float) -> void:
 	if distance_to_target > 0.1:
 		var direction = (target_pos - global_position).normalized()
 		velocity = direction * move_speed
+		
+		# Rotate to face movement direction (180 degrees offset for model)
+		if direction.length() > 0:
+			look_at(global_position - direction, Vector3.UP)
 	else:
 		# Stop at waypoint and advance to next
 		velocity = Vector3.ZERO

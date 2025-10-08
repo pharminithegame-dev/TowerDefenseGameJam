@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ck7j7ja0kykng" path="res://icon.svg" id="2_1qhbn"]
 [ext_resource type="PackedScene" uid="uid://c2w3r3pm45etd" path="res://Scenes/Misc/Camera.tscn" id="2_u77km"]
 [ext_resource type="Script" path="res://Scenes/place_tower.gd" id="3_lvvd4"]
+[ext_resource type="PackedScene" uid="uid://ceyti8vwhgip5" path="res://Scenes/Enemies/ShipEnemy.tscn" id="4_b5kmd"]
 [ext_resource type="PackedScene" uid="uid://8gp71ntyt4f3" path="res://Scenes/Money/money.tscn" id="4_dvgsi"]
 [ext_resource type="PackedScene" uid="uid://c8q2j8jq76fci" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
 [ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="5_enemy"]
@@ -45,6 +46,8 @@ sky_mode = 1
 physics_interpolation_mode = 2
 script = ExtResource("5_enemy")
 enemy_scene = ExtResource("6_enemy")
+pirate_ship_scene = ExtResource("4_b5kmd")
+spawn_position = Vector3(-1, 0.8, 6)
 path_points = Array[Vector3]([Vector3(-2, 0.8, 5.5), Vector3(5.5, 0.8, 5.5), Vector3(5.5, 0.8, 7.5), Vector3(0.55, 0.8, 7.5), Vector3(0.55, 0.8, 10.5), Vector3(8.5, 0.8, 10.5), Vector3(8.5, 0.8, 5.5), Vector3(14.5, 0.8, 5.5), Vector3(14.5, 0.8, 11.5), Vector3(19.5, 0.8, 11.5), Vector3(19.5, 0.8, 5.5), Vector3(24, 0.8, 5.5)])
 money_obj = ExtResource("4_dvgsi")
 
