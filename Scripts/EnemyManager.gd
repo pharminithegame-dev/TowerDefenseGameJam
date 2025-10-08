@@ -10,6 +10,11 @@ extends Node
 @export var spawn_position := Vector3(-1, 0, 6)
 @export var path_points: Array[Vector3] = []
 
+### Money drops
+@export var money_obj: PackedScene
+@export var deaths_per_drop: int = 5
+var death_count: int = 0
+
 ### Private Variables
 var spawn_timer := 0.0
 var current_wave := 1
@@ -95,6 +100,11 @@ func _on_enemy_died(enemy: Node3D, money_reward: int) -> void:
 	if money_manager and money_manager.has_method("add_money"):
 		money_manager.add_money(money_reward)
 		print("Enemy died, added ", money_reward, " money")
+	
+	### Count deaths for drop tracking
+	death_count += 1
+	if death_count % deaths_per_drop == 0:
+		spawn_money(enemy.global_position)
 
 ### Handles enemy reaching end
 func _on_enemy_reached_end(enemy: Node3D) -> void:
@@ -118,3 +128,10 @@ func setup_default_path() -> void:
 func force_next_wave() -> void:
 	if !is_spawning:
 		start_next_wave()
+
+### Instantiate's Money to Position of Enemy and Spawns
+func spawn_money(location: Vector3) -> void:
+	if money_obj:
+		var money = money_obj.instantiate();
+		money.global_position = location
+		get_tree().get_root().add_child(money)

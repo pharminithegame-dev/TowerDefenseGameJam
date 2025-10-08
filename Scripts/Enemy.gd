@@ -87,12 +87,11 @@ func die() -> void:
 	
 	is_alive = false
 	#print("Enemy died! Rewarding ", money_reward, " money")
-	
-	#spawn_money()
-	
+
 	# Emit signal for money reward
-	# Note from Alex: Will probably remove next sprint
+	# Keeping as is to align with Aaron's vision for bonus money
 	enemy_died.emit(self, money_reward)
+	
 	
 	# Remove from scene
 	queue_free()
@@ -100,9 +99,6 @@ func die() -> void:
 ### Handles reaching the end of path
 func reach_end() -> void:
 	print("Enemy reached the end!")
-	var pos := global_position
-	spawn_money(pos)
-	enemy_reached_end.emit(self)
 	queue_free()
 
 ### Sets up path based on your map layout
@@ -159,9 +155,3 @@ func get_path_completion_percentage() -> float:
 func update_health_bar() -> void:
 	if health_bar:
 		health_bar.value = get_health_percentage() * 100
-
-### Instantiate's Money to Position of Enemy and Spawns
-func spawn_money(location: Vector3) -> void:
-	var money = money_obj.instantiate();
-	money.global_position = location
-	get_tree().get_root().add_child(money)
