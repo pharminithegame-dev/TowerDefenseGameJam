@@ -8,14 +8,11 @@ extends CharacterBody3D
 ### Money Object Spawn
 @export var money_obj: PackedScene
 
-### Money Object Spawn
-@export var money_obj: PackedScene
 
 ### Path Following
 @export var path_points: Array[Vector3] = []
 var current_path_index := 0
 var path_progress := 0.0
-var path_completion_percentage := 0.0
 var path_completion_percentage := 0.0
 
 ### Private Variables
