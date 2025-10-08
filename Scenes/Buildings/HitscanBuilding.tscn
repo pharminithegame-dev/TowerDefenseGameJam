@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://ct0upn61sqrxa"]
+[gd_scene load_steps=8 format=3 uid="uid://ct0upn61sqrxa"]
 
 [ext_resource type="Script" path="res://Scripts/Buildings/HitscanBuilding.gd" id="1_esum0"]
 [ext_resource type="PackedScene" uid="uid://b2msorr0hevwp" path="res://Art/Meshes/Tiles/weapon-turret.glb" id="2_1wc8h"]
 [ext_resource type="AudioStream" uid="uid://35k0m4kfygap" path="res://Art/SFX/HitscanShoot.mp3" id="3_fo5pd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4vw6k"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2kncl"]
+radius = 0.75
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e6o46"]
 albedo_color = Color(1, 0, 0, 1)
@@ -14,11 +17,12 @@ material = SubResource("StandardMaterial3D_e6o46")
 top_radius = 0.1
 bottom_radius = 0.25
 
-[node name="HitscanBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "area_3d", "collision_shape", "raycast", "laser_visuals", "audio_player", "shoot_timer", "laser_visuals_timer")]
+[node name="HitscanBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "area_3d", "collision_shape", "select_collision_shape", "raycast", "laser_visuals", "audio_player", "shoot_timer", "laser_visuals_timer")]
 script = ExtResource("1_esum0")
 rot_node = NodePath("HeightOffset/RotationNode")
 area_3d = NodePath("HeightOffset/AttackArea3D")
 collision_shape = NodePath("HeightOffset/AttackArea3D/CollisionShape3D")
+select_collision_shape = NodePath("HeightOffset/SelectArea3D/CollisionShape3D")
 raycast = NodePath("HeightOffset/RotationNode/RayCast3D")
 laser_visuals = NodePath("HeightOffset/RotationNode/LaserVisuals")
 audio_player = NodePath("AudioStreamPlayer")
@@ -32,11 +36,22 @@ attack_cooldown = 2.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 
 [node name="AttackArea3D" type="Area3D" parent="HeightOffset"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.68, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeightOffset/AttackArea3D"]
 shape = SubResource("SphereShape3D_4vw6k")
+
+[node name="SelectArea3D" type="Area3D" parent="HeightOffset"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485942, 0)
+collision_layer = 4
+collision_mask = 0
+input_ray_pickable = false
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeightOffset/SelectArea3D"]
+shape = SubResource("SphereShape3D_2kncl")
 
 [node name="RotationNode" type="Node3D" parent="HeightOffset"]
 

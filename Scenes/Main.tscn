@@ -1,7 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://ko6h5f7gm3gw"]
+[gd_scene load_steps=19 format=3 uid="uid://ko6h5f7gm3gw"]
 
 [ext_resource type="MeshLibrary" uid="uid://qk1ylviq2ci0" path="res://Art/Meshes/Tiles/Tiles.meshlib" id="1_em37f"]
 [ext_resource type="Texture2D" uid="uid://ck7j7ja0kykng" path="res://icon.svg" id="2_1qhbn"]
+[ext_resource type="PackedScene" uid="uid://c2w3r3pm45etd" path="res://Scenes/Misc/Camera.tscn" id="2_u77km"]
 [ext_resource type="Script" path="res://Scenes/place_tower.gd" id="3_lvvd4"]
 [ext_resource type="PackedScene" uid="uid://c8q2j8jq76fci" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
 [ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="5_enemy"]
@@ -28,7 +29,7 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" parent="." instance=ExtResource("2_u77km")]
 transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 11.5275, 13.154, 10.1118)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -101,7 +102,6 @@ offset_bottom = 440.0
 toggle_mode = true
 texture_normal = ExtResource("12_kxvl4")
 script = ExtResource("13_p5ayb")
-camera_path = NodePath("../Camera3D")
 require_registered = false
 debug_logs = true
 
