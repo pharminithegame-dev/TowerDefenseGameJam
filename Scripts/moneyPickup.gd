@@ -1,6 +1,6 @@
 extends Area3D
 
-var value: int = 10
+var value: int = 25
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

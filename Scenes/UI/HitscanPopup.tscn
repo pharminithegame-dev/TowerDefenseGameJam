@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://iaokabl1sxch"]
+
+[ext_resource type="PackedScene" uid="uid://24wwm6qa06jb" path="res://Scenes/UI/BuildingPopupBase.tscn" id="1_idc1s"]
+
+[node name="BuildingPopupBase" instance=ExtResource("1_idc1s")]
+
+[node name="AttackStratLabel" parent="PanelContainer/VBoxContainer" index="5"]
+text = "Attack Strategy: targets furthest enemy along path"

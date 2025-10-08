@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://c2w3r3pm45etd"]
+
+[ext_resource type="Script" path="res://Scripts/Misc/CameraController.gd" id="1_2pjjr"]
+
+[node name="Camera3D" type="Camera3D"]
+script = ExtResource("1_2pjjr")
+raycast_dist = 150
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+visible = false
+enabled = false
+target_position = Vector3(0, 0, -1)
+collision_mask = 4
+collide_with_areas = true
+collide_with_bodies = false
+debug_shape_custom_color = Color(1, 0, 0, 0.45098)
