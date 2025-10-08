@@ -8,10 +8,14 @@ extends CharacterBody3D
 ### Money Object Spawn
 @export var money_obj: PackedScene
 
+### Money Object Spawn
+@export var money_obj: PackedScene
+
 ### Path Following
 @export var path_points: Array[Vector3] = []
 var current_path_index := 0
 var path_progress := 0.0
+var path_completion_percentage := 0.0
 var path_completion_percentage := 0.0
 
 ### Private Variables
@@ -155,3 +159,9 @@ func get_path_completion_percentage() -> float:
 func update_health_bar() -> void:
 	if health_bar:
 		health_bar.value = get_health_percentage() * 100
+
+### Instantiate's Money to Position of Enemy and Spawns
+func spawn_money(location: Vector3) -> void:
+	var money = money_obj.instantiate();
+	money.global_position = location
+	get_tree().get_root().add_child(money)

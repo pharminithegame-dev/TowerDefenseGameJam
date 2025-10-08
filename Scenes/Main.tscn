@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://8gp71ntyt4f3" path="res://Scenes/Money/money.tscn" id="4_dvgsi"]
 [ext_resource type="PackedScene" uid="uid://c8q2j8jq76fci" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
 [ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="5_enemy"]
+[ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="5_enemy"]
 [ext_resource type="Texture2D" uid="uid://chod7ibmhyd5a" path="res://Art/Sprites/Laser.png" id="6_2cw73"]
 [ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="6_enemy"]
 [ext_resource type="PackedScene" uid="uid://x68fn6t36qs7" path="res://Scenes/Misc/selection_cursor.tscn" id="7_gfofr"]
