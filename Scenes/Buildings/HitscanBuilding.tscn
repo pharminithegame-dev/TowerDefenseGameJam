@@ -38,6 +38,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 [node name="AttackArea3D" type="Area3D" parent="HeightOffset"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7, 0)
 collision_mask = 2
+input_ray_pickable = false
+monitorable = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeightOffset/AttackArea3D"]
 shape = SubResource("SphereShape3D_4vw6k")

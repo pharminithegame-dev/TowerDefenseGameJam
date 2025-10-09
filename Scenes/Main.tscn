@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://ko6h5f7gm3gw"]
+[gd_scene load_steps=21 format=3 uid="uid://ko6h5f7gm3gw"]
 
 [ext_resource type="MeshLibrary" uid="uid://qk1ylviq2ci0" path="res://Art/Meshes/Tiles/Tiles.meshlib" id="1_em37f"]
 [ext_resource type="Texture2D" uid="uid://ck7j7ja0kykng" path="res://icon.svg" id="2_1qhbn"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8clu6a0xxv33"]
+[gd_scene load_steps=5 format=3 uid="uid://b8clu6a0xxv33"]
 
-[ext_resource type="MeshLibrary" uid="uid://dtdo55xeoadov" path="res://Art/Meshes/Tiles2.tres" id="1_d21pm"]
+[ext_resource type="MeshLibrary" uid="uid://ympke52h2kvt" path="res://Art/Meshes/Tiles2.tres" id="1_d21pm"]
 [ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="3_afkfq"]
+[ext_resource type="PackedScene" uid="uid://b20lo5g1ygq0a" path="res://Scenes/Buildings/ProjectileBuilding.tscn" id="3_i4e0f"]
 [ext_resource type="PackedScene" uid="uid://ct0upn61sqrxa" path="res://Scenes/Buildings/HitscanBuilding.tscn" id="9_8bd0j"]
 
 [node name="Main" type="Node3D"]
@@ -26,6 +27,9 @@ sky_mode = 1
 
 [node name="HitscanBuilding" parent="." instance=ExtResource("9_8bd0j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.37, 0.63, 9.375)
+
+[node name="ProjectileBuilding" parent="." instance=ExtResource("3_i4e0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5657, 0.655001, 4.35963)
 
 [node name="Enemy" parent="." instance=ExtResource("3_afkfq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.37475, 1.22979, 6.23269)
