@@ -23,7 +23,7 @@ func _ready() -> void:
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if is_placing:
 		var space_state = ghostObject.get_world_3d().direct_space_state
 		var mouse_pos:Vector2 = get_viewport().get_mouse_position()
