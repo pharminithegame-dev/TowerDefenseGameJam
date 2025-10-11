@@ -3,7 +3,7 @@ extends TextureButton
 @export var draggableTower: PackedScene
 @export var cost: int = 75
 @onready var cost_label: Label = $Label
-@export_node_path("GridMap") var gridmap_path: NodePath   # minimal addition so we always resolve cells via this GridMap
+@export_node_path("GridMap") var gridmap_path: NodePath
 
 var camera : Camera3D
 @onready var gridmap: GridMap = get_node_or_null(gridmap_path) as GridMap
@@ -17,8 +17,7 @@ var _has_valid: bool = false
 func _ready() -> void:
 	cost_label.text = "$" + str(cost)
 	ghostObject = draggableTower.instantiate() as Node3D
-	add_child(ghostObject)                 # keep your parenting unchanged
-	# Stop building from targeting/shooting
+	add_child(ghostObject)
 	if ghostObject.has_method("deactivate_building"):
 		ghostObject.deactivate_building()
 	
@@ -92,6 +91,14 @@ func _input(event: InputEvent) -> void:
 			if _has_valid and draggableTower:
 				var inst := draggableTower.instantiate() as Node3D
 				inst.global_position = _last_valid_world_pos
-				add_child(inst)      # keep your parenting
+				# FIX: Add to scene root instead of button
+				get_tree().root.add_child(inst)
+				# FIX: Register with BuildingManager
+				var mgr = get_node_or_null("/root/BuildingManager")
+				if mgr == null:
+					mgr = get_node_or_null("/root/building_manager")
+				if mgr != null and mgr.has_method("register_building"):
+					mgr.register_building(inst, &"hitscan")
 				is_placing = false
 				ghostObject.visible = false
+				button_pressed = false

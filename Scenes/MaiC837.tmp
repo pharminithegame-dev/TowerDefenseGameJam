@@ -107,7 +107,15 @@ offset_bottom = 440.0
 toggle_mode = true
 texture_normal = ExtResource("12_kxvl4")
 script = ExtResource("13_p5ayb")
+camera_path = null
+raycast_length = null
+collide_with_bodies = null
+collide_with_areas = null
+ray_collision_mask = null
 require_registered = false
+debug_logs = null
+highlight_tint = null
+flash_speed = null
 
 [node name="HudCanvas" parent="." instance=ExtResource("15_p6yx0")]
 
