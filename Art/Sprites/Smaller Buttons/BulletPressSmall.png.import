@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhm8b1xf2lgyk"
-path="res://.godot/imported/Buttons.png-b91d72dae2a01baedd13101c13534dd4.ctex"
+uid="uid://c3fu2ec5xpppn"
+path="res://.godot/imported/BulletPressSmall.png-429ae421b5ac04968fe8a2791b62406c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Sprites/Buttons.png"
-dest_files=["res://.godot/imported/Buttons.png-b91d72dae2a01baedd13101c13534dd4.ctex"]
+source_file="res://Art/Sprites/Smaller Buttons/BulletPressSmall.png"
+dest_files=["res://.godot/imported/BulletPressSmall.png-429ae421b5ac04968fe8a2791b62406c.ctex"]
 
 [params]
 

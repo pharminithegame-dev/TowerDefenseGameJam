@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://8gp71ntyt4f3" path="res://Scenes/Money/money.tscn" id="4_dvgsi"]
 [ext_resource type="PackedScene" uid="uid://c8q2j8jq76fci" path="res://Scenes/TestTurret.tscn" id="4_y0l8b"]
 [ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="5_enemy"]
-[ext_resource type="Texture2D" uid="uid://chod7ibmhyd5a" path="res://Art/Sprites/Laser.png" id="6_2cw73"]
 [ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="6_enemy"]
 [ext_resource type="PackedScene" uid="uid://x68fn6t36qs7" path="res://Scenes/Misc/selection_cursor.tscn" id="7_gfofr"]
 [ext_resource type="Script" path="res://Scenes/laser_button.gd" id="7_oq4g7"]
@@ -16,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bw3qryxajb4qg" path="res://Art/Sprites/Bullet.png" id="9_sl7ii"]
 [ext_resource type="Script" path="res://Scenes/projectile_button.gd" id="10_su6hg"]
 [ext_resource type="PackedScene" uid="uid://b20lo5g1ygq0a" path="res://Scenes/Buildings/ProjectileBuilding.tscn" id="11_6b8h4"]
+[ext_resource type="Texture2D" uid="uid://c52mcueqikd1n" path="res://Art/Sprites/Smaller Buttons/LaserSmall.png" id="11_hakif"]
 [ext_resource type="Texture2D" uid="uid://c7pfirl5udivg" path="res://Art/Sprites/Delete.png" id="12_kxvl4"]
 [ext_resource type="Script" path="res://Scenes/delete_button.gd" id="13_p5ayb"]
 [ext_resource type="PackedScene" uid="uid://do7cpi87wb6b3" path="res://Scenes/UI/HUD.tscn" id="15_p6yx0"]
@@ -64,20 +64,22 @@ draggableTower = ExtResource("4_y0l8b")
 cursor = ExtResource("7_gfofr")
 
 [node name="LaserButton" type="TextureButton" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 48.0
+offset_top = 40.0
+offset_right = 176.0
+offset_bottom = 96.0
 toggle_mode = true
-texture_normal = ExtResource("6_2cw73")
+texture_normal = ExtResource("11_hakif")
 script = ExtResource("7_oq4g7")
 draggableTower = ExtResource("8_bjwje")
 gridmap_path = NodePath("../GridMap")
 
 [node name="Label" type="Label" parent="LaserButton"]
 layout_mode = 0
-offset_left = 111.0
-offset_top = 96.0
-offset_right = 151.0
-offset_bottom = 119.0
+offset_left = 136.0
+offset_top = 16.0
+offset_right = 176.0
+offset_bottom = 39.0
 text = "$75"
 horizontal_alignment = 1
 
