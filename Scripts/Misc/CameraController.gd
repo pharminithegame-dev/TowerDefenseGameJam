@@ -18,6 +18,7 @@ var cam_min_pos_2d := Vector2.ZERO
 var cam_max_pos_2d := Vector2.ZERO
 var cam_target_pos := Vector3.ZERO
 var is_cam_moving := false
+var last_selected_building : Area3D = null
 
 
 
@@ -93,9 +94,18 @@ func raycast_for_buildings() -> void:
 		ray.enabled = false
 		return
 	
-	# Display building UI TODO - put script in collider so I don't have to get parent twice
-	if ray.get_collider().get_parent().get_parent().has_method("select_building"):
-		ray.get_collider().get_parent().get_parent().select_building()
+	
+	# Display building UI and close the previous one if open
+	if ray.get_collider().has_method("select_building"):
+		
+		# Close last selected building UI
+		if last_selected_building != null:
+			if last_selected_building.has_method("deselect_building"):
+				last_selected_building.deselect_building()
+		
+		# Display building UI
+		ray.get_collider().select_building()
+		last_selected_building = ray.get_collider()
 	
 	# Move camera to building position
 	set_camera_target_pos(ray.get_collider().global_position)

@@ -1,8 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://iaokabl1sxch"]
+[gd_scene load_steps=3 format=3 uid="uid://iaokabl1sxch"]
 
 [ext_resource type="PackedScene" uid="uid://24wwm6qa06jb" path="res://Scenes/UI/BuildingPopupBase.tscn" id="1_idc1s"]
+[ext_resource type="Script" path="res://Scripts/UI/HitscanPopupUI.gd" id="2_5hwav"]
 
 [node name="BuildingPopupBase" instance=ExtResource("1_idc1s")]
+script = ExtResource("2_5hwav")
+
+[node name="BuildingNameLabel" parent="PanelContainer/VBoxContainer/HeaderHBox" index="0"]
+text = "Hitscan Building"
 
 [node name="AttackStratLabel" parent="PanelContainer/VBoxContainer" index="5"]
 text = "Attack Strategy: targets furthest enemy along path"
+
+[connection signal="button_down" from="PanelContainer/VBoxContainer/HeaderHBox/CloseButton" to="." method="on_popup_close_button_down"]

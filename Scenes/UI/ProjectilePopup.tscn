@@ -1,8 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b61p36wdosjtx"]
+[gd_scene load_steps=3 format=3 uid="uid://b61p36wdosjtx"]
 
 [ext_resource type="PackedScene" uid="uid://24wwm6qa06jb" path="res://Scenes/UI/BuildingPopupBase.tscn" id="1_ncdo8"]
+[ext_resource type="Script" path="res://Scripts/UI/ProjectilePopupUI.gd" id="2_vbjb5"]
 
 [node name="BuildingPopupBase" instance=ExtResource("1_ncdo8")]
+script = ExtResource("2_vbjb5")
+
+[node name="BuildingNameLabel" parent="PanelContainer/VBoxContainer/HeaderHBox" index="0"]
+text = "Projectile Building"
 
 [node name="ProjectileSpeedHBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer" index="4"]
 custom_minimum_size = Vector2(0, 40)
@@ -26,3 +31,5 @@ vertical_alignment = 1
 
 [node name="AttackStratLabel" parent="PanelContainer/VBoxContainer" index="6"]
 text = "Attack Strategy: targets closest enemy to the building"
+
+[connection signal="button_down" from="PanelContainer/VBoxContainer/HeaderHBox/CloseButton" to="." method="on_popup_close_button_down"]

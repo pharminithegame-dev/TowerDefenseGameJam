@@ -3,12 +3,14 @@ extends Node3D
 ### References
 @export var rot_node: Node3D
 @export var attack_area_3d: Area3D
+@export var select_area_3d: Area3D
 @export var attack_collision_shape: CollisionShape3D
 @export var select_collision_shape: CollisionShape3D
 @export var projectile_tran: Node3D
 @export var projectile: PackedScene
 @export var audio_player: AudioStreamPlayer
 @export var shoot_timer: Timer
+@export var building_popup_ui: CanvasLayer
 
 ### Stats
 @export var projectile_damage := 5.0
@@ -21,7 +23,6 @@ extends Node3D
 var is_active := true   # Enabled when building can target/shoot
 
 
-
 ### Initialize Node
 func _ready() -> void:
 	
@@ -32,6 +33,15 @@ func _ready() -> void:
 		push_warning("ProjectileBuilding.Area3D.CollisionShape3D.Shape is null!")
 	
 	shoot_timer.wait_time = attack_cooldown
+	
+		# Initialize popup ui stats
+	building_popup_ui.set_popup_ui_stats({
+	"attack_range": attack_range,
+	"damage": projectile_damage,
+	"attack_rate": attack_cooldown,
+	"projectile_speed": projectile_speed,
+	"sell_value": sell_value
+	})
 	
 	# Don't allow camera ray to select building for the first couple frames of existence
 	select_collision_shape.disabled = true
@@ -91,6 +101,10 @@ func rotate_to_target(target_pos: Vector3) -> void:
 
 ### Despawns building and returns the sell value
 func sell_building() -> float:
+	# Hide building popup UI if visible
+	if select_area_3d.has_method("deselect_building"):
+		select_area_3d.deselect_building()
+	
 	queue_free()   # Despawn building
 	return sell_value
 
@@ -107,8 +121,7 @@ func deactivate_building() -> void:
 	shoot_timer.stop()
 	is_active = false
 	select_collision_shape.disabled = true   # Don't allow camera to select
-
-
-### Displays building UI
-func select_building() -> void:
-	pass # TODO
+	
+	# Hide building popup UI if visible
+	if select_area_3d.has_method("deselect_building"):
+		select_area_3d.deselect_building()

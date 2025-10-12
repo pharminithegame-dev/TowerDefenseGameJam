@@ -1,26 +1,29 @@
-[gd_scene load_steps=8 format=3 uid="uid://b20lo5g1ygq0a"]
+[gd_scene load_steps=9 format=3 uid="uid://b20lo5g1ygq0a"]
 
 [ext_resource type="Script" path="res://Scripts/Buildings/ProjectileBuilding.gd" id="1_vsosm"]
 [ext_resource type="PackedScene" uid="uid://cgnw1f6o2ucq" path="res://Scenes/Projectiles/Projectile.tscn" id="2_ichgm"]
 [ext_resource type="PackedScene" uid="uid://cimnsj1tefe6p" path="res://Art/Meshes/Tiles/weapon-cannon.glb" id="3_h0g7m"]
-[ext_resource type="Script" path="res://Scripts/Buildings/BuildingSelectBase.gd" id="3_tds4i"]
+[ext_resource type="Script" path="res://Scripts/Buildings/BuildingSelect.gd" id="3_tds4i"]
 [ext_resource type="AudioStream" uid="uid://davmk1lnyseyw" path="res://Art/SFX/ProjectileShoot.mp3" id="4_576yh"]
+[ext_resource type="PackedScene" uid="uid://b61p36wdosjtx" path="res://Scenes/UI/ProjectilePopup.tscn" id="6_e7uj5"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_drxj4"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_1ypet"]
 radius = 0.75
 
-[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "attack_area_3d", "attack_collision_shape", "select_collision_shape", "projectile_tran", "audio_player", "shoot_timer")]
+[node name="ProjectileBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "attack_area_3d", "select_area_3d", "attack_collision_shape", "select_collision_shape", "projectile_tran", "audio_player", "shoot_timer", "building_popup_ui")]
 script = ExtResource("1_vsosm")
 rot_node = NodePath("OffsetNode/RotationNode")
 attack_area_3d = NodePath("OffsetNode/AttackArea3D")
-attack_collision_shape = NodePath("OffsetNode/AttackArea3D/CollisionShape3D")
-select_collision_shape = NodePath("OffsetNode/SelectArea3D/CollisionShape3D")
+select_area_3d = NodePath("OffsetNode/SelectArea3D")
+attack_collision_shape = NodePath("OffsetNode/AttackArea3D/AttackCollisionShape3D")
+select_collision_shape = NodePath("OffsetNode/SelectArea3D/SelectCollisionShape3D")
 projectile_tran = NodePath("OffsetNode/RotationNode/ProjectileSpawnTran")
 projectile = ExtResource("2_ichgm")
 audio_player = NodePath("AudioStreamPlayer")
 shoot_timer = NodePath("ShootTimer")
+building_popup_ui = NodePath("BuildingPopupBase")
 projectile_damage = 40.0
 attack_range = 15.0
 
@@ -32,18 +35,19 @@ collision_mask = 2
 input_ray_pickable = false
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OffsetNode/AttackArea3D"]
+[node name="AttackCollisionShape3D" type="CollisionShape3D" parent="OffsetNode/AttackArea3D"]
 shape = SubResource("SphereShape3D_drxj4")
 
-[node name="SelectArea3D" type="Area3D" parent="OffsetNode"]
+[node name="SelectArea3D" type="Area3D" parent="OffsetNode" node_paths=PackedStringArray("popup_ui")]
 collision_layer = 4
 collision_mask = 0
 input_ray_pickable = false
 monitoring = false
 monitorable = false
 script = ExtResource("3_tds4i")
+popup_ui = NodePath("../../BuildingPopupBase")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="OffsetNode/SelectArea3D"]
+[node name="SelectCollisionShape3D" type="CollisionShape3D" parent="OffsetNode/SelectArea3D"]
 shape = SubResource("SphereShape3D_1ypet")
 
 [node name="RotationNode" type="Node3D" parent="OffsetNode"]
@@ -60,5 +64,8 @@ volume_db = -20.0
 
 [node name="ShootTimer" type="Timer" parent="."]
 autostart = true
+
+[node name="BuildingPopupBase" parent="." instance=ExtResource("6_e7uj5")]
+visible = false
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]

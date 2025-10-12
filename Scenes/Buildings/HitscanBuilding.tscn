@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ct0upn61sqrxa"]
+[gd_scene load_steps=10 format=3 uid="uid://ct0upn61sqrxa"]
 
 [ext_resource type="Script" path="res://Scripts/Buildings/HitscanBuilding.gd" id="1_esum0"]
 [ext_resource type="PackedScene" uid="uid://b2msorr0hevwp" path="res://Art/Meshes/Tiles/weapon-turret.glb" id="2_1wc8h"]
+[ext_resource type="Script" path="res://Scripts/Buildings/BuildingSelect.gd" id="2_lvls8"]
 [ext_resource type="AudioStream" uid="uid://35k0m4kfygap" path="res://Art/SFX/HitscanShoot.mp3" id="3_fo5pd"]
+[ext_resource type="PackedScene" uid="uid://iaokabl1sxch" path="res://Scenes/UI/HitscanPopup.tscn" id="5_eu5bn"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4vw6k"]
 
@@ -17,17 +19,19 @@ material = SubResource("StandardMaterial3D_e6o46")
 top_radius = 0.1
 bottom_radius = 0.25
 
-[node name="HitscanBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "area_3d", "collision_shape", "select_collision_shape", "raycast", "laser_visuals", "audio_player", "shoot_timer", "laser_visuals_timer")]
+[node name="HitscanBuilding" type="Node3D" node_paths=PackedStringArray("rot_node", "attack_area_3d", "select_area_3d", "attack_collision_shape", "select_collision_shape", "raycast", "laser_visuals", "audio_player", "shoot_timer", "laser_visuals_timer", "building_popup_ui")]
 script = ExtResource("1_esum0")
 rot_node = NodePath("HeightOffset/RotationNode")
-area_3d = NodePath("HeightOffset/AttackArea3D")
-collision_shape = NodePath("HeightOffset/AttackArea3D/CollisionShape3D")
-select_collision_shape = NodePath("HeightOffset/SelectArea3D/CollisionShape3D")
+attack_area_3d = NodePath("HeightOffset/AttackArea3D")
+select_area_3d = NodePath("HeightOffset/SelectArea3D")
+attack_collision_shape = NodePath("HeightOffset/AttackArea3D/AttackCollisionShape3D")
+select_collision_shape = NodePath("HeightOffset/SelectArea3D/SelectCollisionShape3D")
 raycast = NodePath("HeightOffset/RotationNode/RayCast3D")
 laser_visuals = NodePath("HeightOffset/RotationNode/LaserVisuals")
 audio_player = NodePath("AudioStreamPlayer")
 shoot_timer = NodePath("ShootTimer")
 laser_visuals_timer = NodePath("LaserVisualsTimer")
+building_popup_ui = NodePath("BuildingPopupBase")
 attack_damage = 80.0
 attack_range = 30.0
 attack_cooldown = 2.5
@@ -41,18 +45,20 @@ collision_mask = 2
 input_ray_pickable = false
 monitorable = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HeightOffset/AttackArea3D"]
+[node name="AttackCollisionShape3D" type="CollisionShape3D" parent="HeightOffset/AttackArea3D"]
 shape = SubResource("SphereShape3D_4vw6k")
 
-[node name="SelectArea3D" type="Area3D" parent="HeightOffset"]
+[node name="SelectArea3D" type="Area3D" parent="HeightOffset" node_paths=PackedStringArray("popup_ui")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.485942, 0)
 collision_layer = 4
 collision_mask = 0
 input_ray_pickable = false
 monitoring = false
 monitorable = false
+script = ExtResource("2_lvls8")
+popup_ui = NodePath("../../BuildingPopupBase")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HeightOffset/SelectArea3D"]
+[node name="SelectCollisionShape3D" type="CollisionShape3D" parent="HeightOffset/SelectArea3D"]
 shape = SubResource("SphereShape3D_2kncl")
 
 [node name="RotationNode" type="Node3D" parent="HeightOffset"]
@@ -79,6 +85,9 @@ volume_db = -20.0
 autostart = true
 
 [node name="LaserVisualsTimer" type="Timer" parent="."]
+
+[node name="BuildingPopupBase" parent="." instance=ExtResource("5_eu5bn")]
+visible = false
 
 [connection signal="timeout" from="ShootTimer" to="." method="_on_shoot_timer_timeout"]
 [connection signal="timeout" from="LaserVisualsTimer" to="." method="_on_laser_visuals_timer_timeout"]
