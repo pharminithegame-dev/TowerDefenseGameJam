@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://b61p36wdosjtx"]
+
+[ext_resource type="PackedScene" uid="uid://24wwm6qa06jb" path="res://Scenes/UI/BuildingPopupBase.tscn" id="1_ncdo8"]
+
+[node name="BuildingPopupBase" instance=ExtResource("1_ncdo8")]
+
+[node name="ProjectileSpeedHBox" type="HBoxContainer" parent="PanelContainer/VBoxContainer" index="4"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+
+[node name="StatTypeLabel" type="Label" parent="PanelContainer/VBoxContainer/ProjectileSpeedHBox" index="0"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+text = "Projectile Speed"
+vertical_alignment = 1
+
+[node name="StatValueLabel" type="Label" parent="PanelContainer/VBoxContainer/ProjectileSpeedHBox" index="1"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "99"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AttackStratLabel" parent="PanelContainer/VBoxContainer" index="6"]
+text = "Attack Strategy: targets closest enemy to the building"
