@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/EnemyManager.gd" id="1_abc123"]
 [ext_resource type="PackedScene" uid="uid://bqxvn8y7qg8qr" path="res://Scenes/Enemies/Enemy.tscn" id="2_def456"]
-[ext_resource type="Script" path="res://Scripts/MoneyManager.gd" id="3_ghi789"]
+[ext_resource type="Script" path="res://Scripts/Money/MoneyManager.gd" id="3_ghi789"]
 
 [node name="EnemyTestScene" type="Node3D"]
 

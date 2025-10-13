@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var max_health := 100.0
 @export var move_speed := 3.0
 @export var money_reward := 10
+@export var damage: int = 1 #changes by enemy type
 
 ### Money Object Spawn
 @export var money_obj: PackedScene
@@ -108,6 +109,7 @@ func die() -> void:
 ### Handles reaching the end of path
 func reach_end() -> void:
 	print("Enemy reached the end!")
+	GameManager.subtract_health(1)
 	queue_free()
 
 ### Sets up path based on your map layout

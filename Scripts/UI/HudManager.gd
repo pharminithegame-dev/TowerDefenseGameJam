@@ -10,13 +10,14 @@ extends CanvasLayer
 func _ready() -> void:
 	
 	# Initialize label text
-	set_health_label_text(100)  # Temp
+	set_health_label_text(GameManager.get_health())
 	set_score_label_text(0)     # Temp
-	# TODO - initialize health and score from game manager
+	# TODO - initialize score from game manager
 	set_money_label_text(MoneyManager.get_money())
 	
 	# Connect signals
-	# TODO - connect health and score signals game manager
+	# TODO - connect score signal game manager
+	GameManager.health_altered.connect(set_health_label_text)
 	MoneyManager.money_altered.connect(set_money_label_text)
 
 

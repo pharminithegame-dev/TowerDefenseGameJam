@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://8gp71ntyt4f3"]
 
 [ext_resource type="Material" uid="uid://xqcd7fmpuxua" path="res://Art/Materials/money.tres" id="1_r8swn"]
-[ext_resource type="Script" path="res://Scripts/moneyPickup.gd" id="1_rib17"]
+[ext_resource type="Script" path="res://Scripts/Money/moneyPickup.gd" id="1_rib17"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_rngxq"]
 
