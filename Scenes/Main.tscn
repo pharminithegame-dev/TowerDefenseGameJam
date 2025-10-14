@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ko6h5f7gm3gw"]
+[gd_scene load_steps=22 format=3 uid="uid://ko6h5f7gm3gw"]
 
 [ext_resource type="MeshLibrary" path="res://Art/Meshes/Tiles/Tiles.meshlib" id="1_em37f"]
 [ext_resource type="Texture2D" uid="uid://ck7j7ja0kykng" path="res://icon.svg" id="2_1qhbn"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://Scenes/delete_button.gd" id="13_p5ayb"]
 [ext_resource type="PackedScene" uid="uid://do7cpi87wb6b3" path="res://Scenes/UI/HUD.tscn" id="15_p6yx0"]
 [ext_resource type="PackedScene" uid="uid://8mhdoyl1a3jm" path="res://Scenes/Money/moneyUI.tscn" id="16_ki8uc"]
+[ext_resource type="PackedScene" uid="uid://c3omma2gf87iq" path="res://Scenes/home_base.tscn" id="21_u27u6"]
 
 [node name="Main" type="Node3D"]
 
@@ -113,3 +114,6 @@ debug_logs = true
 [node name="HudCanvas" parent="." instance=ExtResource("15_p6yx0")]
 
 [node name="MoneyManager" parent="." instance=ExtResource("16_ki8uc")]
+
+[node name="HomeBase" parent="." instance=ExtResource("21_u27u6")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 26.2926, 1.71944, 5.40773)

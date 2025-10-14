@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3omma2gf87iq"]
+
+[ext_resource type="Material" uid="uid://wbuajajkbbdq" path="res://Art/Materials/BaseColor.tres" id="1_ek11w"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_7g1bq"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sp6kr"]
+
+[node name="HomeBase" type="StaticBody3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_ek11w")
+mesh = SubResource("CylinderMesh_7g1bq")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-1.31134e-08, 0.5, 0, -0.3, -2.18557e-08, 0, 0, 0, 0.6, -0.73743, -0.694362, 0)
+material_override = ExtResource("1_ek11w")
+mesh = SubResource("CylinderMesh_7g1bq")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CylinderShape3D_sp6kr")
